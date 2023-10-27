@@ -13,7 +13,7 @@ page-layout: custom
 Introduction to Statistical Methods for Life and Health Sciences 
 :::
 
-[Stat 13 UC Los Angeles]{.smallcaps}
+[STATS 13 UC Los Angeles]{.smallcaps}
 
 For information about the course, please [see the syllabus](syllabus.qmd).
 

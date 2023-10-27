@@ -15,17 +15,19 @@ knitr::opts_chunk$set(
 )
 ```
 
-The following packages were used for this tutorial but are not required for your lab
 
-<details>
-
-<summary>Show Code</summary>
 ```{r}
 library(ggplot2)
 library(patchwork)
 library(palmerpenguins)
 ```
-</details>
+
+```{r}
+theme_set(theme_bw())
+theme_replace(panel.grid.minor = element_blank(),
+              panel.grid.major = element_blank())
+```
+
 
 
 ## Sampling Distributions

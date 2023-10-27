@@ -3,17 +3,17 @@ project:
 
 # Website Configuration and Layout
 website:
-  title: "Stat 13"
+  title: "STATS 13"
   description: "Introduction to Statistical Methods for Life and Health Sciences at UC Los Angeles"
   search:
     location: navbar
     type: overlay
-  #site-url: "https://www.stat20.org/"
+  site-url: "https://ucla-stats13.netlify.app"
   repo-url: "https://github.com/toledo60/ucla-stats13"
   #favicon: assets/favicon.ico
   #image: assets/stat20-hex.png
-  #open-graph:
-  #  site-name: "Stat 13"
+  open-graph:
+     site-name: "STATS 13"
   #  image: assets/stat20-hex.png
   twitter-card: true
   page-navigation: true
