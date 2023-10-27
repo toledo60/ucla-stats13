@@ -1,6 +1,7 @@
 ---
 title: Assignments
 sidebar: false
+toc: false
 listing:
   - id: lab-listing
     contents: 

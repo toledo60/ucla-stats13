@@ -9,7 +9,7 @@ website:
     location: navbar
     type: overlay
   #site-url: "https://www.stat20.org/"
-  #repo-url: "https://github.com/stat20/course-materials"
+  repo-url: "https://github.com/toledo60/ucla-stats13"
   #favicon: assets/favicon.ico
   #image: assets/stat20-hex.png
   #open-graph:
@@ -47,9 +47,6 @@ website:
     right:
       - text: License
         href: license.qmd
-    left:
-      - text: "This site is hosted by Netlify."
-        href: https://www.netlify.com/
 
 
 # Format-specific Metadata
