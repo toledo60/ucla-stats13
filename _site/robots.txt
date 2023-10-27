@@ -1,1 +1,0 @@
-Sitemap: https://ucla-stats13.netlify.app/sitemap.xml
