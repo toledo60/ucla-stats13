@@ -15,7 +15,8 @@ listing:
     categories: false 
 ---
 
-Notes for STATS 13: Introduction to Statistical Methods for Life and Health Sciences
+
+These notes are primarily for *STATS 13: Introduction to Statistical Methods for Life and Health Sciences* lab discussions. For concepts learned in class, refer to the slides posted on Bruin learn
 
 
 

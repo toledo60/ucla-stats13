@@ -10,17 +10,153 @@ image: images/births.jpeg
 
 Students will be able to:
 
-1. 
-2.
-3.
+- Increase skill and comfort with basic data management and syntax in R 
+- Create statistical graphics to answer questions about a data set
+- Review simulating the null distribution for sample proportions
+- Understand the basic methodology and syntax of the for loop
+- Carry out an entire test of significance for one proportion using simulations
 
 ----
 
+### Readings
+
+To prepare for this lab assignment read the following lecture notes
+
+
+1. [Logical Statements and Applications](/notes/06-logical-statements.qmd)
+2. [Introduction to for-loops](/notes/07-for-loops.qmd)
+3. [Sampling and Simulation](/notes/08-sampling_simulation.qmd)
+
+---
+
+### Required Data and Packages
+
+We will continue to work with the NC data on births used in Lab 1
+
+```{r,eval=FALSE}
+births <- read.csv('your path to births.csv')
+```
+
+
+Throughout the lab we will use the `mosaic` package
+
+```{r,eval=FALSE}
+library(mosaic)
+```
+
+---
+
+
+### Questions
 
 #### Question 1
 
+What are the names of the variables that indicate whether or not the mother smoked and the weight of the baby?
 
 
 #### Question 2
 
+In addition to the variable that indicates whether or not the mother smoked, choose one numerical (quantitative) variable and one categorical variable that you think might also affect the weight of a baby. Explain why
 
+
+
+#### Question 3
+
+Create a data frame that has only the variables `Gender, Premie, weight`, and `Apgar1`, and the observations for which the baby was not premature. Print out the first few rows using the `head()` function.
+
+
+#### Question 4
+
+Create a data frame that has only the four variables you identified in Questions 1 and 2 and the observations for which the mother was a smoker. Print out the first few rows using the `head()` function
+
+
+
+#### Question 5
+
+Report the mean of
+
+(a) the weights of all babies.
+(b) the weights of those born to smoking mothers.
+(c) the weights of those born to non-smoking mothers.
+
+The `sd()` function computes the standard deviation of the input. The syntax is identical to that of the `mean()` function
+
+#### Question 6
+
+Report the standard deviation of
+
+(a) the weights of all babies
+(b) the weights of those born to smoking mothers
+(c) the weights of those born to non-smoking mothers
+
+
+#### Question 7
+
+Using `Births`, create two graphics that help answer this question: Does the birth weight of babies born to smoking mothers differ from those born to non-smoking mothers?
+
+*Note:* You are not limited to histograms. If you want, you can look into `dotPlot(), densityplot(), freqpolygon(), bwplot()`, and `mosaicplot()` for other types of plots to visualize data
+
+
+#### Question 8
+
+Set the seed to 3464 and simulate tossing 19 coins, where the probability of heads is 0.4 using `rflip()`
+
+
+#### Question 9
+
+Set the seed to 3464 and simulate 1000 repetitions of tossing 19 coins, where the probability of heads is 0.4. Save the output from this simulation, and print the first six lines from the saved data frame
+
+
+#### Question 10
+
+Set the seed to 9449 and choose 25 numbers out of the numbers from 1 to 1998, without replacement
+
+
+#### Question 11
+
+Set the seed to 9449 and simulate 19 coin flips using the `sample()` function, where the probability of heads (represented by 1) is 0.4. Print the proportion of heads obtained
+
+*Hint:* What would the `mean()` function do given the vector of coded coin flips?
+
+---
+
+For **Questions 12-18** consider the following scenario:
+
+Suppose a researcher is testing to see if a basketball player can make free throws at a rate higher than the NBA average of 75%. The player is tested by shooting 10 free throws and makes 8 of them
+
+
+#### Question 12
+
+State the null and alternative hypotheses in words and in symbols
+
+
+#### Question 13
+
+Simulate the null distribution in R using the methods developed in this lab (i.e., the for loop
+and `sample()` function). Set the seed to 514. Do *not* use the `do() * rflip()` notation
+
+
+#### Question 14
+
+Create a plot of the null distribution you simulated in Question 13
+
+
+#### Question 15
+
+Compute the (approximate) p-value based on your simulation
+
+
+#### Question 16
+
+
+Compute the value of the standardized statistic ($z$-statistic) based on the standard deviation of the null distribution you simulated in Question 13
+
+#### Question 17
+
+State your conclusion based on the strength of evidence, in context
+
+
+#### Question 18
+
+
+Suppose the player instead had made all 10 shots. Using the same simulation results from Question 13, state your conclusion about the strength of evidence with a significance level of 0.05. Can you think of any limitation(s) to the researcher’s study? Explain
