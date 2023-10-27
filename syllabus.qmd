@@ -5,6 +5,7 @@ toc: true
 doi: "Fall 2023"
 doi-title: Term
 author:
+    - Linda Zanontian
     - Jose Toledo Luna
 author-title: Instructors
 abstract: "Presentation and interpretation of data, descriptive statistics, introduction to correlation and regression and to basic statistical inference (estimation, testing of means and proportions, ANOVA) using both bootstrap methods and parametric models."

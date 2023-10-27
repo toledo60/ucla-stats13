@@ -33,9 +33,9 @@ website:
       - text: Assignments
         href: assignments.qmd
     tools:
-      - icon: bar-chart-fill
-        href: https://www.gradescope.com/courses/
-        aria-label: Gradescope
+      - icon: github
+        href: https://github.com/toledo60/ucla-stats13
+        aria-label: Github
       - icon: r-circle-fill
         href: https://rstudio.stat.ucla.edu
         aria-label: RStudio

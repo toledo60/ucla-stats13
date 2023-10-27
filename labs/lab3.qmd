@@ -1,0 +1,32 @@
+---
+title: "Lab 3"
+code-fold: false
+sidebar: false
+---
+
+### Learning Objectives
+
+
+Students will be able to:
+
+1. 
+2.
+3.
+
+
+---
+
+#### Question 1
+
+
+
+#### Question 2
+
+
+
+
+
+
+
+
+

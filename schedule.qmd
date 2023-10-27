@@ -4,4 +4,18 @@ toc: false
 sidebar: false
 ---
 
+## Discussion
+
+**1A** Wednesday/Friday: 8am-8:50am (Kaufman Hall 101) <br/>
+**1B** Wednesday/Friday: 9am-9:50am (Kaufman Hall 101)
+
+
 ## Office Hours
+
+Please stop by office hours and introduce yourself! Office hours are useful for one-on-one help on assignments, discussion of topics discussed in the reading, or broader questions about statistics and data science
+
+**Jose Toledo Luna:** Monday: 10:00am-11:00am, Wednesday: 5:00pm -6:00pm on [Zoom](https://zoom.us/j/8496165634?pwd=dVFLRDF5WkdyRVBZY2NaVmVMa0NEQT09)
+
+If you can not attend the scheduled office hours I am available for a one-on-one appoitment, follow the directions on [setting up an appointment](appoitments.qmd)
+
+
