@@ -1,0 +1,22 @@
+---
+toc: false
+page-layout: custom
+---
+
+:::::{.content-block}
+::::{.grid}
+:::{#banner .g-col-12 .g-col-md-6 style="margin: 3em 1em 0em 1em"}
+
+
+
+:::{.banner-text}
+Introduction to Statistical Methods for Life and Health Sciences 
+:::
+
+[Stat 13 UC Los Angeles]{.smallcaps}
+
+For information about the course, please [see the syllabus](syllabus.qmd).
+
+:::
+::::
+:::::

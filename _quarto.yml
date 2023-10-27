@@ -1,0 +1,76 @@
+project:
+  type: website
+
+# Website Configuration and Layout
+website:
+  title: "Stat 13"
+  description: "Introduction to Statistical Methods for Life and Health Sciences at UC Los Angeles"
+  search:
+    location: navbar
+    type: overlay
+  #site-url: "https://www.stat20.org/"
+  #repo-url: "https://github.com/stat20/course-materials"
+  #favicon: assets/favicon.ico
+  #image: assets/stat20-hex.png
+  #open-graph:
+  #  site-name: "Stat 13"
+  #  image: assets/stat20-hex.png
+  twitter-card: true
+  page-navigation: true
+  reader-mode: true
+  navbar:
+    title: false
+    #logo: assets/stat20-hex-small.png
+    #logo-alt: "Stat 20 logo"
+    background: white
+    foreground: "gray-800"
+    collapse-below: sm
+    left:
+      - text: Syllabus
+        href: syllabus.qmd
+      - text: Schedule
+        href: schedule.qmd
+      - text: Assignments
+        href: assignments.qmd
+    tools:
+      - icon: bar-chart-fill
+        href: https://www.gradescope.com/courses/
+        aria-label: Gradescope
+      - icon: r-circle-fill
+        href: https://rstudio.stat.ucla.edu
+        aria-label: RStudio
+        
+  page-footer: 
+    background: white
+    foreground: "gray-800"
+    border: false
+    right:
+      - text: License
+        href: license.qmd
+    left:
+      - text: "This site is hosted by Netlify."
+        href: https://www.netlify.com/
+
+
+# Format-specific Metadata
+format:
+  html:
+    theme:
+      - sandstone
+      - assets/styles.scss
+    toc: true
+    published-title: "class date"
+    reference-location: document
+    code-fold: true
+    code-link: true
+    code-summary: ""
+
+# General Metadata
+execute:
+  freeze: false
+  message: false
+  warning: false
+  fig-align: center
+  
+profile:
+  default: toc
