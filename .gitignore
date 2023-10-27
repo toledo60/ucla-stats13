@@ -20,7 +20,6 @@ _freeze/
 
 # Quarto projects specific
 /.quarto/
-_site
 
 # Files derived from _course-settings.yml and scripts
 **/images/tmp

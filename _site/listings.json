@@ -1,0 +1,25 @@
+[
+  {
+    "listing": "/notes.html",
+    "items": [
+      "/notes/01-fundamentals.html",
+      "/notes/02-importing_data.html",
+      "/notes/03-intro_numerical_variables.html",
+      "/notes/04-intro_categorical_variables.html",
+      "/notes/05-MOSAIC_basics.html",
+      "/notes/06-logical-statements.html",
+      "/notes/07-for-loops.html",
+      "/notes/08-sampling_simulation.html",
+      "/notes/09-normal_distribution.html",
+      "/notes/10-CLT.html"
+    ]
+  },
+  {
+    "listing": "/assignments.html",
+    "items": [
+      "/labs/lab1.html",
+      "/labs/lab2.html",
+      "/labs/lab3.html"
+    ]
+  }
+]
