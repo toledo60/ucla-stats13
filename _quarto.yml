@@ -60,13 +60,13 @@ format:
     toc: true
     published-title: "class date"
     reference-location: document
-    code-fold: true
+    code-fold: false
     code-link: true
     code-summary: ""
 
 # General Metadata
 execute:
-  freeze: false
+  freeze: true
   message: false
   warning: false
   fig-align: center

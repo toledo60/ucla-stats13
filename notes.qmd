@@ -2,6 +2,23 @@
 title: Lecture Notes
 sidebar: false
 toc: false
+listing:
+  - id: notes-listing
+    contents: 
+      - "/notes/*.qmd"
+    sort: false
+    sort-ui: false
+    filter-ui: true
+    type: table
+    fields: 
+      - title
+    categories: false 
 ---
 
 Notes for STATS 13: Introduction to Statistical Methods for Life and Health Sciences
+
+
+
+:::notes-listing
+:::
+

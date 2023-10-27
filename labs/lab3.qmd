@@ -10,11 +10,21 @@ image: images/midwest-college.jpg
 
 Students will be able to:
 
-1. Increase skill and comfort with basic data management and syntax in R.
-2. Review and increase understanding of the basic methodology and syntax of the for loop 
-3. Simulating the sampling distributions for sample proportions and sample means.
-4. Review the concepts of the sampling distribution and the normal approximation.
-5. Practice constructing and interpreting confidence intervals.
+- Increase skill and comfort with basic data management and syntax in R.
+- Review and increase understanding of the basic methodology and syntax of the for loop 
+- Simulating the sampling distributions for sample proportions and sample means.
+- Review the concepts of the sampling distribution and the normal approximation.
+- Practice constructing and interpreting confidence intervals.
+
+---
+
+### Readings
+
+To prepare for this lab assignment read the following lecture notes
+
+1. [Sampling and Simulation](/notes/08-sampling_simulation.qmd)
+2. [Normal Distribution](/notes/09-normal_distribution.qmd)
+3. [Introduction to Central Limit Theorem](/notes/10-CLT.qmd)
 
 ---
 
@@ -29,7 +39,7 @@ college <- read.table("http://www.isi-stats.com/isi/data/chap3/CollegeMidwest.tx
 ```
 
 
-Throughout the lab we will use the package `mosaic`. Make sure to load the `mosaic` package
+Throughout the lab we will use the `mosaic` package
 
 ```{r,eval=FALSE}
 library(mosaic)
