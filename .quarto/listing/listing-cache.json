@@ -1,0 +1,10 @@
+{
+  "listingMap": {
+    "assignments.qmd": [
+      "/labs/lab*.qmd"
+    ],
+    "notes.qmd": [
+      "/notes/*.qmd"
+    ]
+  }
+}

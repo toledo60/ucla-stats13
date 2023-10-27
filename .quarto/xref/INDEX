@@ -1,0 +1,65 @@
+{
+  "index.qmd": {
+    "index.html": "00cb9dda"
+  },
+  "assignments.qmd": {
+    "assignments.html": "bae3e9d3"
+  },
+  "syllabus.qmd": {
+    "syllabus.html": "d37a6a72"
+  },
+  "license.qmd": {
+    "license.html": "98c04a3e"
+  },
+  "schedule.qmd": {
+    "schedule.html": "fe686c28"
+  },
+  "labs/lab1.qmd": {
+    "lab1.html": "866c536a"
+  },
+  "labs/lab3.qmd": {
+    "lab3.html": "6c9b546d"
+  },
+  "labs/lab2.qmd": {
+    "lab2.html": "f46dbe20"
+  },
+  "problem-sets.qmd": {
+    "problem-sets.html": "66cd7aab"
+  },
+  "appoitments.qmd": {
+    "appoitments.html": "3da0d229"
+  },
+  "notes.qmd": {
+    "notes.html": "a2cdce74"
+  },
+  "notes/01-fundamentals.qmd": {
+    "01-fundamentals.html": "998171b4"
+  },
+  "notes/02-importing_data.qmd": {
+    "02-importing_data.html": "a470052c"
+  },
+  "notes/03-intro_numerical_variables.qmd": {
+    "03-intro_numerical_variables.html": "bfc7ded1"
+  },
+  "notes/04-intro_categorical_variables.qmd": {
+    "04-intro_categorical_variables.html": "a150e781"
+  },
+  "notes/07-for-loops.qmd": {
+    "07-for-loops.html": "2e2ea5c4"
+  },
+  "notes/08-sampling_simulation.qmd": {
+    "08-sampling_simulation.html": "fdcc7598"
+  },
+  "notes/06-logical-statements.qmd": {
+    "06-logical-statements.html": "c8fd538f"
+  },
+  "notes/05-MOSAIC_basics.qmd": {
+    "05-MOSAIC_basics.html": "c60d4622"
+  },
+  "notes/09-normal_distribution.qmd": {
+    "09-normal_distribution.html": "3e0c6311"
+  },
+  "notes/10-CLT.qmd": {
+    "10-CLT.html": "4b089014"
+  }
+}

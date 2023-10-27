@@ -10,19 +10,3 @@
 *.log
 *.tex
 !_extensions/*/*/*.tex
-
-# Quarto render by-products
-*_files
-*.html
-*.pdf
-_freeze/
-*notes.md
-
-# Quarto projects specific
-/.quarto/
-
-# Files derived from _course-settings.yml and scripts
-**/images/tmp
-_quarto-toc.yml
-*items.yml
-homepage-readings/
