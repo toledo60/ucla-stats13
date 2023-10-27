@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: 9fe6c604-b9f8-4171-9e74-0f338ba3c5d1
+      url: 'https://magical-cucurucho-44a434.netlify.app'
