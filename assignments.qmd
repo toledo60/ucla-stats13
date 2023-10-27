@@ -16,12 +16,15 @@ listing:
 ---
 
 
+For both lab assignments and problem sets there is a strict no late assignments policy *(unless its a documented reason, such as an emergency)*
+
 
 ## Labs
 
-Lab assignments are an opportunity to put the concepts from the notes into practice to answer questions about a real data set. Your lab report should be a pdf file
+Lab assignments are an opportunity to put the concepts from the notes into practice to answer questions about a real data set. Your lab report should be turned in as a single pdf file on Bruin Learn
 
 For a helpful R reference, see [base R](https://raw.githubusercontent.com/rstudio/cheatsheets/main/base-r.pdf), [data visualization (ggplot2)](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf), and [data wrangling (dplyr)](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf)
+
 
 
 :::{#lab-listing}
@@ -33,3 +36,4 @@ For a helpful R reference, see [base R](https://raw.githubusercontent.com/rstudi
 Problem sets are nothing more than the worksheets that we do in class. The goal of the problems sets is simply practice: they help you drill the techniques needed to complete the labs. 
 
 The problem sets can be found [here](problem-sets.qmd)
+

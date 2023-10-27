@@ -1,0 +1,7 @@
+---
+title: Lecture Notes
+sidebar: false
+toc: false
+---
+
+Notes for STATS 13: Introduction to Statistical Methods for Life and Health Sciences

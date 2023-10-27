@@ -30,6 +30,8 @@ website:
         href: syllabus.qmd
       - text: Schedule
         href: schedule.qmd
+      - text: Notes
+        href: notes.qmd
       - text: Assignments
         href: assignments.qmd
     tools:

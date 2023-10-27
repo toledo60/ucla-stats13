@@ -1,6 +1,6 @@
 ---
 title: "Syllabus"
-subtitle: "Stat 13: Introduction to Statistical Methods for Life and Health Sciences "
+subtitle: "STATS 13: Introduction to Statistical Methods for Life and Health Sciences "
 toc: true
 doi: "Fall 2023"
 doi-title: Term
@@ -14,3 +14,16 @@ theme: [sandstone, assets/styles.scss]
 toc-depth: 4
 sidebar: false
 ---
+
+---
+
+Material from this course can be downloaded from this [Box Folder](https://app.box.com/s/f4411gds9cchiz72ewx2rari1xgu67ne)
+
+
+Office hours can be accessed through [Zoom](https://zoom.us/j/8496165634?pwd=dVFLRDF5WkdyRVBZY2NaVmVMa0NEQT09)
+
+
+
+
+
+
