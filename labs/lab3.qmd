@@ -49,7 +49,7 @@ library(mosaic)
 
 ### Questions
 
-
+<!---
 #### Question 1
 
 Set the seed to 8695 and take a simple random sample of size 30 from the `college` data frame. Save the random sample of `college` as a separate R object named `sample_0`, and print the first six rows to make sure you saved it correctly
@@ -154,7 +154,7 @@ According to the theory-based method (i.e., normal approximation by invoking the
 Report and interpret a 95% confidence interval for the mean of the cumulative GPA of students using the theory-based approach. The appropriate multiplier can be obtained by running `qt(0.975, df = 29)`. Does this interval contain the population parameter?
 
 
-
+--->
 
 
 

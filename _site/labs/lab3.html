@@ -190,47 +190,115 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ProjectMOSAIC/mosaic">mosaic</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr></section><section id="questions" class="level3"><h3 class="anchored" data-anchor-id="questions">Questions</h3>
-<section id="question-1" class="level4"><h4 class="anchored" data-anchor-id="question-1">Question 1</h4>
-<p>Set the seed to 8695 and take a simple random sample of size 30 from the <code>college</code> data frame. Save the random sample of <code>college</code> as a separate R object named <code>sample_0</code>, and print the first six rows to make sure you saved it correctly</p>
-<p>We will treat <code>sample_0</code> as our observed sample data from the population dataset <code>college</code></p>
-</section><section id="question-2" class="level4"><h4 class="anchored" data-anchor-id="question-2">Question 2</h4>
-<p>Compute the population proportion and sample proportion of students who live on campus, and assign the appropriate symbol to each of the values</p>
-</section><section id="question-3" class="level4"><h4 class="anchored" data-anchor-id="question-3">Question 3</h4>
-<p>Create a bar graph that displays the <em>proportions</em> (or <em>relative frequency</em>) of students in your sample from Question 1 who live on campus or not</p>
-<p><em>Hint:</em> Use <code><a href="https://www.mosaic-web.org/mosaic/reference/bargraph.html">?bargraph</a></code> to find the R documentation for the <code><a href="https://www.mosaic-web.org/mosaic/reference/bargraph.html">bargraph()</a></code> function and find an argument that allows you to change the <em>type</em> of scale (on the <em>y-axis</em>).</p>
-</section><section id="question-4" class="level4"><h4 class="anchored" data-anchor-id="question-4">Question 4</h4>
-<p>Create a histogram of the sampling distribution of sample proportions. Superimpose a normal curve by including the argument <code>fit = "normal"</code></p>
-</section><section id="question-5" class="level4"><h4 class="anchored" data-anchor-id="question-5">Question 5</h4>
-<p>Compute the mean and standard error of the sampling distribution of sample proportions based on your simulation</p>
-</section><section id="question-6" class="level4"><h4 class="anchored" data-anchor-id="question-6">Question 6</h4>
-<p>Visualize the population distribution and the sample distribution of the cumulative GPA for students at the College of the Midwest. Describe the distributions</p>
-<p><em>Hint:</em> Is the cumulative GPA variable quantitative or categorical?</p>
-</section><section id="question-7" class="level4"><h4 class="anchored" data-anchor-id="question-7">Question 7</h4>
-<p>Compute the population mean and sample mean of students’ cumulative GPAs, and assign the appropriate symbol to each of the values</p>
-</section><section id="question-8" class="level4"><h4 class="anchored" data-anchor-id="question-8">Question 8</h4>
-<p>Compute the population standard deviation and sample standard deviation of students’ cumulative GPAs, and assign the appropriate symbol to each of the values</p>
-</section><section id="question-9" class="level4"><h4 class="anchored" data-anchor-id="question-9">Question 9</h4>
-<p>Set the seed to 6924 and simulate the sampling distribution of the mean cumulative GPA for the students at the College of the Midwest. Simulate the sample means with 1000 random samples of size 30. Provide the code that you use to accomplish this.</p>
-</section><section id="question-10" class="level4"><h4 class="anchored" data-anchor-id="question-10">Question 10</h4>
-<p>Create a histogram of the sampling distribution of sample means. Superimpose a normal curve by including the argument <code>fit = "normal"</code></p>
-</section><section id="question-11" class="level4"><h4 class="anchored" data-anchor-id="question-11">Question 11</h4>
-<p>Compute the mean and standard error of the sampling distribution of sample means based on your simulation</p>
-</section><section id="question-12" class="level4"><h4 class="anchored" data-anchor-id="question-12">Question 12</h4>
-<p>Do you think the sampling distribution of sample proportions is approximately normal? Be sure to comment on the relevant validity condition(s) and the histogram in Question 4</p>
-<p><em>Hint:</em> Try adjusting the number of histogram bins using the nint argument in the <code>histogram()</code> function.</p>
-</section><section id="question-13" class="level4"><h4 class="anchored" data-anchor-id="question-13">Question 13</h4>
-<p>According to the theory-based method (i.e., normal approximation by invoking the Central Limit Theorem), what is the mean and standard deviation of the sampling distribution of sample proportions? How close are these values to your simulation-based values from Question 5?</p>
-</section><section id="question-14" class="level4"><h4 class="anchored" data-anchor-id="question-14">Question 14</h4>
-<p>Report and interpret a 95% confidence interval for the proportion of students who live on campus using the theory-based approach. Does this interval contain the population parameter?</p>
-</section><section id="question-15" class="level4"><h4 class="anchored" data-anchor-id="question-15">Question 15</h4>
-<p>Do you think the sampling distribution of sample means is approximately normal? Be sure to comment on the relevant validity condition(s) and the histogram in Question 10.</p>
-</section><section id="question-16" class="level4"><h4 class="anchored" data-anchor-id="question-16">Question 16</h4>
-<p>According to the theory-based method (i.e., normal approximation by invoking the Central Limit Theorem), what is the mean and standard deviation of the sampling distribution of sample means? How close are these values to your simulation-based values from Question 11?</p>
-</section><section id="question-17" class="level4"><h4 class="anchored" data-anchor-id="question-17">Question 17</h4>
-<p>Report and interpret a 95% confidence interval for the mean of the cumulative GPA of students using the theory-based approach. The appropriate multiplier can be obtained by running <code>qt(0.975, df = 29)</code>. Does this interval contain the population parameter?</p>
+<!---
+#### Question 1
+
+Set the seed to 8695 and take a simple random sample of size 30 from the `college` data frame. Save the random sample of `college` as a separate R object named `sample_0`, and print the first six rows to make sure you saved it correctly
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+We will treat `sample_0` as our observed sample data from the population dataset `college`
+
+#### Question 2
+
+
+Compute the population proportion and sample proportion of students who live on campus,
+and assign the appropriate symbol to each of the values
+
+
+
+#### Question 3
+
+Create a bar graph that displays the *proportions* (or *relative frequency*) of students in your sample from Question 1 who live on campus or not
+
+*Hint:* Use `?bargraph` to find the R documentation for the `bargraph()` function and find an argument that allows you to change the *type* of scale (on the *y-axis*).
+
+
+
+#### Question 4
+
+Create a histogram of the sampling distribution of sample proportions. Superimpose a normal
+curve by including the argument `fit = "normal"`
+
+
+#### Question 5
+
+Compute the mean and standard error of the sampling distribution of sample proportions
+based on your simulation
+
+
+#### Question 6
+
+
+Visualize the population distribution and the sample distribution of the cumulative GPA for
+students at the College of the Midwest. Describe the distributions
+
+*Hint:* Is the cumulative GPA variable quantitative or categorical?
+
+
+#### Question 7
+
+Compute the population mean and sample mean of students’ cumulative GPAs, and assign the appropriate symbol to each of the values
+
+#### Question 8
+
+Compute the population standard deviation and sample standard deviation of students’ 
+cumulative GPAs, and assign the appropriate symbol to each of the values
+
+
+#### Question 9
+
+Set the seed to 6924 and simulate the sampling distribution of the mean cumulative GPA for the students at the College of the Midwest. Simulate the sample means with 1000 random samples of size 30. Provide the code that you use to accomplish this.
+
+#### Question 10
+
+Create a histogram of the sampling distribution of sample means. Superimpose a normal curve by including the argument `fit = "normal"`
+
+
+
+#### Question 11
+
+Compute the mean and standard error of the sampling distribution of sample means based on your simulation
+
+#### Question 12
+
+
+Do you think the sampling distribution of sample proportions is approximately normal? Be
+sure to comment on the relevant validity condition(s) and the histogram in Question 4
+
+*Hint:* Try adjusting the number of histogram bins using the nint argument in the `histogram()` function.
+
+
+
+#### Question 13
+
+According to the theory-based method (i.e., normal approximation by invoking the Central Limit Theorem), what is the mean and standard deviation of the sampling distribution of sample proportions? How close are these values to your simulation-based values from Question 5?
+
+
+#### Question 14
+
+Report and interpret a 95% confidence interval for the proportion of students who live on
+campus using the theory-based approach. Does this interval contain the population parameter?
+
+
+#### Question 15
+
+Do you think the sampling distribution of sample means is approximately normal? Be sure to comment on the relevant validity condition(s) and the histogram in Question 10.
+
+
+#### Question 16
+
+According to the theory-based method (i.e., normal approximation by invoking the Central Limit Theorem), what is the mean and standard deviation of the sampling distribution of sample means? How close are these values to your simulation-based values from Question 11?
+
+
+#### Question 17
+
+Report and interpret a 95% confidence interval for the mean of the cumulative GPA of students using the theory-based approach. The appropriate multiplier can be obtained by running `qt(0.975, df = 29)`. Does this interval contain the population parameter?
+
+
+--->
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

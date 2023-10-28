@@ -99,64 +99,32 @@ Using `Births`, create two graphics that help answer this question: Does the bir
 
 #### Question 8
 
-Set the seed to 3464 and simulate tossing 19 coins, where the probability of heads is 0.4 using `rflip()`
+Set the seed to 2023 and simulate tossing 19 coins, where the probability of heads is 0.3 using `rflip()`. Print the first six lines of the output
 
 
 #### Question 9
 
-Set the seed to 3464 and simulate 1000 repetitions of tossing 19 coins, where the probability of heads is 0.4. Save the output from this simulation, and print the first six lines from the saved data frame
-
+Set the seed to 2023 and simulate 1000 repetitions of tossing 19 coins,where the probability of heads is 0.3. Save the output from this simulation, and print the first six lines from the saved data frame
 
 #### Question 10
 
-Set the seed to 9449 and choose 25 numbers out of the numbers from 1 to 1998, without replacement
+Setup your own coin flip simulation. Pick your own seed, sample size, number  of repetitions and probability. Print the first six lines of the output.
 
 
 #### Question 11
 
-Set the seed to 9449 and simulate 19 coin flips using the `sample()` function, where the probability of heads (represented by 1) is 0.4. Print the proportion of heads obtained
-
-*Hint:* What would the `mean()` function do given the vector of coded coin flips?
-
----
-
-For **Questions 12-18** consider the following scenario:
-
-Suppose a researcher is testing to see if a basketball player can make free throws at a rate higher than the NBA average of 75%. The player is tested by shooting 10 free throws and makes 8 of them
+Set the seed to 2350 and choose 25 numbers out of the numbers from 1to 1990, without replacement.
 
 
 #### Question 12
 
-State the null and alternative hypotheses in words and in symbols
+Set the seed to 2350 and simulate 25 coin flips using the `sample()` function, where the probability of heads (represented by 1) is 0.3. Print the proportion of heads obtained
+
+*Hint:* What would the `mean()` function do given the vector of coded coin flips?
 
 
-#### Question 13
 
-Simulate the null distribution in R using the methods developed in this lab (i.e., the for loop
-and `sample()` function). Set the seed to 514. Do *not* use the `do() * rflip()` notation
+---
 
 
-#### Question 14
 
-Create a plot of the null distribution you simulated in Question 13
-
-
-#### Question 15
-
-Compute the (approximate) p-value based on your simulation
-
-
-#### Question 16
-
-
-Compute the value of the standardized statistic ($z$-statistic) based on the standard deviation of the null distribution you simulated in Question 13
-
-#### Question 17
-
-State your conclusion based on the strength of evidence, in context
-
-
-#### Question 18
-
-
-Suppose the player instead had made all 10 shots. Using the same simulation results from Question 13, state your conclusion about the strength of evidence with a significance level of 0.05. Can you think of any limitation(s) to the researcher’s study? Explain

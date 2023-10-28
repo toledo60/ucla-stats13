@@ -245,11 +245,11 @@ Warning
 <dl>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Make sure to load <code>mosiac</code> package first, you only have to do this once at the beginning of your script. Proceeding, this tutorial will assume you have loaded the <code>mosaic</code> package</span>
+<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-2">Make sure to load <code>mosiac</code> package first, you only have to do this once at the beginning of your script. Proceeding, this tutorial will assume you have loaded the <code>mosaic</code> package</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="7" data-code-annotation="2">The output above are simply messages when initially starting up the package warning you about masking of functions with the same name as different packages</span>
+<span data-code-annotation="2" data-code-lines="7" data-code-cell="annotated-cell-2">The output above are simply messages when initially starting up the package warning you about masking of functions with the same name as different packages</span>
 </dd>
 </dl>
 </div>
@@ -349,7 +349,7 @@ Warning
 <dl>
 <dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1">Interpretation: write ‘hello’ three times</span>
+<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-11">Interpretation: write ‘hello’ three times</span>
 </dd>
 </dl>
 </div>
@@ -410,7 +410,7 @@ Warning
 <dl>
 <dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="1" data-code-annotation="1">Flip a fair coin five times</span>
+<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-16">Flip a fair coin five times</span>
 </dd>
 </dl>
 </div>
@@ -418,7 +418,7 @@ Warning
 <pre><code>#&gt; 
 #&gt; Flipping 5 coins [ Prob(Heads) = 0.5 ] ...
 #&gt; 
-#&gt; T H T H T
+#&gt; H T H T T
 #&gt; 
 #&gt; Number of Heads: 2 [Proportion Heads: 0.4]</code></pre>
 </div>
@@ -429,7 +429,7 @@ Warning
 <pre><code>#&gt;  'cointoss' int 2
 #&gt;  - attr(*, "n")= num 5
 #&gt;  - attr(*, "prob")= num 0.5
-#&gt;  - attr(*, "sequence")= chr [1:5] "T" "H" "T" "H" ...
+#&gt;  - attr(*, "sequence")= chr [1:5] "H" "T" "H" "T" ...
 #&gt;  - attr(*, "verbose")= logi TRUE</code></pre>
 </div>
 </div>
@@ -440,7 +440,7 @@ Warning
 <dl>
 <dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-18" data-code-lines="1" data-code-annotation="1">Flip 10 coins, each with probability of 0.3 of landing on heads</span>
+<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-18">Flip 10 coins, each with probability of 0.3 of landing on heads</span>
 </dd>
 </dl>
 </div>
@@ -448,7 +448,7 @@ Warning
 <pre><code>#&gt; 
 #&gt; Flipping 10 coins [ Prob(Heads) = 0.3 ] ...
 #&gt; 
-#&gt; T T T H T T T T H H
+#&gt; H T T T T T H T T H
 #&gt; 
 #&gt; Number of Heads: 3 [Proportion Heads: 0.3]</code></pre>
 </div>
@@ -460,7 +460,7 @@ Warning
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;    n heads tails prob
-#&gt; 1 10     3     7  0.3</code></pre>
+#&gt; 1 10     0    10  0.3</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -468,8 +468,8 @@ Warning
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 'data.frame':    1 obs. of  4 variables:
 #&gt;  $ n    : num 10
-#&gt;  $ heads: int 3
-#&gt;  $ tails: num 7
+#&gt;  $ heads: int 0
+#&gt;  $ tails: num 10
 #&gt;  $ prob : num 0.3</code></pre>
 </div>
 </div>
@@ -485,7 +485,7 @@ Warning
 <dl>
 <dt data-target-cell="annotated-cell-21" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-21" data-code-lines="1" data-code-annotation="1">Randomly flip a fair coin 5 times and replicate this procedure two times</span>
+<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-21">Randomly flip a fair coin 5 times and replicate this procedure two times</span>
 </dd>
 </dl>
 </div>

@@ -87,7 +87,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+}</script>
 <meta property="og:title" content="STATS 13 - Lab 2: North Carolina Births">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://ucla-stats13.netlify.app/labs/images/births.jpeg">
@@ -215,31 +215,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Using <code>Births</code>, create two graphics that help answer this question: Does the birth weight of babies born to smoking mothers differ from those born to non-smoking mothers?</p>
 <p><em>Note:</em> You are not limited to histograms. If you want, you can look into <code>dotPlot(), densityplot(), freqpolygon(), bwplot()</code>, and <code><a href="https://rdrr.io/r/graphics/mosaicplot.html">mosaicplot()</a></code> for other types of plots to visualize data</p>
 </section><section id="question-8" class="level4"><h4 class="anchored" data-anchor-id="question-8">Question 8</h4>
-<p>Set the seed to 3464 and simulate tossing 19 coins, where the probability of heads is 0.4 using <code><a href="https://www.mosaic-web.org/mosaic/reference/rflip.html">rflip()</a></code></p>
+<p>Set the seed to 2023 and simulate tossing 19 coins, where the probability of heads is 0.3 using <code><a href="https://www.mosaic-web.org/mosaic/reference/rflip.html">rflip()</a></code>. Print the first six lines of the output</p>
 </section><section id="question-9" class="level4"><h4 class="anchored" data-anchor-id="question-9">Question 9</h4>
-<p>Set the seed to 3464 and simulate 1000 repetitions of tossing 19 coins, where the probability of heads is 0.4. Save the output from this simulation, and print the first six lines from the saved data frame</p>
+<p>Set the seed to 2023 and simulate 1000 repetitions of tossing 19 coins,where the probability of heads is 0.3. Save the output from this simulation, and print the first six lines from the saved data frame</p>
 </section><section id="question-10" class="level4"><h4 class="anchored" data-anchor-id="question-10">Question 10</h4>
-<p>Set the seed to 9449 and choose 25 numbers out of the numbers from 1 to 1998, without replacement</p>
+<p>Setup your own coin flip simulation. Pick your own seed, sample size, number of repetitions and probability. Print the first six lines of the output.</p>
 </section><section id="question-11" class="level4"><h4 class="anchored" data-anchor-id="question-11">Question 11</h4>
-<p>Set the seed to 9449 and simulate 19 coin flips using the <code><a href="https://www.mosaic-web.org/mosaic/reference/resample.html">sample()</a></code> function, where the probability of heads (represented by 1) is 0.4. Print the proportion of heads obtained</p>
+<p>Set the seed to 2350 and choose 25 numbers out of the numbers from 1to 1990, without replacement.</p>
+</section><section id="question-12" class="level4"><h4 class="anchored" data-anchor-id="question-12">Question 12</h4>
+<p>Set the seed to 2350 and simulate 25 coin flips using the <code><a href="https://www.mosaic-web.org/mosaic/reference/resample.html">sample()</a></code> function, where the probability of heads (represented by 1) is 0.3. Print the proportion of heads obtained</p>
 <p><em>Hint:</em> What would the <code>mean()</code> function do given the vector of coded coin flips?</p>
 <hr>
-<p>For <strong>Questions 12-18</strong> consider the following scenario:</p>
-<p>Suppose a researcher is testing to see if a basketball player can make free throws at a rate higher than the NBA average of 75%. The player is tested by shooting 10 free throws and makes 8 of them</p>
-</section><section id="question-12" class="level4"><h4 class="anchored" data-anchor-id="question-12">Question 12</h4>
-<p>State the null and alternative hypotheses in words and in symbols</p>
-</section><section id="question-13" class="level4"><h4 class="anchored" data-anchor-id="question-13">Question 13</h4>
-<p>Simulate the null distribution in R using the methods developed in this lab (i.e., the for loop and <code><a href="https://www.mosaic-web.org/mosaic/reference/resample.html">sample()</a></code> function). Set the seed to 514. Do <em>not</em> use the <code>do() * rflip()</code> notation</p>
-</section><section id="question-14" class="level4"><h4 class="anchored" data-anchor-id="question-14">Question 14</h4>
-<p>Create a plot of the null distribution you simulated in Question 13</p>
-</section><section id="question-15" class="level4"><h4 class="anchored" data-anchor-id="question-15">Question 15</h4>
-<p>Compute the (approximate) p-value based on your simulation</p>
-</section><section id="question-16" class="level4"><h4 class="anchored" data-anchor-id="question-16">Question 16</h4>
-<p>Compute the value of the standardized statistic (<span class="math inline">\(z\)</span>-statistic) based on the standard deviation of the null distribution you simulated in Question 13</p>
-</section><section id="question-17" class="level4"><h4 class="anchored" data-anchor-id="question-17">Question 17</h4>
-<p>State your conclusion based on the strength of evidence, in context</p>
-</section><section id="question-18" class="level4"><h4 class="anchored" data-anchor-id="question-18">Question 18</h4>
-<p>Suppose the player instead had made all 10 shots. Using the same simulation results from Question 13, state your conclusion about the strength of evidence with a significance level of 0.05. Can you think of any limitation(s) to the researcher’s study? Explain</p>
 
 
 </section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
