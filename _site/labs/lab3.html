@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.433">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
 <title>STATS 13 - Lab 3: Midwest College</title>
 <style>
 code{white-space: pre-wrap;}
@@ -53,6 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -68,7 +72,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -88,6 +93,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+
+
 <meta property="og:title" content="STATS 13 - Lab 3: Midwest College">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://ucla-stats13.netlify.app/labs/images/midwest-college.jpg">
@@ -97,17 +104,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="twitter:image" content="https://ucla-stats13.netlify.app/labs/images/midwest-college.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
+
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-sm navbar-dark "><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark ">
+      <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="../syllabus.html" rel="" target="">
  <span class="menu-text">Syllabus</span></a>
   </li>  
@@ -124,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Assignments</span></a>
   </li>  
 </ul>
-<div class="quarto-navbar-tools ms-auto tools-wide">
+            <div class="quarto-navbar-tools ms-auto tools-wide">
     <a href="https://github.com/toledo60/ucla-stats13" rel="" title="" class="quarto-navigation-tool px-1" aria-label="Github"><i class="bi bi-github"></i></a>
     <a href="https://rstudio.stat.ucla.edu" rel="" title="" class="quarto-navigation-tool px-1" aria-label="RStudio"><i class="bi bi-r-circle-fill"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
@@ -135,21 +145,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
   <li><a href="#readings" id="toc-readings" class="nav-link" data-scroll-target="#readings">Readings</a></li>
   <li><a href="#required-data-and-packages" id="toc-required-data-and-packages" class="nav-link" data-scroll-target="#required-data-and-packages">Required Data and Packages</a></li>
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
-  </ul></nav>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
 <h1 class="title">Lab 3: Midwest College</h1>
 </div>
 
@@ -163,7 +181,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-</header><section id="learning-objectives" class="level3"><h3 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h3>
+</header>
+
+<section id="learning-objectives" class="level3">
+<h3 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h3>
 <p>Students will be able to:</p>
 <ul>
 <li>Increase skill and comfort with basic data management and syntax in R.</li>
@@ -172,133 +193,111 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Review the concepts of the sampling distribution and the normal approximation.</li>
 <li>Practice constructing and interpreting confidence intervals.</li>
 </ul>
-<hr></section><section id="readings" class="level3"><h3 class="anchored" data-anchor-id="readings">Readings</h3>
+<hr>
+</section>
+<section id="readings" class="level3">
+<h3 class="anchored" data-anchor-id="readings">Readings</h3>
 <p>To prepare for this lab assignment read the following lecture notes</p>
 <ol type="1">
 <li><a href="../notes/08-sampling_simulation.html">Sampling and Simulation</a></li>
 <li><a href="../notes/09-normal_distribution.html">Normal Distribution</a></li>
 <li><a href="../notes/10-CLT.html">Introduction to Central Limit Theorem</a></li>
 </ol>
-<hr></section><section id="required-data-and-packages" class="level3"><h3 class="anchored" data-anchor-id="required-data-and-packages">Required Data and Packages</h3>
+<hr>
+</section>
+<section id="required-data-and-packages" class="level3">
+<h3 class="anchored" data-anchor-id="required-data-and-packages">Required Data and Packages</h3>
 <p>We will use the data from the “College of the Midwest” used in Section 2.1 in the textbook <em>(Introduction to Statistical Investigations by Tintle et al.)</em></p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">college</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"http://www.isi-stats.com/isi/data/chap3/CollegeMidwest.txt"</span>, </span>
-<span>                      header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>college <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"http://www.isi-stats.com/isi/data/chap3/CollegeMidwest.txt"</span>, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Throughout the lab we will use the <code>mosaic</code> package</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ProjectMOSAIC/mosaic">mosaic</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr></section><section id="questions" class="level3"><h3 class="anchored" data-anchor-id="questions">Questions</h3>
-<!---
-#### Question 1
-
-Set the seed to 8695 and take a simple random sample of size 30 from the `college` data frame. Save the random sample of `college` as a separate R object named `sample_0`, and print the first six rows to make sure you saved it correctly
-
-
-We will treat `sample_0` as our observed sample data from the population dataset `college`
-
-#### Question 2
-
-
-Compute the population proportion and sample proportion of students who live on campus,
-and assign the appropriate symbol to each of the values
-
-
-
-#### Question 3
-
-Create a bar graph that displays the *proportions* (or *relative frequency*) of students in your sample from Question 1 who live on campus or not
-
-*Hint:* Use `?bargraph` to find the R documentation for the `bargraph()` function and find an argument that allows you to change the *type* of scale (on the *y-axis*).
-
-
-
-#### Question 4
-
-Create a histogram of the sampling distribution of sample proportions. Superimpose a normal
-curve by including the argument `fit = "normal"`
-
-
-#### Question 5
-
-Compute the mean and standard error of the sampling distribution of sample proportions
-based on your simulation
-
-
-#### Question 6
-
-
-Visualize the population distribution and the sample distribution of the cumulative GPA for
-students at the College of the Midwest. Describe the distributions
-
-*Hint:* Is the cumulative GPA variable quantitative or categorical?
-
-
-#### Question 7
-
-Compute the population mean and sample mean of students’ cumulative GPAs, and assign the appropriate symbol to each of the values
-
-#### Question 8
-
-Compute the population standard deviation and sample standard deviation of students’ 
-cumulative GPAs, and assign the appropriate symbol to each of the values
-
-
-#### Question 9
-
-Set the seed to 6924 and simulate the sampling distribution of the mean cumulative GPA for the students at the College of the Midwest. Simulate the sample means with 1000 random samples of size 30. Provide the code that you use to accomplish this.
-
-#### Question 10
-
-Create a histogram of the sampling distribution of sample means. Superimpose a normal curve by including the argument `fit = "normal"`
-
-
-
-#### Question 11
-
-Compute the mean and standard error of the sampling distribution of sample means based on your simulation
-
-#### Question 12
-
-
-Do you think the sampling distribution of sample proportions is approximately normal? Be
-sure to comment on the relevant validity condition(s) and the histogram in Question 4
-
-*Hint:* Try adjusting the number of histogram bins using the nint argument in the `histogram()` function.
+<hr>
+</section>
+<section id="questions" class="level3">
+<h3 class="anchored" data-anchor-id="questions">Questions</h3>
+<section id="question-1" class="level4">
+<h4 class="anchored" data-anchor-id="question-1">Question 1</h4>
+<p>Set the seed to 2035 and take a simple random sample of size 30 from the <code>college</code> data frame. Save the random sample of <code>college</code> as a separate R object named <code>sample_0</code>, and print the first six rows to make sure you saved it correctly</p>
+<p>We will treat <code>sample_0</code> as our observed sample data from the population dataset <code>college</code></p>
+</section>
+<section id="question-2" class="level4">
+<h4 class="anchored" data-anchor-id="question-2">Question 2</h4>
+<p>Compute the population proportion and sample proportion of students who live on campus, and assign the appropriate symbol to each of the values</p>
+</section>
+<section id="question-3" class="level4">
+<h4 class="anchored" data-anchor-id="question-3">Question 3</h4>
+<p>Create a bar graph that displays the <em>proportions</em> (or <em>relative frequency</em>) of students in your sample from Question 1 who live on campus or not</p>
+<p><em>Hint:</em> Use <code>?bargraph</code> to find the R documentation for the <code>bargraph()</code> function and find an argument that allows you to change the <em>type</em> of scale (on the <em>y-axis</em>).</p>
+</section>
+<section id="question-4" class="level4">
+<h4 class="anchored" data-anchor-id="question-4">Question 4</h4>
+<p>Create a histogram of the sampling distribution of sample proportions. Superimpose a normal curve by including the argument <code>fit = "normal"</code></p>
+</section>
+<section id="question-5" class="level4">
+<h4 class="anchored" data-anchor-id="question-5">Question 5</h4>
+<p>Compute the mean and standard error of the sampling distribution of sample proportions based on your simulation</p>
+</section>
+<section id="question-6" class="level4">
+<h4 class="anchored" data-anchor-id="question-6">Question 6</h4>
+<p>Visualize the population distribution and the sample distribution of the cumulative GPA for students at the College of the Midwest. Describe the distributions</p>
+<p><em>Hint:</em> Is the cumulative GPA variable quantitative or categorical?</p>
+</section>
+<section id="question-7" class="level4">
+<h4 class="anchored" data-anchor-id="question-7">Question 7</h4>
+<p>Compute the population mean and sample mean of students’ cumulative GPAs, and assign the appropriate symbol to each of the values</p>
+</section>
+<section id="question-8" class="level4">
+<h4 class="anchored" data-anchor-id="question-8">Question 8</h4>
+<p>Compute the population standard deviation and sample standard deviation of students’ cumulative GPAs, and assign the appropriate symbol to each of the values</p>
+</section>
+<section id="question-9" class="level4">
+<h4 class="anchored" data-anchor-id="question-9">Question 9</h4>
+<p>Set the seed to 9286 and simulate the sampling distribution of the mean cumulative GPA for the students at the College of the Midwest. Simulate the sample means with 1000 random samples of size 30. Provide the code that you use to accomplish this.</p>
+</section>
+<section id="question-10" class="level4">
+<h4 class="anchored" data-anchor-id="question-10">Question 10</h4>
+<p>Create a histogram of the sampling distribution of sample means. Superimpose a normal curve by including the argument <code>fit = "normal"</code></p>
+</section>
+<section id="question-11" class="level4">
+<h4 class="anchored" data-anchor-id="question-11">Question 11</h4>
+<p>Compute the mean and standard error of the sampling distribution of sample means based on your simulation</p>
+</section>
+<section id="question-12" class="level4">
+<h4 class="anchored" data-anchor-id="question-12">Question 12</h4>
+<p>Do you think the sampling distribution of sample proportions is approximately normal? Be sure to comment on the relevant validity condition(s) and the histogram in Question 4</p>
+<p><em>Hint:</em> Try adjusting the number of histogram bins using the nint argument in the <code>histogram()</code> function.</p>
+</section>
+<section id="question-13" class="level4">
+<h4 class="anchored" data-anchor-id="question-13">Question 13</h4>
+<p>According to the theory-based method (i.e., normal approximation by invoking the Central Limit Theorem), what is the mean and standard deviation of the sampling distribution of sample proportions? How close are these values to your simulation-based values from Question 5?</p>
+</section>
+<section id="question-14" class="level4">
+<h4 class="anchored" data-anchor-id="question-14">Question 14</h4>
+<p>Report and interpret a 95% confidence interval for the proportion of students who live on campus using the theory-based approach. Does this interval contain the population parameter?</p>
+</section>
+<section id="question-15" class="level4">
+<h4 class="anchored" data-anchor-id="question-15">Question 15</h4>
+<p>Do you think the sampling distribution of sample means is approximately normal? Be sure to comment on the relevant validity condition(s) and the histogram in Question 10.</p>
+</section>
+<section id="question-16" class="level4">
+<h4 class="anchored" data-anchor-id="question-16">Question 16</h4>
+<p>According to the theory-based method (i.e., normal approximation by invoking the Central Limit Theorem), what is the mean and standard deviation of the sampling distribution of sample means? How close are these values to your simulation-based values from Question 11?</p>
+</section>
+<section id="question-17" class="level4">
+<h4 class="anchored" data-anchor-id="question-17">Question 17</h4>
+<p>Report and interpret a 95% confidence interval for the mean of the cumulative GPA of students using the theory-based approach. The appropriate multiplier can be obtained by running <code>qt(0.975, df = 29)</code>. Does this interval contain the population parameter?</p>
 
 
+</section>
+</section>
 
-#### Question 13
-
-According to the theory-based method (i.e., normal approximation by invoking the Central Limit Theorem), what is the mean and standard deviation of the sampling distribution of sample proportions? How close are these values to your simulation-based values from Question 5?
-
-
-#### Question 14
-
-Report and interpret a 95% confidence interval for the proportion of students who live on
-campus using the theory-based approach. Does this interval contain the population parameter?
-
-
-#### Question 15
-
-Do you think the sampling distribution of sample means is approximately normal? Be sure to comment on the relevant validity condition(s) and the histogram in Question 10.
-
-
-#### Question 16
-
-According to the theory-based method (i.e., normal approximation by invoking the Central Limit Theorem), what is the mean and standard deviation of the sampling distribution of sample means? How close are these values to your simulation-based values from Question 11?
-
-
-#### Question 17
-
-Report and interpret a 95% confidence interval for the mean of the cumulative GPA of students using the theory-based approach. The appropriate multiplier can be obtained by running `qt(0.975, df = 29)`. Does this interval contain the population parameter?
-
-
---->
-
-
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -532,7 +531,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
@@ -541,13 +541,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-<li class="nav-item">
+    <li class="nav-item">
     <a class="nav-link" href="../license.html">License</a>
   </li>  
 </ul>
-</div>
+    </div>
   </div>
 </footer>
+
 
 
 </body></html>

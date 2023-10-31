@@ -107,6 +107,6 @@ wrong_ozone_dat
 head(wrong_ozone_dat,5)
 ```
 
-In the above example, `read.table` automatically create the variable names `V1,V2,V2` for each column and the first row has values `x,y,o3` *(which is incorrect)*.
+In the above example, `read.table` automatically create the variable names `V1,V2,V3` for each column and the first row has values `x,y,o3` *(which is incorrect)*.
 
 In conclusion, some text files do not have variable names in the first row and only contain the actual data. As a result, it is our responsibility to import the data in a suitable manner.

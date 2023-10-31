@@ -169,7 +169,7 @@ barplot(t(smoker_hispanic_dad),
 We can clearly see the non-Hispanic fathers make up the highest counts for non-smokers and smokers. While the default color palette is color-blind friendly it can be hard to distinguish the categories based on these colors. 
 
 
-With a quick google search of  "four color palettes" you can find great palettes for 4 categories. For example, the following color palette was obtain from [colorhunt.co](https://colorhunt.co)
+With a quick Google search of "four color palettes" you can find great palettes for 4 categories. For example, the following color palette was obtain from [colorhunt.co](https://colorhunt.co)
 
 ```{r}
 barplot(t(smoker_hispanic_dad),

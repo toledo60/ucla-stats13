@@ -270,7 +270,7 @@ result
 1. Randomly flip a fair coin 5 times and replicate this procedure two times
 
 
-Recall the output after performing a `do()` statement will be a data.frame where each row is a replication of the procedure following the `*` operator. The first row shows the number of tosses, how many heads/tails where obtained and the corresponding proportion of heaads after `n` tosses
+Recall the output after performing a `do()` statement will be a data.frame where each row is a replication of the procedure following the `*` operator. The first row shows the number of tosses, how many heads/tails where obtained and the corresponding proportion of heads after `n` tosses
 
 ```{r,echo=FALSE}
 str(result)

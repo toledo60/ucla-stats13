@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.433">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Jose Toledo Luna">
 <meta name="dcterms.date" content="2023-10-27">
+
 <title>STATS 13 - Summarizing Numerical Data</title>
 <style>
 code{white-space: pre-wrap;}
@@ -55,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -70,7 +74,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -90,6 +95,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+
+
 <meta property="og:title" content="STATS 13 - Summarizing Numerical Data">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://ucla-stats13.netlify.app/notes/03-intro_numerical_variables_files/figure-html/unnamed-chunk-8-1.png">
@@ -103,17 +110,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="twitter:image-width" content="1344">
 <meta name="twitter:card" content="summary_large_image">
 </head>
+
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-sm navbar-dark "><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark ">
+      <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="../syllabus.html" rel="" target="">
  <span class="menu-text">Syllabus</span></a>
   </li>  
@@ -130,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Assignments</span></a>
   </li>  
 </ul>
-<div class="quarto-navbar-tools ms-auto tools-wide">
+            <div class="quarto-navbar-tools ms-auto tools-wide">
     <a href="https://github.com/toledo60/ucla-stats13" rel="" title="" class="quarto-navigation-tool px-1" aria-label="Github"><i class="bi bi-github"></i></a>
     <a href="https://rstudio.stat.ucla.edu" rel="" title="" class="quarto-navigation-tool px-1" aria-label="RStudio"><i class="bi bi-r-circle-fill"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
@@ -141,19 +151,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#single-numerical-variable" id="toc-single-numerical-variable" class="nav-link active" data-scroll-target="#single-numerical-variable">Single numerical variable</a></li>
+  <li><a href="#single-numerical-variable" id="toc-single-numerical-variable" class="nav-link active" data-scroll-target="#single-numerical-variable">Single numerical variable</a></li>
   <li><a href="#two-numerical-variables" id="toc-two-numerical-variables" class="nav-link" data-scroll-target="#two-numerical-variables">Two numerical variables</a></li>
-  </ul></nav>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
 <h1 class="title">Summarizing Numerical Data</h1>
 </div>
 
@@ -169,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
     
     <div>
-    <div class="quarto-title-meta-heading">class date</div>
+    <div class="quarto-title-meta-heading">last updated</div>
     <div class="quarto-title-meta-contents">
       <p class="date">October 27, 2023</p>
     </div>
@@ -179,12 +197,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-</header><p>We will use the <code>births</code> data set to summarize and visualize numerical variables using the <em>base R</em> approach</p>
+</header>
+
+<p>We will use the <code>births</code> data set to summarize and visualize numerical variables using the <em>base R</em> approach</p>
 <p>Numerical data refers to data that can be measured and expressed as a number, such as age, height, weight, and temperature. Numerical data can be <em>discrete</em> or <em>continuous</em></p>
-<section id="single-numerical-variable" class="level2"><h2 class="anchored" data-anchor-id="single-numerical-variable">Single numerical variable</h2>
+<section id="single-numerical-variable" class="level2">
+<h2 class="anchored" data-anchor-id="single-numerical-variable">Single numerical variable</h2>
 <p>One way to extract all the numerical columns is using both <code>Filter</code> and <code>is.numeric</code> functions. Below are the first five rows of all the numerical columns in <code>birth_dat</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/funprog.html">Filter</a></span><span class="op">(</span><span class="va">is.numeric</span>,<span class="va">birth_dat</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Filter</span>(is.numeric,birth_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -196,9 +217,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 5 5    119      8   30   19    12    12       2     12     20</code></pre>
 </div>
 </div>
-<p>The names of the numerical columns can be obtained using <code><a href="https://rdrr.io/r/base/colnames.html">colnames()</a></code> function in combination with the above statement</p>
+<p>The names of the numerical columns can be obtained using <code>colnames()</code> function in combination with the above statement</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/funprog.html">Filter</a></span><span class="op">(</span><span class="va">is.numeric</span>,<span class="va">birth_dat</span><span class="op">)</span> <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(<span class="fu">Filter</span>(is.numeric,birth_dat) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "X"       "weight"  "Apgar1"  "Fage"    "Mage"    "Feduc"   "Meduc"  
  [8] "TotPreg" "Visits"  "Gained" </code></pre>
@@ -211,97 +232,98 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <col style="width: 13%">
 <col style="width: 86%">
 </colgroup>
-<thead><tr class="header">
+<thead>
+<tr class="header">
 <th>Function</th>
 <th style="text-align: center;">Description</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code></td>
+<td><code>mean()</code></td>
 <td style="text-align: center;">mean</td>
 </tr>
 <tr class="even">
-<td><code><a href="https://rdrr.io/r/stats/median.html">median()</a></code></td>
+<td><code>median()</code></td>
 <td style="text-align: center;">median</td>
 </tr>
 <tr class="odd">
-<td><code><a href="https://rdrr.io/r/base/mode.html">mode()</a></code></td>
+<td><code>mode()</code></td>
 <td style="text-align: center;">mode</td>
 </tr>
 <tr class="even">
-<td><code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code></td>
+<td><code>sd()</code></td>
 <td style="text-align: center;">standard deviation</td>
 </tr>
 <tr class="odd">
-<td><code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code></td>
+<td><code>var()</code></td>
 <td style="text-align: center;">variance</td>
 </tr>
 <tr class="even">
-<td><code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code></td>
+<td><code>min()</code></td>
 <td style="text-align: center;">minimum</td>
 </tr>
 <tr class="odd">
-<td><code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code></td>
+<td><code>max()</code></td>
 <td style="text-align: center;">maximum</td>
 </tr>
 <tr class="even">
-<td><code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code></td>
-<td style="text-align: center;">Computes the following: <em>Minimum ,1st Quartile, Median,Mean ,3rd Quartile,Maximum</em>
-</td>
+<td><code>summary()</code></td>
+<td style="text-align: center;">Computes the following: <em>Minimum ,1st Quartile, Median,Mean ,3rd Quartile,Maximum</em></td>
 </tr>
 </tbody>
 </table>
 <p>Next, we’ll save the values from <code>weight</code> column into a separate variable and compute several numerical summaries listed above</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">birth_weight</span> <span class="op">&lt;-</span> <span class="va">birth_dat</span><span class="op">$</span><span class="va">weight</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>birth_weight <span class="ot">&lt;-</span> birth_dat<span class="sc">$</span>weight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">birth_weight</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(birth_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 116.0536</code></pre>
 </div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">birth_weight</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(birth_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 117</code></pre>
 </div>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">birth_weight</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(birth_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14</code></pre>
 </div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">birth_weight</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(birth_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 177</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">birth_weight</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(birth_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
    14.0   106.0   117.0   116.1   129.0   177.0 </code></pre>
 </div>
 </div>
-<p>While <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> give us a quick numerical summary of our distribution, it is important to also visualize the overall distribution using a plot such as a boxplot</p>
+<p>While <code>summary()</code> give us a quick numerical summary of our distribution, it is important to also visualize the overall distribution using a plot such as a boxplot</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">birth_weight</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(birth_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="03-intro_numerical_variables_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>or a histogram</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">birth_weight</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(birth_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="03-intro_numerical_variables_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>From the histogram above, while the overall distribution of the birth weights is symmetrical there are outliers causing the distribution to be skewed to the left.</p>
-<p>For <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> and <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> we used the default settings, while they are informative we can alter their appearance to be more professional.</p>
-<p>For example, we changed the x-axis label and y-axis label using <code>xlab</code>,<code>ylab</code> arguments,respectively. We changed the title with <code>main</code> and the color of the boxplot with <code>col</code>. The <code>col</code> argument can take values such as <code>red</code>,<code>blue</code> or any HEX code, see <code><a href="https://rdrr.io/r/graphics/boxplot.html">?boxplot</a></code> for further customization.</p>
+<p>For <code>boxplot()</code> and <code>hist()</code> we used the default settings, while they are informative we can alter their appearance to be more professional.</p>
+<p>For example, we changed the x-axis label and y-axis label using <code>xlab</code>,<code>ylab</code> arguments,respectively. We changed the title with <code>main</code> and the color of the boxplot with <code>col</code>. The <code>col</code> argument can take values such as <code>red</code>,<code>blue</code> or any HEX code, see <code>?boxplot</code> for further customization.</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">birth_weight</span>,</span>
-<span>        main<span class="op">=</span><span class="st">'Boxplot of Birth Weights'</span>,</span>
-<span>        xlab <span class="op">=</span><span class="st">'birth weights'</span>, ylab<span class="op">=</span><span class="st">'ounces'</span>,</span>
-<span>        col<span class="op">=</span><span class="st">'#61b1ed'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(birth_weight,</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">'Boxplot of Birth Weights'</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span><span class="st">'birth weights'</span>, <span class="at">ylab=</span><span class="st">'ounces'</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="st">'#61b1ed'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="03-intro_numerical_variables_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -321,29 +343,31 @@ Tip
 </div>
 <p>We can apply similar customization to our histogram</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">birth_weight</span>,</span>
-<span>     main<span class="op">=</span><span class="st">'Histogram of Birth Weights'</span>,</span>
-<span>     xlab <span class="op">=</span><span class="st">'birth weights'</span>,</span>
-<span>     col<span class="op">=</span><span class="st">'#d1584f'</span>,</span>
-<span>     breaks<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(birth_weight,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">'Histogram of Birth Weights'</span>,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span><span class="st">'birth weights'</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">'#d1584f'</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="03-intro_numerical_variables_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>The <code>hist</code> function uses the Sturges method by default to determine the number of <code>breaks</code> on the histogram. We can manually change the number of breaks, but we should be careful not to specify a low or high number of breaks. Usually the default setting is appropriate for most scenarios.</p>
-</section><section id="two-numerical-variables" class="level2"><h2 class="anchored" data-anchor-id="two-numerical-variables">Two numerical variables</h2>
+</section>
+<section id="two-numerical-variables" class="level2">
+<h2 class="anchored" data-anchor-id="two-numerical-variables">Two numerical variables</h2>
 <p>We consider the following two numerical variables: <code>Feduc</code> and <code>Meduc</code>, which is the highest education for fathers and mothers in this dataset, respectively.</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">father_eduction</span> <span class="op">&lt;-</span> <span class="va">birth_dat</span><span class="op">$</span><span class="va">Feduc</span></span>
-<span><span class="va">mother_education</span> <span class="op">&lt;-</span> <span class="va">birth_dat</span><span class="op">$</span><span class="va">Meduc</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>father_eduction <span class="ot">&lt;-</span> birth_dat<span class="sc">$</span>Feduc</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>mother_education <span class="ot">&lt;-</span> birth_dat<span class="sc">$</span>Meduc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can compare their distributions in a single plot as we did in <em>Section 2</em> with boxplots</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">father_eduction</span>,<span class="va">mother_education</span>,</span>
-<span>        names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'father'</span>,<span class="st">'mother'</span><span class="op">)</span>,</span>
-<span>        col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'#f5d376'</span>,<span class="st">'#f5767c'</span><span class="op">)</span>,</span>
-<span>        main <span class="op">=</span> <span class="st">'Highest Education for Parernts'</span>,</span>
-<span>        ylab <span class="op">=</span> <span class="st">'Year'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(father_eduction,mother_education,</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names =</span> <span class="fu">c</span>(<span class="st">'father'</span>,<span class="st">'mother'</span>),</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">'#f5d376'</span>,<span class="st">'#f5767c'</span>),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">'Highest Education for Parernts'</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">'Year'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="03-intro_numerical_variables_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -351,17 +375,17 @@ Tip
 <p>For boxplots its pretty straight forward to compare two numerical distributions using the syntax <code>boxplot(v1,v2,...)</code>. For histograms it requires a bit more work.</p>
 <p>We start by creating a histogram for the first variable, then creating another histogram for the second variable but using the argument <code>add=TRUE</code>. We must specify a unique color for each histogram representing the variables. In order for both of the histograms to fit properly on the same plot we must take into account the lowest and highest values among the multiple numerical variables.</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">low_x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">father_eduction</span>,<span class="va">mother_education</span><span class="op">)</span></span>
-<span><span class="va">high_x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">father_eduction</span>,<span class="va">mother_education</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>low_x <span class="ot">&lt;-</span> <span class="fu">min</span>(father_eduction,mother_education)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>high_x <span class="ot">&lt;-</span> <span class="fu">max</span>(father_eduction,mother_education)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Lastly, we must specify a legend to appropriately distinguish the multiple histograms using the function <code><a href="https://rdrr.io/r/graphics/legend.html">legend()</a></code>.</p>
+<p>Lastly, we must specify a legend to appropriately distinguish the multiple histograms using the function <code>legend()</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">father_eduction</span>, col<span class="op">=</span><span class="st">'lightcoral'</span>,</span>
-<span>     xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">low_x</span>,<span class="va">high_x</span><span class="op">)</span>,</span>
-<span>     main<span class="op">=</span><span class="st">'Education for Parents'</span>, xlab<span class="op">=</span><span class="st">'Year'</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">mother_education</span>, col<span class="op">=</span><span class="st">'lightblue'</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">'topright'</span>, legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'father'</span>, <span class="st">'mother'</span><span class="op">)</span>, </span>
-<span>       fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'lightcoral'</span>, <span class="st">'lightblue'</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(father_eduction, <span class="at">col=</span><span class="st">'lightcoral'</span>,</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(low_x,high_x),</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">'Education for Parents'</span>, <span class="at">xlab=</span><span class="st">'Year'</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mother_education, <span class="at">col=</span><span class="st">'lightblue'</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">'topright'</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">'father'</span>, <span class="st">'mother'</span>), </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill=</span><span class="fu">c</span>(<span class="st">'lightcoral'</span>, <span class="st">'lightblue'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="03-intro_numerical_variables_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -376,23 +400,26 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>When using <code><a href="https://rdrr.io/r/graphics/legend.html">legend()</a></code> it is important that you specify the correct ordering of colors for each group, otherwise the legend would be incorrect. For example, in our first histogram we chose “lightcoral” to represent “father” and “lightblue” to represent “mother” distributions. Which is why we used the arguments: <code>legend=c('father','mother'), fill = c('lightcoral','lightblue')</code> in that order</p>
+<p>When using <code>legend()</code> it is important that you specify the correct ordering of colors for each group, otherwise the legend would be incorrect. For example, in our first histogram we chose “lightcoral” to represent “father” and “lightblue” to represent “mother” distributions. Which is why we used the arguments: <code>legend=c('father','mother'), fill = c('lightcoral','lightblue')</code> in that order</p>
 </div>
 </div>
 <p>We can also consider a <em>scatter plot</em> to visualize the relationship between two numerical variables. We consider the two numerical variables <code>Gained</code> and <code>weight</code>. <code>Gained</code> describes the weight gained during the pregnancy term and <code>weight</code> describe the weight of the baby at birth.</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">birth_dat</span><span class="op">$</span><span class="va">Gained</span>,y <span class="op">=</span> <span class="va">birth_dat</span><span class="op">$</span><span class="va">weight</span>,</span>
-<span>     main <span class="op">=</span> <span class="st">'Baby weight vs pregnancy weight gain'</span>,</span>
-<span>     xlab <span class="op">=</span> <span class="st">'weight gained during pregnancy'</span>,</span>
-<span>     ylab <span class="op">=</span> <span class="st">'Baby weight (oz.)'</span>,</span>
-<span>     col<span class="op">=</span><span class="st">'lightcoral'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> birth_dat<span class="sc">$</span>Gained,<span class="at">y =</span> birth_dat<span class="sc">$</span>weight,</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'Baby weight vs pregnancy weight gain'</span>,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'weight gained during pregnancy'</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">'Baby weight (oz.)'</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">'lightcoral'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="03-intro_numerical_variables_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -626,7 +653,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
@@ -635,13 +663,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-<li class="nav-item">
+    <li class="nav-item">
     <a class="nav-link" href="../license.html">License</a>
   </li>  
 </ul>
-</div>
+    </div>
   </div>
 </footer>
+
 
 
 </body></html>

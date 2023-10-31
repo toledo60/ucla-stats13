@@ -58,10 +58,9 @@ format:
       - sandstone
       - assets/styles.scss
     toc: true
-    published-title: "class date"
+    published-title: "last updated"
     reference-location: document
     code-fold: false
-    code-link: true
     code-summary: ""
 
 # General Metadata

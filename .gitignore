@@ -12,3 +12,4 @@
 !_extensions/*/*/*.tex
 
 /.quarto/
+_freeze

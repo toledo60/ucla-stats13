@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.433">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Jose Toledo Luna">
 <meta name="dcterms.date" content="2023-10-27">
+
 <title>STATS 13 - Logical Statements with Applications</title>
 <style>
 code{white-space: pre-wrap;}
@@ -55,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -70,7 +74,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -90,6 +95,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+
+
 <meta property="og:title" content="STATS 13 - Logical Statements with Applications">
 <meta property="og:description" content="">
 <meta property="og:site-name" content="STATS 13">
@@ -97,17 +104,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
+
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-sm navbar-dark "><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark ">
+      <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="../syllabus.html" rel="" target="">
  <span class="menu-text">Syllabus</span></a>
   </li>  
@@ -124,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Assignments</span></a>
   </li>  
 </ul>
-<div class="quarto-navbar-tools ms-auto tools-wide">
+            <div class="quarto-navbar-tools ms-auto tools-wide">
     <a href="https://github.com/toledo60/ucla-stats13" rel="" title="" class="quarto-navigation-tool px-1" aria-label="Github"><i class="bi bi-github"></i></a>
     <a href="https://rstudio.stat.ucla.edu" rel="" title="" class="quarto-navigation-tool px-1" aria-label="RStudio"><i class="bi bi-r-circle-fill"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
@@ -135,38 +145,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#logical-statements" id="toc-logical-statements" class="nav-link active" data-scroll-target="#logical-statements">Logical Statements</a>
+  <li><a href="#logical-statements" id="toc-logical-statements" class="nav-link active" data-scroll-target="#logical-statements">Logical Statements</a>
   <ul class="collapse">
-<li><a href="#relational-operators" id="toc-relational-operators" class="nav-link" data-scroll-target="#relational-operators">Relational operators</a></li>
+  <li><a href="#relational-operators" id="toc-relational-operators" class="nav-link" data-scroll-target="#relational-operators">Relational operators</a></li>
   <li><a href="#logical-operators" id="toc-logical-operators" class="nav-link" data-scroll-target="#logical-operators">Logical operators</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#subsetting" id="toc-subsetting" class="nav-link" data-scroll-target="#subsetting">Subsetting</a>
+  </ul></li>
+  <li><a href="#subsetting" id="toc-subsetting" class="nav-link" data-scroll-target="#subsetting">Subsetting</a>
   <ul class="collapse">
-<li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors">Vectors</a></li>
+  <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors">Vectors</a></li>
   <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames">Data Frames</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#missing-data" id="toc-missing-data" class="nav-link" data-scroll-target="#missing-data">Missing Data</a>
+  </ul></li>
+  <li><a href="#missing-data" id="toc-missing-data" class="nav-link" data-scroll-target="#missing-data">Missing Data</a>
   <ul class="collapse">
-<li><a href="#vectors-1" id="toc-vectors-1" class="nav-link" data-scroll-target="#vectors-1">Vectors</a></li>
+  <li><a href="#vectors-1" id="toc-vectors-1" class="nav-link" data-scroll-target="#vectors-1">Vectors</a></li>
   <li><a href="#data-frames-1" id="toc-data-frames-1" class="nav-link" data-scroll-target="#data-frames-1">Data Frames</a></li>
+  </ul></li>
   </ul>
-</li>
-  </ul></nav>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
 <h1 class="title">Logical Statements with Applications</h1>
 </div>
 
@@ -182,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
     
     <div>
-    <div class="quarto-title-meta-heading">class date</div>
+    <div class="quarto-title-meta-heading">last updated</div>
     <div class="quarto-title-meta-contents">
       <p class="date">October 27, 2023</p>
     </div>
@@ -192,19 +204,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-</header><hr>
-<section id="logical-statements" class="level2"><h2 class="anchored" data-anchor-id="logical-statements">Logical Statements</h2>
+</header>
+
+<hr>
+<section id="logical-statements" class="level2">
+<h2 class="anchored" data-anchor-id="logical-statements">Logical Statements</h2>
 <p>There are only two logical values, <code>TRUE</code> and <code>FALSE</code>. In R, we can abbreviate <code>TRUE</code> with <code>T</code> and <code>FALSE</code> with <code>F</code>. They can be interpreted as any option corresponding to a binary choice. For example, yes/no, do/don’t, satisfied/not satisfied or even <code>1/0</code>.</p>
 <p>A basic way to define a logical statement is using a <strong>relational operator</strong> to compare two expressions. For example, we may ask ourselves <em>“is x less than a certain number ?”</em> or using a real world example from the <code>mtcars</code> dataset <em>“how many cars have more than 18 miles per gallon?”</em></p>
-<section id="relational-operators" class="level3"><h3 class="anchored" data-anchor-id="relational-operators">Relational operators</h3>
+<section id="relational-operators" class="level3">
+<h3 class="anchored" data-anchor-id="relational-operators">Relational operators</h3>
 <p>The table below summarizes some of the <strong>relational operators</strong> available in R:</p>
 <table class="table">
-<thead><tr class="header">
+<thead>
+<tr class="header">
 <th>Operator</th>
 <th>Interpretation</th>
 <th>Basic Example</th>
 <th>Result</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td>==</td>
@@ -247,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>From the table above we consider single numbers as our two expression to compare, but we can extend this idea to vectors, data.frames, matrices of various data types. When applying relational operators to vectors it is important to know they are being compared <em>element-wise</em>.</p>
 <p>We first start off by comparing a vector with a single number</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">5</span>,<span class="fl">7</span>,<span class="fl">9</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>) <span class="sc">&lt;</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1]  TRUE  TRUE FALSE FALSE FALSE</code></pre>
 </div>
@@ -255,29 +273,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Interpretation: Is 1 less than 5? is 3 less than 5? is 5 less than 5? is 7 less than 5? is 9 less than 5?</em></p>
 <p>The output from the above example is a <code>logical</code> vector</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">5</span>,<span class="fl">7</span>,<span class="fl">9</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>) <span class="sc">&lt;</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] "logical"</code></pre>
 </div>
 </div>
 <p>with <code>TRUE/FALSE</code> if the given condition was satisfied or not. What if we were given the question <em>“How many values of x are smaller than some number?”</em></p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">5</span>,<span class="fl">7</span>,<span class="fl">9</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">5</span> <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>( <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>) <span class="sc">&lt;</span> <span class="dv">5</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 2</code></pre>
 </div>
 </div>
-<p>we can then apply the <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> function to count how many <code>TRUE</code> were in our logical vector. This will be very useful when we have very large vectors and we can’t count how many <code>TRUE</code> were in our vector manually.</p>
+<p>we can then apply the <code>sum()</code> function to count how many <code>TRUE</code> were in our logical vector. This will be very useful when we have very large vectors and we can’t count how many <code>TRUE</code> were in our vector manually.</p>
 <p>Below are some examples applying relational operators to compare two vectors of the same length</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">4</span>,<span class="fl">3</span>,<span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="sc">&lt;</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1]  TRUE  TRUE FALSE FALSE</code></pre>
 </div>
 </div>
 <p><em>Interpretation: Is 1 less than 5? is 2 less than 4? is 3 less than 3? is 4 less than 2?</em></p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">4</span>,<span class="fl">3</span>,<span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="sc">&lt;=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1]  TRUE  TRUE  TRUE FALSE</code></pre>
 </div>
@@ -285,38 +303,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Interpretation: Is 1 less than or equal to 5? is 2 less than or equal to 4? is 3 less than or equal to 3? is 4 less than or equal to 2?</em></p>
 <p>Another topic to consider is comparing two strings. While this can be a more advance topic we only consider the simplest scenario in which we compare case-sensitive strings.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">string1</span> <span class="op">&lt;-</span> <span class="st">'Hello'</span></span>
-<span><span class="va">string2</span> <span class="op">&lt;-</span> <span class="st">'hello'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>string1 <span class="ot">&lt;-</span> <span class="st">'Hello'</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>string2 <span class="ot">&lt;-</span> <span class="st">'hello'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>while the above strings contain the same characters in the same order, if we compare them directly they will be considered different</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">string1</span> <span class="op">==</span> <span class="va">string2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>string1 <span class="sc">==</span> string2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] FALSE</code></pre>
 </div>
 </div>
 <p><em>Interpretation: are string1 and string2 identical?</em></p>
-<p>However, if were are interested in seeing if they contain the same characters regardless of the case sensitivity, we can use <code><a href="https://rdrr.io/r/base/chartr.html">tolower()</a></code> function as follows</p>
+<p>However, if were are interested in seeing if they contain the same characters regardless of the case sensitivity, we can use <code>tolower()</code> function as follows</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">string1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tolower</span>(string1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] "hello"</code></pre>
 </div>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">string2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tolower</span>(string2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] "hello"</code></pre>
 </div>
 </div>
-<p><code><a href="https://rdrr.io/r/base/chartr.html">tolower()</a></code> will convert any upper-case character in a vector into lower-case character.</p>
+<p><code>tolower()</code> will convert any upper-case character in a vector into lower-case character.</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">string1</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">string2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tolower</span>(string1) <span class="sc">==</span> <span class="fu">tolower</span>(string2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] TRUE</code></pre>
 </div>
 </div>
 <p>Since all the characters are now lower-case, and both strings contain the same characters in the same order then they are now identical.</p>
 <p>For more advanced examples in comparing strings check out the following <a href="https://www.r-bloggers.com/2022/01/how-to-compare-strings-in-r-with-examples/">blog post</a> <em>(Optional)</em></p>
-</section><section id="logical-operators" class="level3"><h3 class="anchored" data-anchor-id="logical-operators">Logical operators</h3>
+</section>
+<section id="logical-operators" class="level3">
+<h3 class="anchored" data-anchor-id="logical-operators">Logical operators</h3>
 <p>In practice, we often need to use multiple conditions to make certain decisions. For example, you have a personal rule that if there is no homework <em>AND</em> you don’t have class, then you will go out with your friends. Now, explore what happens to this rule when <em>OR</em> is used instead of <em>AND</em>, also what happens when negation (<em>NOT</em> ) is added to one or both clauses.</p>
 <p>The table below summarizes some of these logical operators</p>
 <table class="table">
@@ -326,70 +346,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <col style="width: 15%">
 <col style="width: 15%">
 </colgroup>
-<thead><tr class="header">
+<thead>
+<tr class="header">
 <th style="text-align: center;">Operator</th>
 <th>Interpretation</th>
 <th>Basic Example</th>
 <th>Result</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">!</td>
-<td>
-<strong>NOT</strong> <br><em>If the condition is true,</em> <br><em>logical NOT operator returns as false</em>
-</td>
+<td><strong>NOT</strong> <br> <em>If the condition is true,</em> <br><em>logical NOT operator returns as false</em></td>
 <td>! (5 == 5)</td>
 <td><code>FALSE</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">&amp;</td>
-<td>
-<strong>AND</strong><br><em>(element-wise)</em> <br><em>Returns true when both conditions are true</em>
-</td>
-<td>
-<p>TRUE <code>&amp;</code> TRUE</p>
+<td><strong>AND</strong><br> <em>(element-wise)</em> <br> <em>Returns true when both conditions are true</em></td>
+<td><p>TRUE <code>&amp;</code> TRUE</p>
 <p>TRUE <code>&amp;</code> FALSE</p>
 <p>FALSE <code>&amp;</code> TRUE</p>
-<p>FALSE <code>&amp;</code> FALSE</p>
-</td>
-<td>
-<p><code>TRUE</code></p>
+<p>FALSE <code>&amp;</code> FALSE</p></td>
+<td><p><code>TRUE</code></p>
 <p><code>FALSE</code></p>
 <p><code>FALSE</code></p>
-<p><code>FALSE</code></p>
-</td>
+<p><code>FALSE</code></p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">&amp;&amp;</td>
-<td>
-<strong>AND</strong><br><em>(single comparison)</em> <br><em>Same as above but for single comparison</em>
-</td>
+<td><strong>AND</strong><br> <em>(single comparison)</em> <br> <em>Same as above but for single comparison</em></td>
 <td><em>(same as <code>&amp;</code> above)</em></td>
 <td><em>(same as <code>&amp;</code> above)</em></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">|</td>
-<td>
-<strong>OR</strong><br><em>(element-wise)</em> <br><em>Returns true when at-least one of conditions is true</em>
-</td>
-<td>
-<p>TRUE <code>|</code>TRUE</p>
+<td><strong>OR</strong><br> <em>(element-wise)</em> <br> <em>Returns true when at-least one of conditions is true</em></td>
+<td><p>TRUE <code>|</code>TRUE</p>
 <p>TRUE <code>|</code> FALSE</p>
 <p>FALSE <code>|</code> TRUE</p>
-<p>FALSE <code>|</code> FALSE</p>
-</td>
-<td>
+<p>FALSE <code>|</code> FALSE</p></td>
+<td><p><code>TRUE</code></p>
 <p><code>TRUE</code></p>
 <p><code>TRUE</code></p>
-<p><code>TRUE</code></p>
-<p><code>FALSE</code></p>
-</td>
+<p><code>FALSE</code></p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">||</td>
-<td>
-<strong>OR</strong> <br><em>(single comparison)</em> <br><em>Same as above but for single comparison</em>
-</td>
+<td><strong>OR</strong> <br> <em>(single comparison)</em> <br> <em>Same as above but for single comparison</em></td>
 <td><em>(same as <code>|</code> above)</em></td>
 <td><em>(same as <code>|</code> above)</em></td>
 </tr>
@@ -397,7 +401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>The difference between <em>element-wise</em> and <em>single comparison</em> can be seen in the examples below</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span><span class="op">)</span> <span class="op">|</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>) <span class="sc">|</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1]  TRUE  TRUE  TRUE FALSE</code></pre>
 </div>
@@ -405,15 +409,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Interpretation: TRUE or FALSE, TRUE or FALSE, FALSE or TRUE, FALSE or FALSE</em></p>
 <p><em>Element-wise</em> will return a vector of logical values, one for each pair of logicals combined. Whereas, <em>single comparison</em> only compares the first two elements of the logical vectors and will return a single logical value</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fl">20</span></span>
-<span><span class="va">age</span> <span class="op">==</span> <span class="fl">18</span> <span class="op">||</span> <span class="va">age</span> <span class="op">&lt;=</span> <span class="fl">21</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>age <span class="sc">==</span> <span class="dv">18</span> <span class="sc">||</span> age <span class="sc">&lt;=</span> <span class="dv">21</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] TRUE</code></pre>
 </div>
 </div>
 <p><em>Interpretation: Is age 18 OR less than or equal to 21 ?</em></p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">age</span> <span class="op">&gt;</span> <span class="fl">10</span> <span class="op">&amp;&amp;</span> <span class="va">age</span> <span class="op">&lt;</span> <span class="fl">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>age <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">&amp;&amp;</span> age <span class="sc">&lt;</span> <span class="dv">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] TRUE</code></pre>
 </div>
@@ -421,27 +425,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Interpretation: Is age greater than AND less than 30?</em></p>
 <p>Consider a more complicated example of holding office in the United States. The president must be a natural-born citizen of the United States, be at least 35 years old, and have been a resident of the United States for 14 years</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">candidate_age</span> <span class="op">&lt;-</span> <span class="fl">40</span></span>
-<span><span class="va">candidate_birth</span> <span class="op">&lt;-</span> <span class="st">'United States'</span></span>
-<span><span class="va">candidate_residance_years</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>candidate_age <span class="ot">&lt;-</span> <span class="dv">40</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>candidate_birth <span class="ot">&lt;-</span> <span class="st">'United States'</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>candidate_residance_years <span class="ot">&lt;-</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We have a candidate who is 40 years old, was born in the United States but for some reason they have only been a resident of the United States for 10 years. Clearly, this candidate is not eligible to become our next president. We demonstrate this using logical operators</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">candidate_age</span> <span class="op">&gt;=</span> <span class="fl">35</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>candidate_age <span class="sc">&gt;=</span> <span class="dv">35</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] TRUE</code></pre>
 </div>
 </div>
 <p><em>Interpretation: Is the candidate at least 35 years old?</em></p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">candidate_birth</span> <span class="op">==</span> <span class="st">'United States'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>candidate_birth <span class="sc">==</span> <span class="st">'United States'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] TRUE</code></pre>
 </div>
 </div>
 <p><em>Interpretation: Is the candidate born in United States?</em></p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">candidate_residance_years</span> <span class="op">&gt;=</span> <span class="fl">14</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>candidate_residance_years <span class="sc">&gt;=</span> <span class="dv">14</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] FALSE</code></pre>
 </div>
@@ -449,54 +453,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Interpretation: Has the candidate been a resident for at least 14 years?</em></p>
 <p>Putting all of the above together,</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">candidate_age</span> <span class="op">&gt;=</span> <span class="fl">35</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">(</span><span class="va">candidate_birth</span> <span class="op">==</span> <span class="st">'United States'</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">(</span><span class="va">candidate_residance_years</span> <span class="op">&gt;=</span> <span class="fl">14</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(candidate_age <span class="sc">&gt;=</span> <span class="dv">35</span>) <span class="sc">&amp;&amp;</span> (candidate_birth <span class="sc">==</span> <span class="st">'United States'</span>) <span class="sc">&amp;&amp;</span> (candidate_residance_years <span class="sc">&gt;=</span> <span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] FALSE</code></pre>
 </div>
 </div>
 <p><em>Interpretation: TRUE AND TRUE AND FALSE</em></p>
 <p>Since one of the conditions fails the entire statement will be false.</p>
-</section></section><section id="subsetting" class="level2"><h2 class="anchored" data-anchor-id="subsetting">Subsetting</h2>
-<section id="vectors" class="level3"><h3 class="anchored" data-anchor-id="vectors">Vectors</h3>
+</section>
+</section>
+<section id="subsetting" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting">Subsetting</h2>
+<section id="vectors" class="level3">
+<h3 class="anchored" data-anchor-id="vectors">Vectors</h3>
 <p>Now that we have an idea of how to construct logical statements, we can apply them to subset our data based on a given condition</p>
 <p>Consider the following vector <code>dat</code> with 18 values</p>
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">13</span>, <span class="fl">18</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">24</span>, <span class="fl">10</span>, <span class="fl">8</span>, <span class="fl">5</span>, </span>
-<span>         <span class="fl">13</span>, <span class="fl">3</span>, <span class="fl">23</span>, <span class="fl">7</span>, <span class="fl">25</span>, <span class="fl">17</span>, <span class="fl">20</span>, <span class="fl">11</span>, <span class="fl">17</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">18</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">24</span>, <span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">5</span>, </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>         <span class="dv">13</span>, <span class="dv">3</span>, <span class="dv">23</span>, <span class="dv">7</span>, <span class="dv">25</span>, <span class="dv">17</span>, <span class="dv">20</span>, <span class="dv">11</span>, <span class="dv">17</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will subset <code>dat</code> based on the following conditions:</p>
 <p><strong>1. How many values are bigger than 10?</strong></p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&gt;</span> <span class="fl">10</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">&gt;</span> <span class="dv">10</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE
 #&gt; [13] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
 </div>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">dat</span> <span class="op">&gt;</span> <span class="fl">10</span> <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dat <span class="sc">&gt;</span> <span class="dv">10</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 11</code></pre>
 </div>
 </div>
 <p>while knowing how many values are bigger than 10 is useful, we may only want to keep those values and not the ones that are smaller than 10.</p>
 <p><strong>2. Keep the values that are bigger than 10?</strong></p>
-<p>If given a vector, the way to subset it based on a condition is as follows: <br><code>vector[ condtion ]</code>. Our condition is all the values that are bigger than 10, that is <code>dat &gt; 10</code></p>
+<p>If given a vector, the way to subset it based on a condition is as follows: <br> <code>vector[ condtion ]</code>. Our condition is all the values that are bigger than 10, that is <code>dat &gt; 10</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span><span class="op">[</span> <span class="va">dat</span> <span class="op">&gt;</span> <span class="fl">10</span> <span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>dat[ dat <span class="sc">&gt;</span> <span class="dv">10</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;  [1] 11 13 18 24 13 23 25 17 20 11 17</code></pre>
 </div>
 </div>
 <p><strong>3. How many values are exactly 11 ?</strong></p>
-<p>Our condition is <code>dat == 11</code>,this should only return two <code>TRUE</code>, and after using the <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> function to count them we obtain</p>
+<p>Our condition is <code>dat == 11</code>,this should only return two <code>TRUE</code>, and after using the <code>sum()</code> function to count them we obtain</p>
 <div class="cell">
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">dat</span> <span class="op">==</span> <span class="fl">11</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dat <span class="sc">==</span> <span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 2</code></pre>
 </div>
 </div>
 <p>If we wanted to extract these values from <code>dat</code> we would run</p>
 <div class="cell">
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span><span class="op">[</span> <span class="va">dat</span> <span class="op">==</span> <span class="fl">11</span> <span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>dat[ dat <span class="sc">==</span> <span class="dv">11</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 11 11</code></pre>
 </div>
@@ -504,14 +512,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Next we use the <code>birth</code> dataset for the following examples</p>
 <p><strong>4. How many females were in this dataset?</strong></p>
 <div class="cell">
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">birth_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"/Users/toledo60/Desktop/Projects/personal-website/data/births.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>birth_dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"/Users/toledo60/Desktop/Projects/personal-website/data/births.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>First we extract the values from the <code>Gender</code> column and store them in a variable called <code>gender_vec</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gender_vec</span> <span class="op">&lt;-</span> <span class="va">birth_dat</span><span class="op">$</span><span class="va">Gender</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>gender_vec <span class="ot">&lt;-</span> birth_dat<span class="sc">$</span>Gender</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">gender_vec</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(gender_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] "Male"   "Female"</code></pre>
 </div>
@@ -531,37 +539,39 @@ Warning
 </div>
 <p>Then we subset this vector to only include females</p>
 <div class="cell">
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">females_vec</span> <span class="op">&lt;-</span> <span class="va">gender_vec</span><span class="op">[</span><span class="va">gender_vec</span> <span class="op">==</span> <span class="st">'Female'</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>females_vec <span class="ot">&lt;-</span> gender_vec[gender_vec <span class="sc">==</span> <span class="st">'Female'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">females_vec</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(females_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] "Female"</code></pre>
 </div>
 </div>
-<p>Now our vector only contains females, we can use <code><a href="https://rdrr.io/r/base/length.html">length()</a></code> to count how many females were in this dataset</p>
+<p>Now our vector only contains females, we can use <code>length()</code> to count how many females were in this dataset</p>
 <div class="cell">
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">females_vec</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(females_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 961</code></pre>
 </div>
 </div>
 <p>An easier approach would be to simply create the variable <code>gender_vec</code> and count how many females are in that vector</p>
 <div class="cell">
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">gender_vec</span> <span class="op">==</span> <span class="st">'Female'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(gender_vec <span class="sc">==</span> <span class="st">'Female'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 961</code></pre>
 </div>
 </div>
-</section><section id="data-frames" class="level3"><h3 class="anchored" data-anchor-id="data-frames">Data Frames</h3>
+</section>
+<section id="data-frames" class="level3">
+<h3 class="anchored" data-anchor-id="data-frames">Data Frames</h3>
 <p>Considering <em>example 4</em> in the <a href="#vectors">vectors</a> section of subsetting, we are extracting solely the values from a specific column based on a given condition. However, in some scenarios we may want to preserve all other information <em>(columns)</em> from our dataset after subsetting our data.</p>
 <p>Data frames have the following structure <code>data[rows,columns]</code>. The first argument inside the brackets will specify the rows and the second argument will specify the columns. We can apply all of the subsetting techniques we covered in the <a href="#section">vectors</a> within the rows, columns, or both rows and columns <code>data[condition for rows, condition for columns]</code></p>
 <p>For example, if we wanted to subset the <code>births</code> dataset to only include females</p>
 <div class="cell">
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">is_female</span> <span class="op">&lt;-</span> <span class="va">birth_dat</span><span class="op">$</span><span class="va">Gender</span> <span class="op">==</span> <span class="st">'Female'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>is_female <span class="ot">&lt;-</span> birth_dat<span class="sc">$</span>Gender <span class="sc">==</span> <span class="st">'Female'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">birth_dat</span><span class="op">[</span><span class="va">is_female</span>, <span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>birth_dat[is_female, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Interpretation: Subset the rows to only include females, keep all the other columns</em></p>
 <div class="cell">
@@ -583,9 +593,9 @@ Warning
 <p>You will notice that we only applied a condition to the rows argument and not the columns argument. In the case where one of the arguments is left blank, then no condition will be applied to the respective argument.</p>
 <p>For practice, consider the following examples</p>
 <p><strong>1. Create a new data frame containing the columns: Gender, weight, and Habit</strong></p>
-<p>We can use <code><a href="https://rdrr.io/r/base/colnames.html">colnames()</a></code></p>
+<p>We can use <code>colnames()</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">birth_dat</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(birth_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;  [1] "X"            "Gender"       "Premie"       "weight"       "Apgar1"      
 #&gt;  [6] "Fage"         "Mage"         "Feduc"        "Meduc"        "TotPreg"     
@@ -596,11 +606,11 @@ Warning
 </div>
 <p>to make sure we have the correct spelling of the appropriate columns we want to keep.</p>
 <div class="cell">
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">birth2</span> <span class="op">&lt;-</span> <span class="va">birth_dat</span><span class="op">[</span> , <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Gender'</span>,<span class="st">'weight'</span>,<span class="st">'Habit'</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>birth2 <span class="ot">&lt;-</span> birth_dat[ , <span class="fu">c</span>(<span class="st">'Gender'</span>,<span class="st">'weight'</span>,<span class="st">'Habit'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Interpretation: Keep all the rows, but only keep the columns: Gender, weight, and Habit</em></p>
 <div class="cell">
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">birth2</span>,<span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(birth2,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;   Gender weight     Habit
 #&gt; 1   Male    116 NonSmoker
@@ -612,17 +622,17 @@ Warning
 <p><strong>2. Split <code>birth_dat</code> into two parts: One for which the individual was a smoker and another for which they were not a smoker</strong></p>
 <p>The variable <code>Habit</code> contains information on whether or not the individual was a smoker.</p>
 <div class="cell">
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">birth_dat</span><span class="op">$</span><span class="va">Habit</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(birth_dat<span class="sc">$</span>Habit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] "NonSmoker" "Smoker"    ""</code></pre>
 </div>
 </div>
 <p>First we create a logical vector to determine if the individual was a smoker</p>
 <div class="cell">
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">is_smoker</span> <span class="op">&lt;-</span> <span class="va">birth_dat</span><span class="op">$</span><span class="va">Habit</span> <span class="op">==</span> <span class="st">'Smoker'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>is_smoker <span class="ot">&lt;-</span> birth_dat<span class="sc">$</span>Habit <span class="sc">==</span> <span class="st">'Smoker'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">is_smoker</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>is_smoker[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] FALSE  TRUE FALSE FALSE FALSE</code></pre>
 </div>
@@ -630,18 +640,18 @@ Warning
 <p><em>Interpretation: Return TRUE if Habit is smoker, otherwise FALSE</em></p>
 <p>We use the negation <a href="#logical-operators">logical operator</a> to obtain all the non-smokers from our logical vector <code>is_smoker</code> without having to create a new variable</p>
 <div class="cell">
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">!</span><span class="va">is_smoker</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>is_smoker[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1]  TRUE FALSE  TRUE  TRUE  TRUE</code></pre>
 </div>
 </div>
 <p>To subset our data into keeping only the smokers we input our logical vector <code>is_smoker</code> into the rows argument</p>
 <div class="cell">
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">smokers</span> <span class="op">&lt;-</span> <span class="va">birth_dat</span><span class="op">[</span><span class="va">is_smoker</span>, <span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>smokers <span class="ot">&lt;-</span> birth_dat[is_smoker, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Interpretation: Only keep the rows in which the individual is a smoker</em></p>
 <div class="cell">
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">smokers</span>,<span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(smokers,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;     X Gender Premie weight Apgar1 Fage Mage Feduc Meduc TotPreg Visits
 #&gt; 2   2   Male     No    126      8   30   18    12    12       1     14
@@ -659,11 +669,11 @@ Warning
 </div>
 <p>To subset our data into keeping only the non-smokers we input our logical vector <code>!is_smoker</code> into the rows argument</p>
 <div class="cell">
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">not_smokers</span> <span class="op">&lt;-</span> <span class="va">birth_dat</span><span class="op">[</span><span class="op">!</span><span class="va">is_smoker</span>, <span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>not_smokers <span class="ot">&lt;-</span> birth_dat[<span class="sc">!</span>is_smoker, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Interpretation: Only keep the rows in which the individual is NOT a smoker</em></p>
 <div class="cell">
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">not_smokers</span>,<span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(not_smokers,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;   X Gender Premie weight Apgar1 Fage Mage Feduc Meduc TotPreg Visits Marital
 #&gt; 1 1   Male     No    116      9   28   34     6     3       2     10 Married
@@ -682,14 +692,14 @@ Warning
 <p><strong>3. What is the average weight of babies with at least one birth defect?</strong></p>
 <p>The variable <code>BirthDef</code> determines if the baby had no birth defects or had at least one defect</p>
 <div class="cell">
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">birth_dat</span><span class="op">$</span><span class="va">BirthDef</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(birth_dat<span class="sc">$</span>BirthDef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] "None"         "At Least One"</code></pre>
 </div>
 </div>
 <p>Create a logical vector to determine if the baby had at least one defect</p>
 <div class="cell">
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">has_defect</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">birth_dat</span><span class="op">$</span><span class="va">BirthDef</span> <span class="op">==</span> <span class="st">'At Least One'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>has_defect <span class="ot">&lt;-</span> (birth_dat<span class="sc">$</span>BirthDef <span class="sc">==</span> <span class="st">'At Least One'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -705,29 +715,34 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">has_defect</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>has_defect[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] FALSE FALSE FALSE FALSE FALSE</code></pre>
 </div>
 </div>
 <p>Subset our data to include rows with babies with at least one defect, then select only the <code>weight</code> column. Lastly compute the mean.</p>
 <div class="cell">
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span> <span class="va">birth_dat</span><span class="op">[</span><span class="va">has_defect</span>,<span class="st">'weight'</span><span class="op">]</span> <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>( birth_dat[has_defect,<span class="st">'weight'</span>] )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 115.8</code></pre>
 </div>
 </div>
 <p><em>Interpretation: Average weight of babies with at least one birth defect</em></p>
-</section></section><section id="missing-data" class="level2"><h2 class="anchored" data-anchor-id="missing-data">Missing Data</h2>
+</section>
+</section>
+<section id="missing-data" class="level2">
+<h2 class="anchored" data-anchor-id="missing-data">Missing Data</h2>
 <p>Missing data (or missing values) appear when no value is available in one or more variables of an observation. A common example can look something like this</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
-<thead><tr class="header">
+<thead>
+<tr class="header">
 <th style="text-align: left;">StudentID</th>
 <th style="text-align: left;">Major</th>
 <th style="text-align: right;">GPA</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">12345</td>
@@ -750,47 +765,48 @@ Note
 </div>
 <p>where we do not know the major of the second student and we also do not know the major from the third student <em>(denoted by <code>NA</code>)</em></p>
 <p>Identifying the rows and columns where missing values occur is necessary before addressing the issue of missingness. Although it is easy to observe in the example mentioned above, in most cases, dealing with larger datasets requires a more programmatic approach</p>
-<section id="vectors-1" class="level3"><h3 class="anchored" data-anchor-id="vectors-1">Vectors</h3>
+<section id="vectors-1" class="level3">
+<h3 class="anchored" data-anchor-id="vectors-1">Vectors</h3>
 <p>In R, <code>NA</code> stands for “Not Available” and is used to represent missing values in a dataset. <code>NA</code> can be used for any data type in R, such as numeric character, or logical.</p>
 <p>The type of <code>NA</code> is a logical value</p>
 <div class="cell">
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] "logical"</code></pre>
 </div>
 </div>
 <p>and can be coerced into any other data type. For example, consider the following numeric vector</p>
 <div class="cell">
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] "double"</code></pre>
 </div>
 </div>
 <p>but now with a missing value as the third element, it will preserve the original data type</p>
 <div class="cell">
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="cn">NA</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>,<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] "double"</code></pre>
 </div>
 </div>
 <p>or even a character vector</p>
 <div class="cell">
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span>,<span class="cn">NA</span>,<span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="st">"a"</span>,<span class="st">"b"</span>,<span class="cn">NA</span>,<span class="st">"c"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] "character"</code></pre>
 </div>
 </div>
-<p>In the following, we will show several examples how to find missing values. The most common approach is to use the function <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code></p>
+<p>In the following, we will show several examples how to find missing values. The most common approach is to use the function <code>is.na()</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="cn">NA</span>,<span class="fl">4</span>,<span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>,<span class="dv">4</span>,<span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] FALSE FALSE  TRUE FALSE  TRUE</code></pre>
 </div>
 </div>
 <p><em>Interpretation: For each element does this element contain <code>NA</code></em></p>
-<p>which will return a logical vector of the same length as the input vector, <code>TRUE</code> in the position which <code>NA</code> is located in. We can use the function <code><a href="https://rdrr.io/r/base/which.html">which()</a></code> in order to find out the actual position of <code>TRUE</code></p>
+<p>which will return a logical vector of the same length as the input vector, <code>TRUE</code> in the position which <code>NA</code> is located in. We can use the function <code>which()</code> in order to find out the actual position of <code>TRUE</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="cn">NA</span>,<span class="fl">4</span>,<span class="cn">NA</span><span class="op">)</span><span class="op">)</span> <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>( <span class="fu">is.na</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>,<span class="dv">4</span>,<span class="cn">NA</span>)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 3 5</code></pre>
 </div>
@@ -798,48 +814,50 @@ Note
 <p><em>Interpretation: Which position(s) are the logical values <code>TRUE</code> located</em></p>
 <p>The output will then be an integer vector denoting the positions in which there were missing values. Applying the concepts learned in <strong>Subsetting</strong>, we can exclude any values which are missing. For example,</p>
 <div class="cell">
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="cn">NA</span>,<span class="fl">4</span>,<span class="cn">NA</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>,<span class="dv">4</span>,<span class="cn">NA</span>)</span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] FALSE FALSE  TRUE FALSE  TRUE</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">is.na</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1]  TRUE  TRUE FALSE  TRUE FALSE</code></pre>
 </div>
 </div>
 <p><em>Interpretation: For each element does this element NOT contain <code>NA</code></em></p>
 <div class="cell">
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">!</span><span class="fu">is.na</span>(x)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 1 2 4</code></pre>
 </div>
 </div>
 <p><em>Interpretation: Only keep the elements which DO NOT contain <code>NA</code></em></p>
-<p>If we only want to find out if there any <code>NA</code> values, we can utilize the function <code><a href="https://rdrr.io/r/base/NA.html">anyNA()</a></code></p>
+<p>If we only want to find out if there any <code>NA</code> values, we can utilize the function <code>anyNA()</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">anyNA</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="cn">NA</span>,<span class="fl">4</span>,<span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anyNA</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>,<span class="dv">4</span>,<span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] TRUE</code></pre>
 </div>
 </div>
 <p>The above command will output <code>TRUE</code> if there are any <code>NA</code> in the vector and <code>FALSE</code> if there is not a single missing value</p>
 <div class="cell">
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">anyNA</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anyNA</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] FALSE</code></pre>
 </div>
 </div>
-<p>In conclusion, a common approach to check for missing data in R, we can use <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> or <code><a href="https://rdrr.io/r/base/NA.html">anyNA()</a></code>. If we want to know the position of the missing values, we should use <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>. However, if we are only concerned with whether there are any missing values or not, and not their position, then we can use <code><a href="https://rdrr.io/r/base/NA.html">anyNA()</a></code></p>
-</section><section id="data-frames-1" class="level3"><h3 class="anchored" data-anchor-id="data-frames-1">Data Frames</h3>
+<p>In conclusion, a common approach to check for missing data in R, we can use <code>is.na()</code> or <code>anyNA()</code>. If we want to know the position of the missing values, we should use <code>is.na()</code>. However, if we are only concerned with whether there are any missing values or not, and not their position, then we can use <code>anyNA()</code></p>
+</section>
+<section id="data-frames-1" class="level3">
+<h3 class="anchored" data-anchor-id="data-frames-1">Data Frames</h3>
 <p>Now, working with data frames we would like to verify if there are any missing observations throughout the entire dataset</p>
 <div class="cell">
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">student_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
-<span>  <span class="st">'StudentID'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'12345'</span>, <span class="st">'23456'</span>, <span class="st">'23405'</span><span class="op">)</span>,</span>
-<span>  <span class="st">'Major'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"math"</span>,<span class="cn">NA</span>,<span class="st">"biology"</span><span class="op">)</span>,</span>
-<span>  <span class="st">'GPA'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3.8</span>,<span class="fl">3.2</span>,<span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>student_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'StudentID'</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'12345'</span>, <span class="st">'23456'</span>, <span class="st">'23405'</span>),</span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Major'</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"math"</span>,<span class="cn">NA</span>,<span class="st">"biology"</span>),</span>
+<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'GPA'</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">3.8</span>,<span class="fl">3.2</span>,<span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -849,9 +867,9 @@ Note
 #&gt; 3     23405 biology  NA</code></pre>
 </div>
 </div>
-<p>When the function <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> is applied to a data frame, the output will be a matrix containing logical values. The logical values in the matrix will depend on whether there were any missing values or not in the data frame</p>
+<p>When the function <code>is.na()</code> is applied to a data frame, the output will be a matrix containing logical values. The logical values in the matrix will depend on whether there were any missing values or not in the data frame</p>
 <div class="cell">
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">student_dat</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(student_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;      StudentID Major   GPA
 #&gt; [1,]     FALSE FALSE FALSE
@@ -859,7 +877,7 @@ Note
 #&gt; [3,]     FALSE FALSE  TRUE</code></pre>
 </div>
 </div>
-<p>If we wanted to find out the position(s) of the missing values for each column we will utilize the <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code>. The basic syntax for <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> is</p>
+<p>If we wanted to find out the position(s) of the missing values for each column we will utilize the <code>apply()</code>. The basic syntax for <code>apply()</code> is</p>
 <p><code>apply(X, MARGIN, FUN)</code></p>
 <ul>
 <li><p><code>x</code>: an array or matrix</p></li>
@@ -870,7 +888,7 @@ Note
 <li><p><code>FUN</code>: tells which function to apply, according to the specified <code>MARGIN</code></p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span>X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">student_dat</span><span class="op">)</span>, MARGIN <span class="op">=</span> <span class="fl">2</span>, FUN <span class="op">=</span> <span class="va">which</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="at">X =</span> <span class="fu">is.na</span>(student_dat), <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> which)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; $StudentID
 #&gt; integer(0)
@@ -887,7 +905,11 @@ Note
 <p>In our case there were no rows with missing data in the first column, the second row contained a missing value from the column <em>Major</em> and the third row contained a missing value from the column <em>GPA</em></p>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1121,7 +1143,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
@@ -1130,13 +1153,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-<li class="nav-item">
+    <li class="nav-item">
     <a class="nav-link" href="../license.html">License</a>
   </li>  
 </ul>
-</div>
+    </div>
   </div>
 </footer>
+
 
 
 </body></html>
