@@ -4,8 +4,8 @@ code-fold: false
 sidebar: false
 ---
 
-## Homework 1
 
+## Homework 1
 
 **Chapter P Problems:**
 

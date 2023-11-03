@@ -1,6 +1,6 @@
 ---
 author: Jose Toledo Luna
-date: October 27, 2023
+date: November 03, 2023
 title: Normal Distribution
 toc: true
 ---
@@ -76,7 +76,7 @@ dnorm(x = 0,mean = 0,sd = 1)
 Consider evaluating $f(x)$ for $x \in [1,10]$ with mean 1 and standard deviation of 3
 
 ```{r}
-dnorm(x=1:10, mean = 1, sd =3 )
+dnorm(x=1:10,mean = 1,sd = 3)
 ```
 
 
@@ -108,19 +108,13 @@ p1 <- ggplot(data.frame(x = c(150,900)), aes(x)) +
   stat_function(fun = dnorm,
                 geom = "line",
                 xlim = c(150,900),
-                args = list(
-                  mean = 507,
-                  sd = 111
-                )) +
+                args = list(mean = 507,sd = 111)) +
   stat_function(fun = dnorm,
                 geom = "area",
                 fill = 'steelblue',
                 alpha =0.3,
                 xlim = c(150, 700),
-                args = list(
-                  mean = 507,
-                  sd = 111
-                ))+
+                args = list(mean = 507,sd = 111))+
   annotate("text", x = 510, y = 0.0015, 
            label = paste0(prob1,'%'),
            size = 8)+
@@ -156,19 +150,13 @@ p2 <- ggplot(data.frame(x = c(150,900)), aes(x)) +
   stat_function(fun = dnorm,
                 geom = "line",
                 xlim = c(150,900),
-                args = list(
-                  mean = 507,
-                  sd = 111
-                )) +
+                args = list(mean = 507,sd = 111)) +
   stat_function(fun = dnorm,
                 geom = "area",
                 fill = 'steelblue',
                 alpha =0.3,
                 xlim = c(700, 900),
-                args = list(
-                  mean = 507,
-                  sd = 111
-                ))+
+                args = list(mean = 507,sd = 111))+
   annotate("text", x = 738, y = 0.00017, 
            label = paste0(prob2,'%'),
            size=4.7)+
@@ -206,67 +194,43 @@ The Empirical rule *(also known as the 68-95-99.7 rule)* is a statistical rule s
 <summary>Show Code</summary>
 ```{r}
 x_limits <- c(-4,4)
-p1 <- ggplot(data.frame(x = x_limits), aes(x)) +
-  stat_function(fun = dnorm,
-                geom = "line",
-                xlim = x_limits) +
-  stat_function(fun = dnorm,
-                geom = "area",
-                fill = 'steelblue',
-                alpha =0.3,
-                xlim = c(-1, 1))+
-  labs(x = '',y= 'Density')+
-  annotate("text", x = 0.1, y = 0.15, 
-           label = paste0(68,'%'),
-           size=4.5)+
-  scale_x_continuous(name = '',limits = x_limits,
-                     breaks = -4:4)
+```
+
+```{r}
+plot_shaded_normal <- function(shade_limits,percent_display,
+                               annotate_x_label,annotate_y_label,
+                               x_limits = c(-4,4),
+                               fill = 'steelblue',
+                               alpha = 0.3,annotate_label_size=4.5){
+  plt <- ggplot(data.frame(x = x_limits), aes(x)) +
+    stat_function(fun = dnorm,geom = "line",xlim = x_limits) +
+    stat_function(fun = dnorm,geom = "area",fill = fill,alpha =alpha,
+                  xlim = shade_limits)+
+    labs(x = '',y= 'Density')+
+    annotate("text", x = annotate_x_label, y = annotate_y_label, 
+             label = paste0(percent_display,'%'),
+             size=annotate_label_size)+
+    scale_x_continuous(name = '',limits = x_limits,
+                       breaks = x_limits[1]:x_limits[2])
+  return(plt)
+}
 ```
 
 
 ```{r}
-p2 <- ggplot(data.frame(x = x_limits), aes(x)) +
-  stat_function(fun = dnorm,
-                geom = "line",
-                xlim = x_limits) +
-  stat_function(fun = dnorm,
-                geom = "area",
-                fill = "green",
-                alpha =0.3,
-                xlim = c(-2, 2)) +
-  labs(x = '',y= '')+
-  annotate("text", x = 0, y = 0.15, 
-           label = paste0(95,'%'),
-           size=4.5)+
-  scale_x_continuous(name = '',limits = x_limits,
-                     breaks = -4:4)
+plots <- plot_shaded_normal(shade_limits = c(-1,1),
+                            percent_display = 68,
+                            annotate_x_label = 0.1,annotate_y_label = 0.15)+
+  plot_shaded_normal(shade_limits = c(-2, 2),fill='green',
+                     percent_display = 95,
+                     annotate_x_label = 0,annotate_y_label = 0.15)+
+  plot_shaded_normal(shade_limits = c(-3, 3),fill='red',
+                     percent_display = 99.7,
+                     annotate_x_label = 0.1,annotate_y_label = 0.15)+
+  plot_annotation(title = '68–95–99.7 Rule')
 ```
 
 
-```{r}
-p3 <- ggplot(data.frame(x = x_limits), aes(x)) +  
-  stat_function(fun = dnorm,
-                geom = "line",
-                xlim = x_limits) +
-  stat_function(fun = dnorm,
-                geom = "area",
-                fill = "red",
-                alpha = 0.3,
-                xlim = c(-3, 3))+
-  labs(x='',y='',)+
-  annotate("text", x = 0.1, y = 0.15, 
-           label = paste0(99.7,'%'),
-           size=4.5)+
-  scale_x_continuous(name = '',limits = x_limits,
-                     breaks = -4:4)
-```
-
-
-```{r}
-plots <- p1+p2+p3+plot_layout(ncol = 3)+
-  plot_annotation(title = '68-95-98.7 Rule')
-
-```
 
 </details>
 
@@ -393,43 +357,36 @@ If we increase the number of observations, we see the data will approach the tru
 <details>
 
 <summary>Show Code</summary>
+
 ```{r}
-p100 <- ggplot(data = data.frame(x=rnorm(100)),
-               aes(x))+
-  geom_histogram(aes(y = after_stat(density)),
-                 colour = 1, fill = "steelblue",
-                 alpha =0.3,
-                 bins=30) +
-  geom_density(linewidth = 1.2,
-               linetype = 2,
-               colour = 2)+
-  labs(x= '',y = 'density')+
-  facet_grid(~100)
-
-p1000 <- ggplot(data = data.frame(x=rnorm(100)),
-                aes(x))+
-  geom_histogram(aes(y = after_stat(density)),
-                 colour = 1, fill = "steelblue",
-                 alpha = 0.3,bins=30) +
-  geom_density(linewidth = 1.2,
-               linetype = 2,
-               colour = 2)+
-  labs(x= '',y = '')+
-  facet_grid(~1000)
-
-p10000 <- ggplot(data = data.frame(x=rnorm(10000)),
-                 aes(x))+
-  geom_histogram(aes(y = after_stat(density)),
-                 colour = 1, fill = "steelblue",
-                 alpha = 0.3,bins=30) +
-  geom_density(linewidth = 1.2,
-               linetype = 2,
-               colour = 2)+
-  labs(x= '',y = '')+
-  facet_grid(~10000)
-
-plots <- p100 + p1000 + p10000 + plot_layout(ncol = 3)
+plot_random_normal <- function(n_samples, mean = 0, sd = 1,
+                               fill = 'steelblue', alpha = 0.3,
+                               bins = 30, density_linewidth = 1.2,
+                               density_linetype = 2){
+  
+  plt <- ggplot(data = data.frame(x=rnorm(n_samples,mean = mean, sd = sd),
+                                  n_samples),aes(x))+
+    geom_histogram(aes(y = after_stat(density)),
+                   colour = 1, fill = fill,
+                   alpha = alpha,
+                   bins=bins) +
+    geom_density(linewidth = density_linewidth,
+                 linetype = density_linetype,
+                 colour = 2)+
+    labs(x= '',y = 'density')+
+    facet_grid(~n_samples)
+  return(plt)
+}
 ```
+
+
+```{r}
+plots <- plot_random_normal(n_samples = 100)+
+  plot_random_normal(n_samples = 1000)+
+  plot_random_normal(n_samples = 10000)+
+  plot_layout(ncol=3)
+```
+
 </details>
 
 

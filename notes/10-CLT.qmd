@@ -1,6 +1,6 @@
 ---
 author: Jose Toledo Luna
-date: October 27, 2023
+date: November 03, 2023
 title: Introduction to Central Limit Theorem
 toc: true
 ---
@@ -100,100 +100,41 @@ Below is a demonstration of how increasing the sample size affects the distribut
 <details>
 <summary>Show Code</summary>
 ```{r}
-n_samples <- 100
-sample_means <- numeric(n_samples)
-
-for(i in 1:n_samples){
-  sample_i =  rnorm(n = n_samples, mean = 0, sd=1) # generate a new sample
-  sample_means[i] = mean(sample_i) # obtain mean for each sample
+generate_sampling_distribution <- function(n_samples, mean = 0, sd = 1,
+                                           color = 'black', fill = 'steelblue',
+                                           alpha = 0.3, bins=30) {
+  
+  sample_means <- numeric(n_samples)
+  
+  for(i in 1:n_samples){
+    sample_i =  rnorm(n = n_samples, mean = mean, sd=sd) # generate a new sample
+    sample_means[i] = mean(sample_i) # obtain mean for each sample
+  }
+  
+  sample_mean <- round(mean(sample_means),3)
+  standard_error <- round(sd(sample_means),3)
+  
+  sampling_dist <- ggplot(data.frame(sample_means,n_samples),aes(sample_means))+
+    geom_histogram(fill = fill,alpha = alpha,
+                   color = color,bins=bins)+
+    labs(title = 'Sampling distribution',
+         x = 'Sample means',y = '',
+         subtitle = paste0('mean=',sample_mean,
+                           ', standard error=',standard_error))
+  return(sampling_dist+facet_grid(~n_samples))
 }
-
-sample_mean <- round(mean(sample_means),3)
-standard_error <- round(sd(sample_means),3)
-
-sampling_dist100 <- ggplot(data.frame(sample_means),aes(sample_means))+
-  geom_histogram(fill = 'steelblue',alpha = 0.3,
-                 color = 'black',bins=30)+
-  labs(title = 'Sampling distribution',
-       x = 'Sample means',y = '',
-       subtitle = paste0('mean=',sample_mean,
-                         ', standard error=',standard_error))+
-  facet_grid(~100)
 ```
+
 
 
 ```{r}
-n_samples <- 1000
-sample_means <- numeric(n_samples)
-
-for(i in 1:n_samples){
-  sample_i =  rnorm(n = n_samples, mean = 0, sd=1) # generate a new sample
-  sample_means[i] = mean(sample_i) # obtain mean for each sample
-}
-
-sample_mean <- round(mean(sample_means),3)
-standard_error <- round(sd(sample_means),3)
-
-sampling_dist1000 <- ggplot(data.frame(sample_means),aes(sample_means))+
-  geom_histogram(fill = 'steelblue',alpha = 0.3,
-                 color = 'black',bins=30)+
-  labs(title = 'Sampling distribution',
-       x = 'Sample means',y = '',
-       subtitle = paste0('mean=',sample_mean,
-                         ', standard error=',standard_error))+
-  facet_grid(~1000)
+plots <- generate_sampling_distribution(100)+
+  generate_sampling_distribution(1000)+
+  generate_sampling_distribution(5000)+
+  generate_sampling_distribution(10000)+
+  plot_layout(nrow = 2, ncol = 2)
 ```
 
-```{r}
-n_samples <- 5000
-sample_means <- numeric(n_samples)
-
-for(i in 1:n_samples){
-  sample_i =  rnorm(n = n_samples, mean = 0, sd=1) # generate a new sample
-  sample_means[i] = mean(sample_i) # obtain mean for each sample
-}
-
-sample_mean <- round(mean(sample_means),3)
-standard_error <- round(sd(sample_means),3)
-
-sampling_dist5000 <- ggplot(data.frame(sample_means),aes(sample_means))+
-  geom_histogram(fill = 'steelblue',alpha = 0.3,
-                 color = 'black',bins=30)+
-  labs(title = 'Sampling distribution',
-       x = 'Sample means',y = '',
-       subtitle = paste0('mean=',sample_mean,
-                         ', standard error=',standard_error))+
-  facet_grid(~5000)
-```
-
-
-```{r}
-n_samples <- 10000
-sample_means <- numeric(n_samples)
-
-for(i in 1:n_samples){
-  sample_i =  rnorm(n = n_samples, mean = 0, sd=1) # generate a new sample
-  sample_means[i] = mean(sample_i) # obtain mean for each sample
-}
-
-sample_mean <- round(mean(sample_means),3)
-standard_error <- round(sd(sample_means),3)
-
-sampling_dist10000 <- ggplot(data.frame(sample_means),aes(sample_means))+
-  geom_histogram(fill = 'steelblue',alpha = 0.3,
-                 color = 'black',bins=30)+
-  labs(title = 'Sampling distribution',
-       x = 'Sample means',y = '',
-       subtitle = paste0('mean=',sample_mean,
-                         ', standard error=',standard_error))+
-  facet_grid(~10000)
-```
-
-
-```{r}
-plots <- sampling_dist100 + sampling_dist1000 + sampling_dist5000 +
-  sampling_dist10000 + plot_layout(nrow=2, ncol=2)
-```
 
 </details>
 
@@ -277,8 +218,6 @@ sd(body_mass_xbar)
 ```
 
 
-
-
 ### Sample proportions
 
 The idea behind generating a sampling distribution for sample proportions is very similar to the procedure described in [Sample means](#sample-mean) section.
@@ -341,7 +280,6 @@ The standard error is
 ```{r}
 sd(sample_proportions)
 ```
-
 
 
 ### Application: Sample proportion
