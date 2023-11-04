@@ -1,0 +1,197 @@
+---
+author: Jose Toledo Luna
+date: November 03, 2023
+title: Confidence Intervals
+toc: true
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  fig.width = 6,
+  fig.height = 4,
+  warning = FALSE,
+  eval = TRUE
+)
+```
+
+<details>
+
+<summary>Required Packages</summary>
+
+```{r}
+library(ggplot2)
+library(patchwork)
+library(openintro)
+```
+
+```{r}
+theme_set(theme_bw())
+theme_replace(panel.grid.minor = element_blank(),
+              panel.grid.major = element_blank())
+```
+
+</details>
+---
+
+
+Confidence intervals provide a range of values that indicates the level of uncertainty associated with an estimate. This helps us understand the precision of the estimate, as apposed to a point estimate.
+
+<details>
+
+<summary>Show Code</summary>
+
+```{r}
+generate_CI <- function(sample_size,n_samples,
+                        population_size=1000,
+                        critical_value = 1.96){
+
+  population <- rnorm(population_size)
+  sample_means <- replicate(n_samples, mean(sample(population,sample_size)))
+  
+  lower <- sample_means - critical_value * sd(population)/sqrt(sample_size)
+  upper <- sample_means + critical_value * sd(population)/sqrt(sample_size)
+  
+  trial <- 1:n_samples
+  cover <- (mean(population) >= lower) & (mean(population) <= upper)
+  CIs <- data.frame(sample = trial, lower, upper, cover, n_samples)
+  
+  plt <- ggplot(CIs, aes(y = trial)) +
+    geom_segment(aes(x=lower, y=trial, xend=upper, yend=trial, color= cover), 
+                 show.legend=FALSE) +
+    annotate("segment", x=mean(population), xend=mean(population),
+             y=0, yend=length(trial)+1, color="black",
+             size = 1.5) +
+    labs(x=expression(bar(x)), y = "Iteration",
+         title = paste0(100*mean(CIs$cover),'% ','coverage'))
+  
+  return(plt+facet_grid(~n_samples))
+}
+set.seed(90)
+plt <- generate_CI(sample_size = 25, n_samples = 100)
+```
+
+</details>
+
+```{r,echo=FALSE}
+plt
+```
+
+From the plot above, we see that 95 of the 100 confidence intervals cover the population parameter $\mu = 0$.
+While it's important to note that if we were to repeat the simulation another 100 times, the precise count may vary, but it is highly probable that it will remain close to 95
+
+In the below plots, we repeat the same process mentioned above but this time constructing intervals from 100, 500, and 1000 samples each of size 25. The coverage percentage is demonstrated in the title of each respective plot
+
+<details>
+
+<summary>Show Code</summary>
+
+```{r}
+plots <- generate_CI(sample_size = 25, n_samples = 100)+
+  generate_CI(sample_size = 25, n_samples = 500)+
+  generate_CI(sample_size = 25, n_samples = 1000)+
+  plot_layout(ncol=3)
+```
+
+</details>
+
+```{r,echo=FALSE,fig.width = 8,fig.height = 4}
+plots
+```
+
+
+## Inference for a Population Proportion
+
+We consider the Professor evaluations and beauty data from the package `openintro`. This data was gathered from end of semester student evaluations for 463 courses taught by a sample of 94 professors from the University of Texas at Austin. In addition, six students rate the professors' physical appearance. The result is a data frame where each row contains a different course and each column has information on the course and the professor who taught that course
+
+```{r}
+professor_evaluations <- openintro::evals
+```
+
+```{r,echo=FALSE}
+head(professor_evaluations)
+```
+
+
+
+We are interested in the proportion of professors who are of rank "Tenured". The proportions of the professors ranks are shown below
+
+```{r}
+table(professor_evaluations$rank) |> 
+  prop.table()
+```
+
+```{r,echo=FALSE}
+x <- table(professor_evaluations$rank) |> 
+  prop.table()
+```
+
+
+
+We create the sampling distribution for the sample proportion of tenured professors and compare it to the population distribution of all the professors ranks
+
+```{r}
+n_samples <- 10000
+sample_size <- 50
+rank_proportions <- numeric(n_samples)
+
+for(i in 1:n_samples){
+  sample_i =  sample(professor_evaluations$rank, size = sample_size) # generate a new sample from the population
+  rank_proportions[i] = mean(sample_i == 'tenured') # obtain proportion for each sample
+}
+```
+
+
+<details>
+
+<summary>Show Code</summary>
+
+```{r}
+sampling_dist <- ggplot(data.frame(rank_proportions),
+                        aes(rank_proportions))+
+  geom_bar(fill = 'steelblue',alpha = 0.3,
+                 color = 'black')+
+  labs(title = 'Sampling distribution of Sample Proportion',
+       subtitle = "Professor Ranks",
+       x = 'Proportion of Tenured',y = '')
+```
+
+```{r}
+pop_plt <- ggplot(professor_evaluations) +
+ geom_bar(mapping = aes(x = rank, y = ..prop.., group = 1), stat = "count",
+          fill='steelblue',alpha = 0.3,color='black')+
+  labs(title = 'Population Distribution',
+       subtitle= "Professor Ranks",
+       y = 'Proportion', x = 'Rank')
+```
+
+</details>
+
+```{r,echo=FALSE,fig.width=8}
+pop_plt + sampling_dist + plot_layout(ncol=2)
+```
+
+```{r,echo=FALSE}
+p <- x[['tenured']]
+p_hat <- mean(rank_proportions)
+SE_phat <- sqrt(p_hat*(1-p_hat)/sample_size)
+```
+
+|       | Population                                   | Sampling                                |
+|---------------|-------------------------------|---------------------------|
+| Shape |                                              | normal/bell-shaped                      |
+| Mean  | $p=$ `r p`                                   | $\hat{p}=$ `r p_hat`                    |
+| SD    | $\sigma = \sqrt{p(1-p)} =$ `r sqrt(p*(1-p))` | $\sqrt{\frac{p(1-p)}{n}} =$ `r SE_phat` |
+
+We can form a 95% confidence interval for the population proportion of professors who are tenured rank at the University of Texas at Austin 
+$$
+\left( \hat{p} - \, 1.96 \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \, \, ,  \quad
+\hat{p}+ \, 1.96 \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \right)
+$$
+
+Giving us the following 95% CI (`r round(p_hat - 1.96*SE_phat,3)`,`r round(p_hat + 1.96*SE_phat,3)`). We can see the constructed interval contains the population proportion of `r p`. A simple interpretaion of this confidence interval is 
+
+> We are 95% confident that the population proportion of tenured professors at the University of Texas is between `r round(p_hat - 1.96*SE_phat,3)` and `r round(p_hat + 1.96*SE_phat,3)`
+
+
+

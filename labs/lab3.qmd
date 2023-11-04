@@ -25,6 +25,7 @@ To prepare for this lab assignment read the following lecture notes
 1. [Sampling and Simulation](/notes/08-sampling_simulation.qmd)
 2. [Normal Distribution](/notes/09-normal_distribution.qmd)
 3. [Introduction to Central Limit Theorem](/notes/10-CLT.qmd)
+4. [Confidence Intervals](/notes/11-confidence-interval.qmd)
 
 ---
 

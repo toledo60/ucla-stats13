@@ -28,6 +28,7 @@ theme_replace(panel.grid.minor = element_blank(),
               panel.grid.major = element_blank())
 ```
 
+---
 
 
 ## Sampling Distributions

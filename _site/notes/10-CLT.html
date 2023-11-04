@@ -214,6 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_replace</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<hr>
 <section id="sampling-distributions" class="level2">
 <h2 class="anchored" data-anchor-id="sampling-distributions">Sampling Distributions</h2>
 <section id="sample-mean" class="level3">
@@ -260,7 +261,7 @@ Show Code
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sample_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] -0.001717811</code></pre>
+<pre><code>#&gt; [1] -0.001400346</code></pre>
 </div>
 </div>
 <p>which is very close to the population mean of <span class="math inline">\(\mu =0\)</span></p>
@@ -268,7 +269,7 @@ Show Code
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(sample_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 0.1003305</code></pre>
+<pre><code>#&gt; [1] 0.1003452</code></pre>
 </div>
 </div>
 <p>which is approximately <span class="math inline">\(\frac{\sigma}{\sqrt{n}} = \frac{1}{10}\)</span></p>
@@ -366,7 +367,7 @@ Show Code
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(body_mass_xbar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 4202.937</code></pre>
+<pre><code>#&gt; [1] 4201.996</code></pre>
 </div>
 </div>
 <p>which is approximately the population mean for the penguins body mass <em>(without missing observations)</em></p>
@@ -380,7 +381,7 @@ Show Code
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(body_mass_xbar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 105.9552</code></pre>
+<pre><code>#&gt; [1] 105.3449</code></pre>
 </div>
 </div>
 </section>
@@ -430,7 +431,7 @@ Show Code
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sample_proportions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 0.2500379</code></pre>
+<pre><code>#&gt; [1] 0.249721</code></pre>
 </div>
 </div>
 <p>which is approximately the population parameter <span class="math inline">\(p=0.25\)</span>.</p>
@@ -438,7 +439,7 @@ Show Code
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(sample_proportions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 0.01367884</code></pre>
+<pre><code>#&gt; [1] 0.01359789</code></pre>
 </div>
 </div>
 </section>
@@ -490,7 +491,7 @@ Show Code
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(adelie_proportions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 0.442396</code></pre>
+<pre><code>#&gt; [1] 0.441898</code></pre>
 </div>
 </div>
 <p>which is approximately the population proportion for the Adelie penguins <em>(without missing observations)</em></p>
@@ -505,7 +506,7 @@ Show Code
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(adelie_proportions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 0.06481697</code></pre>
+<pre><code>#&gt; [1] 0.06489606</code></pre>
 </div>
 </div>
 <p>which should approximately be <span class="math inline">\(\sqrt{\frac{p(1-p)}{n}}\)</span></p>

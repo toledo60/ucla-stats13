@@ -1,5 +1,13 @@
 [
   {
+    "listing": "/assignments.html",
+    "items": [
+      "/labs/lab1.html",
+      "/labs/lab2.html",
+      "/labs/lab3.html"
+    ]
+  },
+  {
     "listing": "/notes.html",
     "items": [
       "/notes/01-fundamentals.html",
@@ -11,15 +19,8 @@
       "/notes/07-for-loops.html",
       "/notes/08-sampling_simulation.html",
       "/notes/09-normal_distribution.html",
-      "/notes/10-CLT.html"
-    ]
-  },
-  {
-    "listing": "/assignments.html",
-    "items": [
-      "/labs/lab1.html",
-      "/labs/lab2.html",
-      "/labs/lab3.html"
+      "/notes/10-CLT.html",
+      "/notes/11-confidence-interval.html"
     ]
   }
 ]
