@@ -164,7 +164,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#inference-for-a-population-proportion" id="toc-inference-for-a-population-proportion" class="nav-link active" data-scroll-target="#inference-for-a-population-proportion">Inference for a Population Proportion</a></li>
+  <li><a href="#inference-for-a-population-mean" id="toc-inference-for-a-population-mean" class="nav-link active" data-scroll-target="#inference-for-a-population-mean">Inference for a Population Mean</a></li>
+  <li><a href="#inference-for-a-population-proportion" id="toc-inference-for-a-population-proportion" class="nav-link" data-scroll-target="#inference-for-a-population-proportion">Inference for a Population Proportion</a></li>
   </ul>
 </nav>
     </div>
@@ -239,16 +240,17 @@ Show Code
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  plt <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(CIs, <span class="fu">aes</span>(<span class="at">y =</span> trial)) <span class="sc">+</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x=</span>lower, <span class="at">y=</span>trial, <span class="at">xend=</span>upper, <span class="at">yend=</span>trial, <span class="at">color=</span> cover), </span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.legend=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x=</span><span class="fu">mean</span>(population), <span class="at">xend=</span><span class="fu">mean</span>(population),</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">y=</span><span class="dv">0</span>, <span class="at">yend=</span><span class="fu">length</span>(trial)<span class="sc">+</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">"black"</span>,</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x=</span><span class="fu">expression</span>(<span class="fu">bar</span>(x)), <span class="at">y =</span> <span class="st">"Iteration"</span>,</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="fu">paste0</span>(<span class="dv">100</span><span class="sc">*</span><span class="fu">mean</span>(CIs<span class="sc">$</span>cover),<span class="st">'% '</span>,<span class="st">'coverage'</span>))</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(plt<span class="sc">+</span><span class="fu">facet_grid</span>(<span class="sc">~</span>n_samples))</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">90</span>)</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> <span class="fu">generate_CI</span>(<span class="at">sample_size =</span> <span class="dv">25</span>, <span class="at">n_samples =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">'#bf0202'</span>,<span class="st">'#ccecf0'</span>))<span class="sc">+</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x=</span><span class="fu">mean</span>(population), <span class="at">xend=</span><span class="fu">mean</span>(population),</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">y=</span><span class="dv">0</span>, <span class="at">yend=</span><span class="fu">length</span>(trial)<span class="sc">+</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">"black"</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>             <span class="at">linewidth =</span> <span class="dv">1</span>,<span class="at">linetype =</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x=</span><span class="fu">expression</span>(<span class="fu">bar</span>(x)), <span class="at">y =</span> <span class="st">"Iteration"</span>,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="fu">paste0</span>(<span class="dv">100</span><span class="sc">*</span><span class="fu">mean</span>(CIs<span class="sc">$</span>cover),<span class="st">'% '</span>,<span class="st">'coverage'</span>))</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(plt<span class="sc">+</span><span class="fu">facet_grid</span>(<span class="sc">~</span>n_samples))</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">90</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> <span class="fu">generate_CI</span>(<span class="at">sample_size =</span> <span class="dv">25</span>, <span class="at">n_samples =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
 <div class="cell">
@@ -274,11 +276,136 @@ Show Code
 <p><img src="11-confidence-interval_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
+<section id="inference-for-a-population-mean" class="level2">
+<h2 class="anchored" data-anchor-id="inference-for-a-population-mean">Inference for a Population Mean</h2>
+<p>We consider the Starbucks data set from the package <code>openintro</code>. This data gives nutrition facts for several food items at Starbucks, we are primarily interested in the average calories in the their food items.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>starbucks <span class="ot">&lt;-</span> openintro<span class="sc">::</span>starbucks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; # A tibble: 6 × 7
+#&gt;   item                        calories   fat  carb fiber protein type  
+#&gt;   &lt;chr&gt;                          &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;fct&gt; 
+#&gt; 1 8-Grain Roll                     350     8    67     5      10 bakery
+#&gt; 2 Apple Bran Muffin                350     9    64     7       6 bakery
+#&gt; 3 Apple Fritter                    420    20    59     0       5 bakery
+#&gt; 4 Banana Nut Loaf                  490    19    75     4       7 bakery
+#&gt; 5 Birthday Cake Mini Doughnut      130     6    17     0       0 bakery
+#&gt; 6 Blueberry Oat Bar                370    14    47     5       6 bakery</code></pre>
+</div>
+</div>
+<p>We create the sampling distribution for the sample proportion of tenured professors and compare it to the population distribution of all the professors ranks</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>n_samples <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>calories <span class="ot">&lt;-</span> starbucks<span class="sc">$</span>calories</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>sample_calories <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_samples)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_samples){</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  sample_i <span class="ot">=</span>  <span class="fu">sample</span>(calories, <span class="at">size =</span> sample_size) <span class="co"># generate a new sample from the population</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  sample_calories[i] <span class="ot">=</span> <span class="fu">mean</span>(sample_i) <span class="co"># obtain proportion for each sample</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+Show Code
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pop_plt <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(starbucks) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> calories), <span class="at">bins =</span> <span class="dv">30</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill=</span><span class="st">'steelblue'</span>,<span class="at">alpha =</span> <span class="fl">0.3</span>,<span class="at">color=</span><span class="st">'black'</span>)<span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Population Distribution'</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span> <span class="st">"Calories of Food"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">'Counts'</span>, <span class="at">x =</span> <span class="st">'Calories'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sampling_dist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(sample_calories),</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">aes</span>(sample_calories))<span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">'steelblue'</span>,<span class="at">alpha =</span> <span class="fl">0.3</span>,<span class="at">bins =</span> <span class="dv">30</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="st">'black'</span>)<span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Sampling distribution of Sample Mean'</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Calories of Food"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">'Calories'</span>,<span class="at">y =</span> <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</details>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="11-confidence-interval_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 39%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Population</th>
+<th>Sampling</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Shape</td>
+<td>skewed</td>
+<td>normal/bell-shaped</td>
+</tr>
+<tr class="even">
+<td>Mean</td>
+<td>338.8311688</td>
+<td>338.6314</td>
+</tr>
+<tr class="odd">
+<td>SD</td>
+<td><span class="math inline">\(\sigma =\)</span> 105.3687014</td>
+<td><span class="math inline">\(\frac{\sigma}{\sqrt{n}} =\)</span> 19.2376049</td>
+</tr>
+</tbody>
+</table>
+<p>When the sampling distribution is roughly normal in shape, then we can construct an interval that expresses exactly how much sampling variability there is. Using our single sample of data and the properties of the normal distribution, we can be 95% confident that the population parameter is within the following interval <span class="math display">\[
+\left[\overline{x} - ME \, \, ,  \, \,\overline{x} + 1.96 ME \right]
+\]</span></p>
+<p>where the margin of error <span class="math inline">\(ME = \text{critical value} \times SE\)</span>. The critical value for a <span class="math inline">\(100(1-\alpha\)</span>)% CI can be computed by <code>qnorm(p = 1-alpha/2)</code> assuming the sampling distribution follows a normal distribution. For example, a 90% CI can be calculated as 100(1-0.1)%</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.1</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 1.644854</code></pre>
+</div>
+</div>
+<p>lastly the standard error can be approximated using <span class="math inline">\(SE = \frac{\sigma}{\sqrt{n}} \approx \frac{s}{\sqrt{n}}\)</span>, where <span class="math inline">\(s\)</span> is the standard deviation of an empirical sample</p>
+<p>Putting this together, a 95% CI is <span class="math display">\[
+\left[\overline{x} - 1.96 \frac{s}{\sqrt{n}} \, \, , \, \, \overline{x} + 1.96 \frac{s}{\sqrt{n}} \right]
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sample_calories <span class="ot">&lt;-</span> <span class="fu">sample</span>(calories, <span class="dv">30</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>xbar_calories <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample_calories)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>sd_calories <span class="ot">&lt;-</span> <span class="fu">sd</span>(sample_calories)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For our Starbucks calories example, A sample mean from a representative sample is <span class="math inline">\(\overline{x} =\)</span> 353.333 and standard deviation <span class="math inline">\(s=\)</span> 90.984 then the 95% CI is</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lower_bound <span class="ot">&lt;-</span> xbar_calories <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>(sd_calories<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">30</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>upper_bound <span class="ot">&lt;-</span> xbar_calories <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>(sd_calories<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(lower_bound, upper_bound)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 320.7750 385.8917</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>We are 95% confident the population avarage for calories of food at Starbucks is between 320.775 and 385.892</p>
+</blockquote>
+</section>
 <section id="inference-for-a-population-proportion" class="level2">
 <h2 class="anchored" data-anchor-id="inference-for-a-population-proportion">Inference for a Population Proportion</h2>
 <p>We consider the Professor evaluations and beauty data from the package <code>openintro</code>. This data was gathered from end of semester student evaluations for 463 courses taught by a sample of 94 professors from the University of Texas at Austin. In addition, six students rate the professors’ physical appearance. The result is a data frame where each row contains a different course and each column has information on the course and the professor who taught that course</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>professor_evaluations <span class="ot">&lt;-</span> openintro<span class="sc">::</span>evals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>professor_evaluations <span class="ot">&lt;-</span> openintro<span class="sc">::</span>evals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -299,8 +426,8 @@ Show Code
 </div>
 <p>We are interested in the proportion of professors who are of rank “Tenured”. The proportions of the professors ranks are shown below</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(professor_evaluations<span class="sc">$</span>rank) <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(professor_evaluations<span class="sc">$</span>rank) <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
 #&gt;     teaching tenure track      tenured 
@@ -309,47 +436,47 @@ Show Code
 </div>
 <p>We create the sampling distribution for the sample proportion of tenured professors and compare it to the population distribution of all the professors ranks</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>n_samples <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>rank_proportions <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_samples)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_samples){</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  sample_i <span class="ot">=</span>  <span class="fu">sample</span>(professor_evaluations<span class="sc">$</span>rank, <span class="at">size =</span> sample_size) <span class="co"># generate a new sample from the population</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  rank_proportions[i] <span class="ot">=</span> <span class="fu">mean</span>(sample_i <span class="sc">==</span> <span class="st">'tenured'</span>) <span class="co"># obtain proportion for each sample</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>n_samples <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>rank_proportions <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_samples)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_samples){</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  sample_i <span class="ot">=</span>  <span class="fu">sample</span>(professor_evaluations<span class="sc">$</span>rank, <span class="at">size =</span> sample_size) <span class="co"># generate a new sample from the population</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  rank_proportions[i] <span class="ot">=</span> <span class="fu">mean</span>(sample_i <span class="sc">==</span> <span class="st">'tenured'</span>) <span class="co"># obtain proportion for each sample</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <details>
 <summary>
 Show Code
 </summary>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sampling_dist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(rank_proportions),</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">aes</span>(rank_proportions))<span class="sc">+</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">'steelblue'</span>,<span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="st">'black'</span>)<span class="sc">+</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Sampling distribution of Sample Proportion'</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Professor Ranks"</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">'Proportion of Tenured'</span>,<span class="at">y =</span> <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sampling_dist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(rank_proportions),</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">aes</span>(rank_proportions))<span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">'steelblue'</span>,<span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="st">'black'</span>)<span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Sampling distribution of Sample Proportion'</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Professor Ranks"</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">'Proportion of Tenured'</span>,<span class="at">y =</span> <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pop_plt <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(professor_evaluations) <span class="sc">+</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_bar</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> rank, <span class="at">y =</span> ..prop.., <span class="at">group =</span> <span class="dv">1</span>), <span class="at">stat =</span> <span class="st">"count"</span>,</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill=</span><span class="st">'steelblue'</span>,<span class="at">alpha =</span> <span class="fl">0.3</span>,<span class="at">color=</span><span class="st">'black'</span>)<span class="sc">+</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Population Distribution'</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span> <span class="st">"Professor Ranks"</span>,</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">'Proportion'</span>, <span class="at">x =</span> <span class="st">'Rank'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pop_plt <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(professor_evaluations) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_bar</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> rank, <span class="at">y =</span> ..prop.., <span class="at">group =</span> <span class="dv">1</span>), <span class="at">stat =</span> <span class="st">"count"</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill=</span><span class="st">'steelblue'</span>,<span class="at">alpha =</span> <span class="fl">0.3</span>,<span class="at">color=</span><span class="st">'black'</span>)<span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Population Distribution'</span>,</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span> <span class="st">"Professor Ranks"</span>,</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">'Proportion'</span>, <span class="at">x =</span> <span class="st">'Rank'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="11-confidence-interval_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="768"></p>
+<p><img src="11-confidence-interval_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 <table class="table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 42%">
-<col style="width: 36%">
+<col style="width: 24%">
+<col style="width: 39%">
+<col style="width: 35%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -367,12 +494,12 @@ Show Code
 <tr class="even">
 <td>Mean</td>
 <td><span class="math inline">\(p=\)</span> 0.5464363</td>
-<td><span class="math inline">\(\hat{p}=\)</span> 0.546034</td>
+<td><span class="math inline">\(\hat{p}=\)</span> 0.546252</td>
 </tr>
 <tr class="odd">
 <td>SD</td>
 <td><span class="math inline">\(\sigma = \sqrt{p(1-p)} =\)</span> 0.497839</td>
-<td><span class="math inline">\(\sqrt{\frac{p(1-p)}{n}} =\)</span> 0.0704104</td>
+<td><span class="math inline">\(\sqrt{\frac{p(1-p)}{n}} =\)</span> 0.0704075</td>
 </tr>
 </tbody>
 </table>
@@ -380,7 +507,7 @@ Show Code
 \left( \hat{p} - \, 1.96 \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \, \, ,  \quad
 \hat{p}+ \, 1.96 \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \right)
 \]</span></p>
-<p>Giving us the following 95% CI (0.408,0.684). We can see the constructed interval contains the population proportion of 0.5464363. A simple interpretaion of this confidence interval is</p>
+<p>Giving us the following 95% CI (0.408,0.684). We can see the constructed interval contains the population proportion of 0.5464363. A simple interpretation of this confidence interval is</p>
 <blockquote class="blockquote">
 <p>We are 95% confident that the population proportion of tenured professors at the University of Texas is between 0.408 and 0.684</p>
 </blockquote>

@@ -32,8 +32,8 @@ theme_replace(panel.grid.minor = element_blank(),
 ```
 
 </details>
----
 
+------------------------------------------------------------------------
 
 Confidence intervals provide a range of values that indicates the level of uncertainty associated with an estimate. This helps us understand the precision of the estimate, as apposed to a point estimate.
 
@@ -59,9 +59,10 @@ generate_CI <- function(sample_size,n_samples,
   plt <- ggplot(CIs, aes(y = trial)) +
     geom_segment(aes(x=lower, y=trial, xend=upper, yend=trial, color= cover), 
                  show.legend=FALSE) +
+    scale_color_manual(values=c('#bf0202','#ccecf0'))+
     annotate("segment", x=mean(population), xend=mean(population),
              y=0, yend=length(trial)+1, color="black",
-             size = 1.5) +
+             linewidth = 1,linetype =2) +
     labs(x=expression(bar(x)), y = "Iteration",
          title = paste0(100*mean(CIs$cover),'% ','coverage'))
   
@@ -77,8 +78,7 @@ plt <- generate_CI(sample_size = 25, n_samples = 100)
 plt
 ```
 
-From the plot above, we see that 95 of the 100 confidence intervals cover the population parameter $\mu = 0$.
-While it's important to note that if we were to repeat the simulation another 100 times, the precise count may vary, but it is highly probable that it will remain close to 95
+From the plot above, we see that 95 of the 100 confidence intervals cover the population parameter $\mu = 0$. While it's important to note that if we were to repeat the simulation another 100 times, the precise count may vary, but it is highly probable that it will remain close to 95
 
 In the below plots, we repeat the same process mentioned above but this time constructing intervals from 100, 500, and 1000 samples each of size 25. The coverage percentage is demonstrated in the title of each respective plot
 
@@ -99,6 +99,106 @@ plots <- generate_CI(sample_size = 25, n_samples = 100)+
 plots
 ```
 
+## Inference for a Population Mean
+
+We consider the Starbucks data set from the package `openintro`. This data gives nutrition facts for several food items at Starbucks, we are primarily interested in the average calories in the their food items.
+
+```{r}
+starbucks <- openintro::starbucks
+```
+
+```{r,echo=FALSE}
+head(starbucks)
+```
+
+We create the sampling distribution for the sample proportion of tenured professors and compare it to the population distribution of all the professors ranks
+
+```{r}
+n_samples <- 10000
+sample_size <- 30
+calories <- starbucks$calories
+sample_calories <- numeric(n_samples)
+
+for(i in 1:n_samples){
+  sample_i =  sample(calories, size = sample_size) # generate a new sample from the population
+  sample_calories[i] = mean(sample_i) # obtain proportion for each sample
+}
+```
+
+<details>
+
+<summary>Show Code</summary>
+
+```{r}
+pop_plt <- ggplot(starbucks) +
+ geom_histogram(mapping = aes(x = calories), bins = 30,
+          fill='steelblue',alpha = 0.3,color='black')+
+  labs(title = 'Population Distribution',
+       subtitle= "Calories of Food",
+       y = 'Counts', x = 'Calories')
+```
+
+```{r}
+sampling_dist <- ggplot(data.frame(sample_calories),
+                        aes(sample_calories))+
+  geom_histogram(fill = 'steelblue',alpha = 0.3,bins = 30,
+                 color = 'black')+
+  labs(title = 'Sampling distribution of Sample Mean',
+       subtitle = "Calories of Food",
+       x = 'Calories',y = '')
+```
+
+</details>
+
+```{r,echo=FALSE,fig.width=8}
+pop_plt + sampling_dist + plot_layout(ncol=2)
+```
+
+|       | Population                   | Sampling                                                        |
+|------------------|-----------------------------|--------------------------|
+| Shape | skewed                       | normal/bell-shaped                                              |
+| Mean  | `r mean(calories)`      |  `r mean(sample_calories)`                            |
+| SD    | $\sigma =$ `r sd(calories)`  | $\frac{\sigma}{\sqrt{n}} =$ `r sd(calories)/sqrt(sample_size)`  |
+
+When the sampling distribution is roughly normal in shape, then we can construct an interval that expresses exactly how much sampling variability there is. Using our single sample of data and the properties of the normal distribution, we can be 95% confident that the population parameter is within the following interval 
+$$
+\left[\overline{x} - ME \, \, ,  \, \,\overline{x} + 1.96 ME \right]
+$$ 
+
+where the margin of error $ME = \text{critical value} \times SE$. The critical value for a $100(1-\alpha$)% CI can be computed by `qnorm(p = 1-alpha/2)` assuming the sampling distribution follows a normal distribution. For example, a 90% CI can be calculated as 100(1-0.1)% 
+```{r}
+alpha = 0.1
+qnorm(p = 1-alpha/2)
+```
+
+lastly the standard error can be approximated using $SE = \frac{\sigma}{\sqrt{n}} \approx \frac{s}{\sqrt{n}}$, where $s$ is the standard deviation of an empirical sample
+
+Putting this together, a 95% CI is 
+$$
+\left[\overline{x} - 1.96 \frac{s}{\sqrt{n}} \, \, , \, \, \overline{x} + 1.96 \frac{s}{\sqrt{n}} \right]
+$$
+
+```{r}
+set.seed(1)
+sample_calories <- sample(calories, 30)
+xbar_calories <- mean(sample_calories)
+sd_calories <- sd(sample_calories)
+```
+
+
+For our Starbucks calories example, A sample mean from a representative sample is $\overline{x} =$ `r round(xbar_calories,3)` and standard deviation $s=$ `r round(sd_calories, 3)` then the 95% CI is 
+
+```{r}
+lower_bound <- xbar_calories - 1.96*(sd_calories/sqrt(30))
+upper_bound <- xbar_calories + 1.96*(sd_calories/sqrt(30))
+```
+
+```{r}
+c(lower_bound, upper_bound)
+```
+
+> We are 95% confident the population avarage for calories of food at Starbucks is between `r round(lower_bound,3)` and `r round(upper_bound,3)`
+
 
 ## Inference for a Population Proportion
 
@@ -112,8 +212,6 @@ professor_evaluations <- openintro::evals
 head(professor_evaluations)
 ```
 
-
-
 We are interested in the proportion of professors who are of rank "Tenured". The proportions of the professors ranks are shown below
 
 ```{r}
@@ -125,8 +223,6 @@ table(professor_evaluations$rank) |>
 x <- table(professor_evaluations$rank) |> 
   prop.table()
 ```
-
-
 
 We create the sampling distribution for the sample proportion of tenured professors and compare it to the population distribution of all the professors ranks
 
@@ -140,7 +236,6 @@ for(i in 1:n_samples){
   rank_proportions[i] = mean(sample_i == 'tenured') # obtain proportion for each sample
 }
 ```
-
 
 <details>
 
@@ -178,20 +273,16 @@ SE_phat <- sqrt(p_hat*(1-p_hat)/sample_size)
 ```
 
 |       | Population                                   | Sampling                                |
-|---------------|-------------------------------|---------------------------|
+|------------------|-----------------------------|--------------------------|
 | Shape |                                              | normal/bell-shaped                      |
 | Mean  | $p=$ `r p`                                   | $\hat{p}=$ `r p_hat`                    |
 | SD    | $\sigma = \sqrt{p(1-p)} =$ `r sqrt(p*(1-p))` | $\sqrt{\frac{p(1-p)}{n}} =$ `r SE_phat` |
 
-We can form a 95% confidence interval for the population proportion of professors who are tenured rank at the University of Texas at Austin 
-$$
+We can form a 95% confidence interval for the population proportion of professors who are tenured rank at the University of Texas at Austin $$
 \left( \hat{p} - \, 1.96 \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \, \, ,  \quad
 \hat{p}+ \, 1.96 \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \right)
 $$
 
-Giving us the following 95% CI (`r round(p_hat - 1.96*SE_phat,3)`,`r round(p_hat + 1.96*SE_phat,3)`). We can see the constructed interval contains the population proportion of `r p`. A simple interpretaion of this confidence interval is 
+Giving us the following 95% CI (`r round(p_hat - 1.96*SE_phat,3)`,`r round(p_hat + 1.96*SE_phat,3)`). We can see the constructed interval contains the population proportion of `r p`. A simple interpretation of this confidence interval is
 
 > We are 95% confident that the population proportion of tenured professors at the University of Texas is between `r round(p_hat - 1.96*SE_phat,3)` and `r round(p_hat + 1.96*SE_phat,3)`
-
-
-
