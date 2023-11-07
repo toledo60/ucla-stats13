@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jose Toledo Luna">
-<meta name="dcterms.date" content="2023-11-03">
+<meta name="dcterms.date" content="2023-11-07">
 
 <title>STATS 13 - Confidence Intervals</title>
 <style>
@@ -191,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">last updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 3, 2023</p>
+      <p class="date">November 7, 2023</p>
     </div>
   </div>
   
@@ -336,9 +336,9 @@ Show Code
 </div>
 <table class="table">
 <colgroup>
-<col style="width: 24%">
-<col style="width: 39%">
-<col style="width: 35%">
+<col style="width: 25%">
+<col style="width: 38%">
+<col style="width: 36%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -368,7 +368,8 @@ Show Code
 <p>When the sampling distribution is roughly normal in shape, then we can construct an interval that expresses exactly how much sampling variability there is. Using our single sample of data and the properties of the normal distribution, we can be 95% confident that the population parameter is within the following interval <span class="math display">\[
 \left[\overline{x} - ME \, \, ,  \, \,\overline{x} + 1.96 ME \right]
 \]</span></p>
-<p>where the margin of error <span class="math inline">\(ME = \text{critical value} \times SE\)</span>. The critical value for a <span class="math inline">\(100(1-\alpha\)</span>)% CI can be computed by <code>qnorm(p = 1-alpha/2)</code> assuming the sampling distribution follows a normal distribution. For example, a 90% CI can be calculated as 100(1-0.1)%</p>
+<p>where the margin of error <span class="math inline">\(ME = \text{critical value} \times SE\)</span>. The critical value for a <span class="math inline">\(100(1-\alpha\)</span>)% CI can be obtained by <code>qnorm(p = 1-alpha/2)</code> whenever the sample size is large enough, say <span class="math inline">\(n=30\)</span> and the sampling distribution is approximately normal <em>(bell-shaped)</em></p>
+<p>For example, a 90% = 100(1-0.1)% CI can be calculated as</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.1</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -376,8 +377,35 @@ Show Code
 <pre><code>#&gt; [1] 1.644854</code></pre>
 </div>
 </div>
-<p>lastly the standard error can be approximated using <span class="math inline">\(SE = \frac{\sigma}{\sqrt{n}} \approx \frac{s}{\sqrt{n}}\)</span>, where <span class="math inline">\(s\)</span> is the standard deviation of an empirical sample</p>
-<p>Putting this together, a 95% CI is <span class="math display">\[
+<p>Commonly used critical values are</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Confidence Level</th>
+<th>Critical Value</th>
+<th>R code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>99%</td>
+<td>2.58</td>
+<td><code>qnorm(p = 1-0.01/2)</code></td>
+</tr>
+<tr class="even">
+<td>95%</td>
+<td>1.96</td>
+<td><code>qnorm(p = 1-0.05/2)</code></td>
+</tr>
+<tr class="odd">
+<td>90%</td>
+<td>1.65</td>
+<td><code>qnorm(p = 1-0.1/2)</code></td>
+</tr>
+</tbody>
+</table>
+<p>The standard error can be approximated using <span class="math inline">\(SE = \frac{\sigma}{\sqrt{n}} \approx \frac{s}{\sqrt{n}}\)</span>, where <span class="math inline">\(s\)</span> is the standard deviation of the sample obtained from the population</p>
+<p>Putting all of this together, a 95% CI is <span class="math display">\[
 \left[\overline{x} - 1.96 \frac{s}{\sqrt{n}} \, \, , \, \, \overline{x} + 1.96 \frac{s}{\sqrt{n}} \right]
 \]</span></p>
 <div class="cell">
@@ -386,7 +414,7 @@ Show Code
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>xbar_calories <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample_calories)</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>sd_calories <span class="ot">&lt;-</span> <span class="fu">sd</span>(sample_calories)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>For our Starbucks calories example, A sample mean from a representative sample is <span class="math inline">\(\overline{x} =\)</span> 353.333 and standard deviation <span class="math inline">\(s=\)</span> 90.984 then the 95% CI is</p>
+<p>For our Starbucks calories example, A sample mean obtain from a SRS is <span class="math inline">\(\overline{x} =\)</span> 353.333 and standard deviation <span class="math inline">\(s=\)</span> 90.984 then the 95% CI is</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lower_bound <span class="ot">&lt;-</span> xbar_calories <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>(sd_calories<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">30</span>))</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>upper_bound <span class="ot">&lt;-</span> xbar_calories <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>(sd_calories<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -474,9 +502,9 @@ Show Code
 </div>
 <table class="table">
 <colgroup>
-<col style="width: 24%">
-<col style="width: 39%">
-<col style="width: 35%">
+<col style="width: 25%">
+<col style="width: 38%">
+<col style="width: 36%">
 </colgroup>
 <thead>
 <tr class="header">
