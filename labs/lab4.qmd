@@ -1,0 +1,65 @@
+---
+title: "Lab 4: Centers for Disease Control and Prevention"
+code-fold: false
+sidebar: false
+image: images/cdc.jpeg
+---
+
+### Learning Objectives
+
+- Increase skill and comfort with basic data management and syntax in R.
+- Review the concepts of the normal distribution.
+- Review standardized statistics and introduce $z$-scores.
+- Compute probabilities from the normal distribution and the $t$-distribution.
+- Review the concepts of the $t$-distribution and the one sample $t$-test.
+- Carry out an entire test of significance for the difference in two proportions using
+simulations and theory
+
+
+---
+
+### Readings
+
+To prepare for this lab assignment read the following lecture notes
+
+1. [Normal Distribution](/notes/09-normal_distribution.qmd)
+
+
+For past reference on logical statements, visualizing and analyzing categorical/numerical variables refer to 
+
+1. [Summarizing and Visualizing Numerical Variables](/notes/03-intro_numerical_variables.qmd)
+2. [Summarizing and Visualizing Categorical Variables](/notes/04-intro_categorical_variables.qmd)
+3. [Logical Statements](/notes/06-logical-statements.qmd)
+
+
+---
+
+
+### Required Data and Packages
+
+We will use two data sets in this lab
+
+1. We will use the data from the “College of the Midwest” used in Section 2.1 in the textbook *(Introduction to Statistical Investigations by Tintle et al.)*
+
+
+```{r,eval=FALSE}
+college <- read.table("http://www.isi-stats.com/isi/data/chap3/CollegeMidwest.txt", 
+                      header = TRUE)
+```
+
+
+2. The file “cdc.csv” on CCLE contains data based on a random sample conducted by the Centers for Disease Control and Prevention (CDC).
+
+
+Throughout the lab we will use the `mosaic` package
+
+```{r,eval=FALSE}
+library(mosaic)
+```
+
+---
+
+
+
+### Questions
+
