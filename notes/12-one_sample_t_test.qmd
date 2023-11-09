@@ -1,0 +1,52 @@
+---
+author: Jose Toledo Luna
+date: November 09, 2023
+title: One Sample $t$-test
+toc: true
+---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  fig.width = 6,
+  fig.height = 4,
+  warning = FALSE,
+  eval = TRUE
+)
+```
+
+<details>
+<summary>Required Packages</summary>
+```{r}
+library(ggplot2)
+library(patchwork)
+```
+
+
+```{r}
+theme_set(theme_bw())
+theme_replace(panel.grid.minor = element_blank(),
+              panel.grid.major = element_blank())
+```
+</details>
+
+---
+
+
+
+## $t$-distribution
+
+
+
+
+
+
+
+
+## Hypothesis test for the mean of a quantitative variable
+
+
+
+
+

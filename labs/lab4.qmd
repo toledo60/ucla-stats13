@@ -23,13 +23,15 @@ simulations and theory
 To prepare for this lab assignment read the following lecture notes
 
 1. [Normal Distribution](/notes/09-normal_distribution.qmd)
+2. [One Sample $t$-test](/notes/12-one_sample_t_test.qmd)
+3. [Simulation-Based Test of Significance](/notes/13-simulation_test_of_significance.qmd)
 
 
-For past reference on logical statements, visualizing and analyzing categorical/numerical variables refer to 
+For reference on past material covering logical statements, visualizing and analyzing categorical/numerical variables refer to 
 
-1. [Summarizing and Visualizing Numerical Variables](/notes/03-intro_numerical_variables.qmd)
-2. [Summarizing and Visualizing Categorical Variables](/notes/04-intro_categorical_variables.qmd)
-3. [Logical Statements](/notes/06-logical-statements.qmd)
+- [Summarizing and Visualizing Numerical Variables](/notes/03-intro_numerical_variables.qmd)
+- [Summarizing and Visualizing Categorical Variables](/notes/04-intro_categorical_variables.qmd)
+- [Logical Statements](/notes/06-logical-statements.qmd)
 
 
 ---
@@ -62,4 +64,91 @@ library(mosaic)
 
 
 ### Questions
+
+
+
+#### Question 1
+
+Compute the probability of observing a person with a weight of 145 pounds or more from a population that follows a normal distribution with a mean of 127.1 pounds and a standard deviation of 11.7 pounds
+
+
+
+#### Question 2
+
+
+Compute the quantity in Question 1 by first converting the value to a z-score and then calculating the probability with respect to the standard normal distribution. Report both the z-score and the probability
+
+
+
+#### Question 3
+
+
+What is the probability of observing a value of 2.3 or more from statistics that follow a t-distribution with 35 degrees of freedom?
+
+
+#### Question 4
+
+Using a significance level of $\alpha = 0.01$, state the conclusion for the hypothesis test in the example above in context
+
+
+#### Question 5
+
+Use the `t.test()` function to compute a 99% confidence interval for the mean cumulative GPA of students at the College of the Midwest with the sample taken in the example above
+
+
+#### Question 6
+
+(a) Use either `&` or `|` to indicate (by `TRUE` or `FALSE`) which entries of `ex_vec` are greater than 4 AND less than 6.
+(b) Use either `&` or `|` to indicate which entries of `ex_vec` are less than 4 OR greater than 6.
+
+
+#### Question 7
+
+Use the correct notation and the format argument in the `tally()` function to answer the following questions.
+
+(a) What proportion of people in our sample said they are in good health?
+(b) What proportion of people in our sample who said they are in good health also said they did not exercise at least once a week?
+(c) What proportion of people in our sample said they exercise at least once a week and are in good health?
+
+
+#### Question 8
+
+
+What is the observed statistic that was computed above (i.e., what does `obs_diff` represent)?
+
+*Hint:* The `obs_diff` value is a difference of what two proportions?
+
+
+
+#### Question 9
+
+Compute the simulation-based p-value
+
+*Hint:* The `abs()` function inputs a numeric vector and outputs the absolute value of each entry. What does `mean(abs(diff_props) >= 0.01)` compute?
+
+
+#### Question 10
+
+Using a significance level of $\alpha = 0.05$, decide whether or not you would reject the null hypothesis in favor of the alternative. Interpret this decision in context.
+
+
+#### Question 11
+
+(a) Compute the standardized statistic according to the simulation-based approach. 
+(b) Compute the standardized statistic according to the theory-based approach.
+Hint: Note that in the z-score formula, our value that we are standardizing is our observed difference $\hat{p}_1 −\hat{p}_2$. The simulation-based and theory-based approaches differ in how the standard error is computed.
+
+
+#### Question 12
+
+Compute the theory-based p-value using the `pnorm()` function
+How does this compare to the p-value from Question 9?
+
+
+
+
+
+
+
+
 

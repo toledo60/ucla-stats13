@@ -21,7 +21,9 @@
       "/notes/08-sampling_simulation.html",
       "/notes/09-normal_distribution.html",
       "/notes/10-CLT.html",
-      "/notes/11-confidence-interval.html"
+      "/notes/11-confidence-interval.html",
+      "/notes/12-one_sample_t_test.html",
+      "/notes/13-simulation_test_of_significance.html"
     ]
   }
 ]

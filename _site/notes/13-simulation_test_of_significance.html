@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jose Toledo Luna">
+<meta name="dcterms.date" content="2023-11-09">
 
-<title>STATS 13 - Lab 4: Centers for Disease Control and Prevention</title>
+<title>STATS 13 - Simulation-Based Test of Significance</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,17 +96,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="STATS 13 - Lab 4: Centers for Disease Control and Prevention">
-<meta property="og:description" content="">
-<meta property="og:image" content="https://ucla-stats13.netlify.app/labs/images/cdc.jpeg">
+<meta property="og:title" content="STATS 13 - Simulation-Based Test of Significance">
 <meta property="og:site-name" content="STATS 13">
-<meta name="twitter:title" content="STATS 13 - Lab 4: Centers for Disease Control and Prevention">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://ucla-stats13.netlify.app/labs/images/cdc.jpeg">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="STATS 13 - Simulation-Based Test of Significance">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed">
@@ -158,10 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#readings" id="toc-readings" class="nav-link" data-scroll-target="#readings">Readings</a></li>
-  <li><a href="#required-data-and-packages" id="toc-required-data-and-packages" class="nav-link" data-scroll-target="#required-data-and-packages">Required Data and Packages</a></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
+  <li><a href="#comparing-two-proportions" id="toc-comparing-two-proportions" class="nav-link active" data-scroll-target="#comparing-two-proportions">Comparing two proportions</a></li>
   </ul>
 </nav>
     </div>
@@ -170,14 +163,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 4: Centers for Disease Control and Prevention</h1>
+<h1 class="title">Simulation-Based Test of Significance</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jose Toledo Luna </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">last updated</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 9, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -185,118 +190,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="learning-objectives" class="level3">
-<h3 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h3>
-<ul>
-<li>Increase skill and comfort with basic data management and syntax in R.</li>
-<li>Review the concepts of the normal distribution.</li>
-<li>Review standardized statistics and introduce <span class="math inline">\(z\)</span>-scores.</li>
-<li>Compute probabilities from the normal distribution and the <span class="math inline">\(t\)</span>-distribution.</li>
-<li>Review the concepts of the <span class="math inline">\(t\)</span>-distribution and the one sample <span class="math inline">\(t\)</span>-test.</li>
-<li>Carry out an entire test of significance for the difference in two proportions using simulations and theory</li>
-</ul>
-<hr>
-</section>
-<section id="readings" class="level3">
-<h3 class="anchored" data-anchor-id="readings">Readings</h3>
-<p>To prepare for this lab assignment read the following lecture notes</p>
-<ol type="1">
-<li><a href="../notes/09-normal_distribution.html">Normal Distribution</a></li>
-<li><a href="../notes/12-one_sample_t_test.html">One Sample <span class="math inline">\(t\)</span>-test</a></li>
-<li><a href="../notes/13-simulation_test_of_significance.html">Simulation-Based Test of Significance</a></li>
-</ol>
-<p>For reference on past material covering logical statements, visualizing and analyzing categorical/numerical variables refer to</p>
-<ul>
-<li><a href="../notes/03-intro_numerical_variables.html">Summarizing and Visualizing Numerical Variables</a></li>
-<li><a href="../notes/04-intro_categorical_variables.html">Summarizing and Visualizing Categorical Variables</a></li>
-<li><a href="../notes/06-logical-statements.html">Logical Statements</a></li>
-</ul>
-<hr>
-</section>
-<section id="required-data-and-packages" class="level3">
-<h3 class="anchored" data-anchor-id="required-data-and-packages">Required Data and Packages</h3>
-<p>We will use two data sets in this lab</p>
-<ol type="1">
-<li>We will use the data from the “College of the Midwest” used in Section 2.1 in the textbook <em>(Introduction to Statistical Investigations by Tintle et al.)</em></li>
-</ol>
+<details>
+<summary>
+Required Packages
+</summary>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>college <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"http://www.isi-stats.com/isi/data/chap3/CollegeMidwest.txt"</span>, </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="2" type="1">
-<li>The file “cdc.csv” on CCLE contains data based on a random sample conducted by the Centers for Disease Control and Prevention (CDC).</li>
-</ol>
-<p>Throughout the lab we will use the <code>mosaic</code> package</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_replace</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</details>
 <hr>
-</section>
-<section id="questions" class="level3">
-<h3 class="anchored" data-anchor-id="questions">Questions</h3>
-<section id="question-1" class="level4">
-<h4 class="anchored" data-anchor-id="question-1">Question 1</h4>
-<p>Compute the probability of observing a person with a weight of 145 pounds or more from a population that follows a normal distribution with a mean of 127.1 pounds and a standard deviation of 11.7 pounds</p>
-</section>
-<section id="question-2" class="level4">
-<h4 class="anchored" data-anchor-id="question-2">Question 2</h4>
-<p>Compute the quantity in Question 1 by first converting the value to a z-score and then calculating the probability with respect to the standard normal distribution. Report both the z-score and the probability</p>
-</section>
-<section id="question-3" class="level4">
-<h4 class="anchored" data-anchor-id="question-3">Question 3</h4>
-<p>What is the probability of observing a value of 2.3 or more from statistics that follow a t-distribution with 35 degrees of freedom?</p>
-</section>
-<section id="question-4" class="level4">
-<h4 class="anchored" data-anchor-id="question-4">Question 4</h4>
-<p>Using a significance level of <span class="math inline">\(\alpha = 0.01\)</span>, state the conclusion for the hypothesis test in the example above in context</p>
-</section>
-<section id="question-5" class="level4">
-<h4 class="anchored" data-anchor-id="question-5">Question 5</h4>
-<p>Use the <code>t.test()</code> function to compute a 99% confidence interval for the mean cumulative GPA of students at the College of the Midwest with the sample taken in the example above</p>
-</section>
-<section id="question-6" class="level4">
-<h4 class="anchored" data-anchor-id="question-6">Question 6</h4>
-<ol type="a">
-<li>Use either <code>&amp;</code> or <code>|</code> to indicate (by <code>TRUE</code> or <code>FALSE</code>) which entries of <code>ex_vec</code> are greater than 4 AND less than 6.</li>
-<li>Use either <code>&amp;</code> or <code>|</code> to indicate which entries of <code>ex_vec</code> are less than 4 OR greater than 6.</li>
-</ol>
-</section>
-<section id="question-7" class="level4">
-<h4 class="anchored" data-anchor-id="question-7">Question 7</h4>
-<p>Use the correct notation and the format argument in the <code>tally()</code> function to answer the following questions.</p>
-<ol type="a">
-<li>What proportion of people in our sample said they are in good health?</li>
-<li>What proportion of people in our sample who said they are in good health also said they did not exercise at least once a week?</li>
-<li>What proportion of people in our sample said they exercise at least once a week and are in good health?</li>
-</ol>
-</section>
-<section id="question-8" class="level4">
-<h4 class="anchored" data-anchor-id="question-8">Question 8</h4>
-<p>What is the observed statistic that was computed above (i.e., what does <code>obs_diff</code> represent)?</p>
-<p><em>Hint:</em> The <code>obs_diff</code> value is a difference of what two proportions?</p>
-</section>
-<section id="question-9" class="level4">
-<h4 class="anchored" data-anchor-id="question-9">Question 9</h4>
-<p>Compute the simulation-based p-value</p>
-<p><em>Hint:</em> The <code>abs()</code> function inputs a numeric vector and outputs the absolute value of each entry. What does <code>mean(abs(diff_props) &gt;= 0.01)</code> compute?</p>
-</section>
-<section id="question-10" class="level4">
-<h4 class="anchored" data-anchor-id="question-10">Question 10</h4>
-<p>Using a significance level of <span class="math inline">\(\alpha = 0.05\)</span>, decide whether or not you would reject the null hypothesis in favor of the alternative. Interpret this decision in context.</p>
-</section>
-<section id="question-11" class="level4">
-<h4 class="anchored" data-anchor-id="question-11">Question 11</h4>
-<ol type="a">
-<li>Compute the standardized statistic according to the simulation-based approach.</li>
-<li>Compute the standardized statistic according to the theory-based approach. Hint: Note that in the z-score formula, our value that we are standardizing is our observed difference <span class="math inline">\(\hat{p}_1 −\hat{p}_2\)</span>. The simulation-based and theory-based approaches differ in how the standard error is computed.</li>
-</ol>
-</section>
-<section id="question-12" class="level4">
-<h4 class="anchored" data-anchor-id="question-12">Question 12</h4>
-<p>Compute the theory-based p-value using the <code>pnorm()</code> function How does this compare to the p-value from Question 9?</p>
+<section id="comparing-two-proportions" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-two-proportions">Comparing two proportions</h2>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

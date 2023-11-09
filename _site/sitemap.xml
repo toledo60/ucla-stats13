@@ -2,94 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ucla-stats13.netlify.app/schedule.html</loc>
-    <lastmod>2023-11-08T21:10:45.434Z</lastmod>
+    <lastmod>2023-11-09T23:54:32.564Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/syllabus.html</loc>
-    <lastmod>2023-11-08T21:10:45.017Z</lastmod>
+    <lastmod>2023-11-09T23:54:32.145Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/notes/06-logical-statements.html</loc>
-    <lastmod>2023-11-08T21:10:44.228Z</lastmod>
+    <lastmod>2023-11-09T23:54:31.332Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/notes/10-CLT.html</loc>
-    <lastmod>2023-11-08T21:10:42.791Z</lastmod>
+    <lastmod>2023-11-09T23:54:29.831Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucla-stats13.netlify.app/notes/12-one_sample_t_test.html</loc>
+    <lastmod>2023-11-09T23:54:28.784Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/notes/04-intro_categorical_variables.html</loc>
-    <lastmod>2023-11-08T21:10:41.778Z</lastmod>
+    <lastmod>2023-11-09T23:54:28.035Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/notes/09-normal_distribution.html</loc>
-    <lastmod>2023-11-08T21:10:40.778Z</lastmod>
+    <lastmod>2023-11-09T23:54:27.029Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/notes/03-intro_numerical_variables.html</loc>
-    <lastmod>2023-11-08T21:10:39.602Z</lastmod>
+    <lastmod>2023-11-09T23:54:25.912Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/index.html</loc>
-    <lastmod>2023-11-08T21:10:38.508Z</lastmod>
+    <lastmod>2023-11-09T23:54:24.837Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/appoitments.html</loc>
-    <lastmod>2023-11-08T21:10:38.063Z</lastmod>
+    <lastmod>2023-11-09T23:54:24.397Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/assignments.html</loc>
-    <lastmod>2023-11-08T21:10:37.524Z</lastmod>
+    <lastmod>2023-11-09T23:54:23.829Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/labs/lab2.html</loc>
-    <lastmod>2023-11-08T21:10:36.825Z</lastmod>
+    <lastmod>2023-11-09T23:54:23.026Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/labs/lab1.html</loc>
-    <lastmod>2023-11-08T21:10:35.843Z</lastmod>
+    <lastmod>2023-11-09T23:54:22.122Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/labs/lab3.html</loc>
-    <lastmod>2023-11-08T21:10:36.336Z</lastmod>
+    <lastmod>2023-11-09T23:54:22.592Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/labs/lab4.html</loc>
-    <lastmod>2023-11-08T21:10:37.237Z</lastmod>
+    <lastmod>2023-11-09T23:54:23.550Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/notes.html</loc>
-    <lastmod>2023-11-08T21:10:37.816Z</lastmod>
+    <lastmod>2023-11-09T23:54:24.147Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/problem-sets.html</loc>
-    <lastmod>2023-11-08T21:10:38.309Z</lastmod>
+    <lastmod>2023-11-09T23:54:24.631Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/notes/01-fundamentals.html</loc>
-    <lastmod>2023-11-08T21:10:39.091Z</lastmod>
+    <lastmod>2023-11-09T23:54:25.411Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/notes/11-confidence-interval.html</loc>
-    <lastmod>2023-11-08T21:10:40.155Z</lastmod>
+    <lastmod>2023-11-09T23:54:26.479Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/notes/02-importing_data.html</loc>
-    <lastmod>2023-11-08T21:10:41.237Z</lastmod>
+    <lastmod>2023-11-09T23:54:27.513Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucla-stats13.netlify.app/notes/13-simulation_test_of_significance.html</loc>
+    <lastmod>2023-11-09T23:54:28.415Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/notes/07-for-loops.html</loc>
-    <lastmod>2023-11-08T21:10:42.225Z</lastmod>
+    <lastmod>2023-11-09T23:54:29.254Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/notes/08-sampling_simulation.html</loc>
-    <lastmod>2023-11-08T21:10:43.331Z</lastmod>
+    <lastmod>2023-11-09T23:54:30.401Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/notes/05-MOSAIC_basics.html</loc>
-    <lastmod>2023-11-08T21:10:44.793Z</lastmod>
+    <lastmod>2023-11-09T23:54:31.896Z</lastmod>
   </url>
   <url>
     <loc>https://ucla-stats13.netlify.app/license.html</loc>
-    <lastmod>2023-11-08T21:10:45.228Z</lastmod>
+    <lastmod>2023-11-09T23:54:32.355Z</lastmod>
   </url>
 </urlset>

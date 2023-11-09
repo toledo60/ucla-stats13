@@ -67,5 +67,11 @@
   },
   "labs/lab4.qmd": {
     "lab4.html": "fca377fc"
+  },
+  "notes/12-one_sample_t_test.qmd": {
+    "12-one_sample_t_test.html": "81bbd4f2"
+  },
+  "notes/13-simulation_test_of_significance.qmd": {
+    "13-simulation_test_of_significance.html": "c2149645"
   }
 }
