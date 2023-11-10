@@ -100,8 +100,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <meta property="og:title" content="STATS 13 - One Sample \(t\)-test">
+<meta property="og:description" content="">
 <meta property="og:site-name" content="STATS 13">
 <meta name="twitter:title" content="STATS 13 - One Sample \(t\)-test">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -156,8 +158,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#t-distribution" id="toc-t-distribution" class="nav-link active" data-scroll-target="#t-distribution"><span class="math inline">\(t\)</span>-distribution</a></li>
-  <li><a href="#hypothesis-test-for-the-mean-of-a-quantitative-variable" id="toc-hypothesis-test-for-the-mean-of-a-quantitative-variable" class="nav-link" data-scroll-target="#hypothesis-test-for-the-mean-of-a-quantitative-variable">Hypothesis test for the mean of a quantitative variable</a></li>
+  <li><a href="#hypothesis-tests" id="toc-hypothesis-tests" class="nav-link active" data-scroll-target="#hypothesis-tests">Hypothesis tests</a></li>
+  <li><a href="#one-sample-t-test" id="toc-one-sample-t-test" class="nav-link" data-scroll-target="#one-sample-t-test">One Sample <span class="math inline">\(t\)</span>-test</a></li>
   </ul>
 </nav>
     </div>
@@ -208,11 +210,49 @@ Required Packages
 </div>
 </details>
 <hr>
-<section id="t-distribution" class="level2">
-<h2 class="anchored" data-anchor-id="t-distribution"><span class="math inline">\(t\)</span>-distribution</h2>
+<section id="hypothesis-tests" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-tests">Hypothesis tests</h2>
+<p>There are a few components common to every hypothesis test</p>
+<p><strong>Null Hypothesis</strong></p>
+<p>A hypothesis that posits there is no significant difference, effect, or relationship in the variables being studied. Suggesting any observed differences are due to random chance Denoted by <span class="math inline">\(H_0\)</span> (“H naught”)</p>
+<p><strong>Alternative Hypothesis</strong></p>
+<p>A hypothesis that contradicts the null hypothesis, proposing that there is a significant difference, effect, or relationship in the variables being studied, beyond what could be explained by random chance. Denoted by <span class="math inline">\(H_a\)</span></p>
+<p><strong>Test Statistic</strong></p>
+<p>A numerical value calculated from sample data used to assess the strength of the evidence against the null hypothesis, with larger values indicating stronger evidence in favor of the alternative hypothesis</p>
+<p><strong>p-value</strong></p>
+<p>The probability of a test statistic as rare or even more rare than the one observed under the assumptions of the null hypothesis</p>
+<p>The p-value quantifies the likelihood of observing the data or more extreme results under the null hypothesis; a lower p-value indicates that the observed statistic is highly improbable under the null hypothesis, strengthening the evidence against it and often leading to its rejection in favor of the alternative hypothesis</p>
 </section>
-<section id="hypothesis-test-for-the-mean-of-a-quantitative-variable" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test-for-the-mean-of-a-quantitative-variable">Hypothesis test for the mean of a quantitative variable</h2>
+<section id="one-sample-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="one-sample-t-test">One Sample <span class="math inline">\(t\)</span>-test</h2>
+<p>To perform a theory-based hypothesis test for the mean of a quantitative variable, following the components of a hypothesis test, but in the context of a one sample <span class="math inline">\(t\)</span>-test</p>
+<ol type="1">
+<li><p>State the null and alternative hypotheses about the mean parameter <span class="math inline">\(\mu\)</span></p></li>
+<li><p>From a sample of data, compute the sample mean <span class="math inline">\(\bar{x}\)</span> and its standardized <span class="math inline">\(t\)</span>-statistic</p></li>
+<li><p>Check the validity conditions to apply the Central Limit Theorem</p></li>
+<li><p>If the validity conditions hold, compute the <span class="math inline">\(p\)</span>-value by comparing the observed <span class="math inline">\(t\)</span>-statistic to a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(df = n-1\)</span></p></li>
+</ol>
+<hr>
+<p>We can use the <code>t.test()</code> function to conduct this hypothesis test</p>
+<p>The basic syntax for the <code>t.test()</code> function is as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x, <span class="at">y =</span> <span class="cn">NULL</span>, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">"two.sided"</span>, <span class="st">"less"</span>, <span class="st">"greater"</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>x</code>: numeric vector of data values <em>(our sample)</em></li>
+<li><code>y</code>: an <em>optional</em> numeric vector of data values <em>(response)</em></li>
+<li><code>alternative</code>: type of hypothesis being performed,
+<ul>
+<li><code>"two.sided"</code>: <span class="math inline">\(H_a: \mu \neq \mu_0\)</span></li>
+<li><code>"less"</code>: <span class="math inline">\(H_a: \mu &lt; \mu_0\)</span></li>
+<li><code>"greater"</code>: <span class="math inline">\(H_a: \mu &gt; \mu_0\)</span></li>
+</ul></li>
+<li><code>mu</code>: population mean <span class="math inline">\(\mu\)</span> <em>(null value)</em>, can be difference of means if performing a two-sample test</li>
+<li><code>conf.level</code>: confidence level of the interval <span class="math inline">\(100(1-\alpha)\)</span>%, where <span class="math inline">\(\alpha\)</span> is the significance level</li>
+</ul>
+<p>For additional arguments <code>...</code> see <code>?t.test()</code></p>
 
 
 </section>
