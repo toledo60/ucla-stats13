@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jose Toledo Luna">
-<meta name="dcterms.date" content="2023-11-03">
+<meta name="dcterms.date" content="2023-11-09">
 
 <title>STATS 13 - Normal Distribution</title>
 <style>
@@ -171,6 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#qnorm" id="toc-qnorm" class="nav-link" data-scroll-target="#qnorm">qnorm</a></li>
   <li><a href="#rnorm" id="toc-rnorm" class="nav-link" data-scroll-target="#rnorm">rnorm</a></li>
   </ul></li>
+  <li><a href="#standardizing-values" id="toc-standardizing-values" class="nav-link" data-scroll-target="#standardizing-values">Standardizing Values</a></li>
   </ul>
 </nav>
     </div>
@@ -196,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">last updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 3, 2023</p>
+      <p class="date">November 9, 2023</p>
     </div>
   </div>
   
@@ -301,7 +302,7 @@ Show Code
 </summary>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>prob1 <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">pnorm</span>(<span class="dv">700</span>, <span class="at">mean=</span><span class="dv">507</span>, <span class="at">sd=</span><span class="dv">111</span>) <span class="sc">*</span> <span class="dv">100</span>,<span class="dv">2</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">150</span>,<span class="dv">900</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">150</span>,<span class="dv">900</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm,</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">geom =</span> <span class="st">"line"</span>,</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">150</span>,<span class="dv">900</span>),</span>
@@ -569,9 +570,69 @@ Show Code
 <p><img src="09-normal_distribution_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="standardizing-values" class="level2">
+<h2 class="anchored" data-anchor-id="standardizing-values">Standardizing Values</h2>
+<p>The normal model <span class="math inline">\(N(0,1)\)</span> is called the standard normal distribution, and it is the default model used when working with <code>(.)norm</code> functions</p>
+<p>A <span class="math inline">\(z\)</span>-score, also known as a standard score, quantifies the number of standard deviations a data point is from the mean of a distribution. This can be useful for comparing and analyzing data across different scales or distributions, providing a standardized way to assess the relative position of a particular value within a dataset</p>
+<p>For example, consider a scenario where you are comparing the performance of students in two different subjects, one with scores ranging from 0 to 100 and another with scores ranging from 0 to 50. Without standardization, it can be challenging to assess which student has performed relatively better across both subjects.</p>
+<p>The <span class="math inline">\(z\)</span>-score of a particular value is defined as <span class="math display">\[
+z = \frac{\text{value} - \text{mean}}{\text{standard deviation}}
+\]</span> If the values in their original units of measurement follow a normal distribution, then the <span class="math inline">\(z\)</span>-scores will follow a standard normal distribution</p>
+<p>Recall the SAT-M scores example: Suppose <span class="math inline">\(X\)</span> is the SAT-M score which has a normal distribution with a mean of 507 and standard deviation of 111. What is the probability of scoring less than 700 on the SAT-M?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">700</span>, <span class="at">mean =</span> <span class="dv">507</span>, <span class="at">sd =</span> <span class="dv">111</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 0.9589596</code></pre>
+</div>
+</div>
+<p>We can also compute this quantity with the <span class="math inline">\(z\)</span>-score with respect to the standard normal distribution <span class="math display">\[
+\begin{align*}
+z &amp;= \frac{\text{value} - \text{mean}}{\text{standard deviation}} \\[10pt]
+z &amp;= \frac{700 - 507}{111} \\[10pt]
+z &amp;= 1.738739
+\end{align*}
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (<span class="dv">700-507</span>)<span class="sc">/</span><span class="dv">111</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 0.9589596</code></pre>
+</div>
+</div>
+<details>
+<summary>
+Show Code
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>prob2 <span class="ot">&lt;-</span> <span class="fu">round</span>(z <span class="sc">*</span> <span class="dv">100</span>,<span class="dv">2</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">4</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm,</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">geom =</span> <span class="st">"line"</span>,</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">4</span>),</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>,<span class="at">sd =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm,</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">geom =</span> <span class="st">"area"</span>,</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">'red'</span>,</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">alpha =</span><span class="fl">0.3</span>,</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, z),</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>,<span class="at">sd =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> (<span class="dv">510-507</span>)<span class="sc">/</span><span class="dv">111</span>, <span class="at">y =</span> <span class="fl">0.15</span>, </span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">paste0</span>(prob1,<span class="st">'%'</span>),</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">8</span>)<span class="sc">+</span></span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> z,<span class="at">linetype =</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">''</span>,<span class="at">y=</span> <span class="st">'Density'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</details>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="09-normal_distribution_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+<p>By standardizing the scores, we shift from calculating <span class="math inline">\(P(X &lt; 700)\)</span> where the units are in SAT-M scores to equivalently computing <span class="math inline">\(P(Z &lt; 1.738739)\)</span>. This represents the number of standard deviations a data point is from the mean of the distribution. By standardizing we can now compare these results with say scores obtained from an english SAT exam on the same scale</p>
+
+
 </section>
 
 </main> <!-- /main -->

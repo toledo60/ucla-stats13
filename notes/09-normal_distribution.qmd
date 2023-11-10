@@ -1,6 +1,6 @@
 ---
 author: Jose Toledo Luna
-date: November 03, 2023
+date: November 09, 2023
 title: Normal Distribution
 toc: true
 ---
@@ -108,7 +108,7 @@ pnorm(0,mean = 0, sd = 1)
 
 ```{r}
 prob1 <- round(pnorm(700, mean=507, sd=111) * 100,2)
-p1 <- ggplot(data.frame(x = c(150,900)), aes(x)) +
+plt1 <- ggplot(data.frame(x = c(150,900)), aes(x)) +
   stat_function(fun = dnorm,
                 geom = "line",
                 xlim = c(150,900),
@@ -129,7 +129,7 @@ p1 <- ggplot(data.frame(x = c(150,900)), aes(x)) +
 </details>
 
 ```{r,echo=FALSE}
-p1
+plt1
 ```
 
 
@@ -397,4 +397,80 @@ plots <- plot_random_normal(n_samples = 100)+
 ```{r,echo=FALSE,fig.width=8,fig.height=5}
 plots
 ```
+
+
+
+
+
+## Standardizing Values
+
+The normal model $N(0,1)$ is called the standard normal distribution, and it is the default model used when working with `(.)norm` functions
+
+
+A $z$-score, also known as a standard score, quantifies the number of standard deviations a data point is from the mean of a distribution. This can be useful for comparing and analyzing data across different scales or distributions, providing a standardized way to assess the relative position of a particular value within a dataset
+
+For example, consider a scenario where you are comparing the performance of students in two different subjects, one with scores ranging from 0 to 100 and another with scores ranging from 0 to 50. Without standardization, it can be challenging to assess which student has performed relatively better across both subjects.
+
+
+The $z$-score of a particular value is defined as 
+$$
+z = \frac{\text{value} - \text{mean}}{\text{standard deviation}}
+$$
+If the values in their original units of measurement follow a normal distribution, then the $z$-scores will follow a standard normal distribution
+
+Recall the SAT-M scores example: Suppose $X$ is the SAT-M score which has a normal distribution with a mean of 507 and standard deviation of 111. What is the probability of scoring less than 700 on the SAT-M?
+
+
+```{r}
+pnorm(700, mean = 507, sd = 111)
+```
+
+
+We can also compute this quantity with the $z$-score with respect to the standard normal distribution
+$$
+\begin{align*}
+z &= \frac{\text{value} - \text{mean}}{\text{standard deviation}} \\[10pt]
+z &= \frac{700 - 507}{111} \\[10pt]
+z &= 1.738739
+\end{align*}
+$$
+```{r}
+z <- (700-507)/111
+pnorm(z)
+```
+
+<details>
+<summary>Show Code</summary>
+```{r}
+prob2 <- round(z * 100,2)
+p2 <- ggplot(data.frame(x = c(-4,4)), aes(x)) +
+  stat_function(fun = dnorm,
+                geom = "line",
+                xlim = c(-4,4),
+                args = list(mean = 0,sd = 1)) +
+  stat_function(fun = dnorm,
+                geom = "area",
+                fill = 'red',
+                alpha =0.3,
+                xlim = c(-4, z),
+                args = list(mean = 0,sd = 1))+
+  annotate("text", x = (510-507)/111, y = 0.15, 
+           label = paste0(prob1,'%'),
+           size = 8)+
+  geom_vline(xintercept = z,linetype =2)+
+  labs(x = '',y= 'Density')
+```
+</details>
+
+
+```{r,fig.width=6,echo=FALSE}
+p2
+```
+
+
+By standardizing the scores, we shift from calculating $P(X < 700)$ where the units are in SAT-M scores to equivalently computing $P(Z < 1.738739)$. This represents the number of standard deviations a data point is from the mean of the distribution. By standardizing we can now compare these results with say scores obtained from an english SAT exam on the same scale
+
+
+
+
 
