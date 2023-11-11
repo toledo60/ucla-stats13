@@ -18,16 +18,8 @@ knitr::opts_chunk$set(
 
 <details>
 <summary>Required Packages</summary>
-```{r}
-library(ggplot2)
-library(patchwork)
-```
-
-
-```{r}
-theme_set(theme_bw())
-theme_replace(panel.grid.minor = element_blank(),
-              panel.grid.major = element_blank())
+```{r,eval=FALSE}
+library(openintro)
 ```
 </details>
 
@@ -73,7 +65,6 @@ To perform a theory-based hypothesis test for the mean of a quantitative variabl
 4. If the validity conditions hold, compute the $p$-value by comparing the observed $t$-statistic to a $t$-distribution with $df = n-1$
 
 
-
 ---
 
 We can use the `t.test()` function to conduct this hypothesis test
@@ -96,4 +87,106 @@ t.test(x, y = NULL,
 * `conf.level`: confidence level of the interval $100(1-\alpha)$%, where $\alpha$ is the significance level
 
 For additional arguments `...` see `?t.test()`
+
+
+---
+
+
+Consider the `Tip Data` from `opentintro` package. The tip data is a simulated data set
+of tips over a few weeks on a couple days per week. Each tip is associated with a single group, which may include several bills and tables
+
+
+From this dataset we obtain a simple random sample of 30 tips, but first we only consider tips from bills that were at most $80
+
+```{r}
+tips <- openintro::tips
+```
+
+```{r,echo=FALSE}
+dplyr::glimpse(tips)
+```
+
+
+```{r}
+tips_bill_at_most80 <- tips[tips$bill <= 80,]
+```
+
+
+Among the tips from bills that were at most \$80, we obtained a simple random sample of size 30. We are interested in determining if the average tips throughout the weeks will be greater than \$5 per group *(for some reason, the business needs on average at least \$5 tips per group to stay in business)*. 
+
+The null and alternative hypothesis are given by
+$$
+\begin{align*}
+H_0: \mu = 5 \\[5pt]
+H_a: \mu > 5
+\end{align*}
+$$
+
+
+
+```{r}
+set.seed(1234)
+rows_sample <- sample(1:nrow(tips_bill_at_most80), 30)
+tips_sample <- tips_bill_at_most80[rows_sample,]
+```
+
+First we will carry out a one-sample $t$-test the long way. First, we compute the sample mean for the tips
+
+```{r}
+x_bar <- mean(tips_sample$tip)
+x_bar
+```
+
+Next, compute the sample standard deviation of the tips
+
+
+```{r}
+s <- sd(tips_sample$tip)
+```
+
+the $t$-statistic is then computed as 
+
+$$
+t = \frac{\bar{x}-\mu_0}{\left(\frac{s}{\sqrt{n}} \right)}
+$$
+
+```{r}
+n <- length(rows_sample)
+mu_0 <- 5
+t_stat <- (x_bar - mu_0) / (s / sqrt(n))
+```
+
+
+```{r}
+t_stat
+```
+
+Lastly, obtain the $p$-value
+
+```{r}
+p_value <- pt(t_stat, df = n - 1,lower.tail = FALSE)
+```
+
+```{r}
+p_value
+```
+
+
+At a significance level of $\alpha=0.05$, we reject the null hypothesis, indicating there is enough evidence to propose that, on average, the tips per group exceed \$5 for bills equal to or less than \$80, as supported by the three-week data provided
+
+
+With a single command, we can use `t.test()` function and obtain all of the following information, without having to compute every step ourselves
+
+- observed sample mean $\bar{x}$
+- $t$-statistic
+- degrees of freedom $(df)$
+- the alternative hypothesis we are testing
+- $p$-value
+- A 95% confidence interval for $\mu$
+
+```{r}
+t.test(tips_sample$tip, mu=5, 
+       alternative = 'greater')
+```
+
 
