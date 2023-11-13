@@ -96,11 +96,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <meta property="og:title" content="STATS 13 - Simulation-Based Test of Significance">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://ucla-stats13.netlify.app/notes/13-simulation_test_of_significance_files/figure-html/unnamed-chunk-10-1.png">
 <meta property="og:site-name" content="STATS 13">
+<meta property="og:image:height" content="768">
+<meta property="og:image:width" content="1152">
 <meta name="twitter:title" content="STATS 13 - Simulation-Based Test of Significance">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://ucla-stats13.netlify.app/notes/13-simulation_test_of_significance_files/figure-html/unnamed-chunk-10-1.png">
+<meta name="twitter:image-height" content="768">
+<meta name="twitter:image-width" content="1152">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -195,8 +205,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Required Packages
 </summary>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openintro)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
@@ -207,6 +218,81 @@ Required Packages
 <hr>
 <section id="comparing-two-proportions" class="level2">
 <h2 class="anchored" data-anchor-id="comparing-two-proportions">Comparing two proportions</h2>
+<p>From the <code>openintro</code> package we consider the <code>sten30</code> dataset. An experiment that studies effectiveness of stents in treating patients at risk of stroke with some unexpected results, this dataset represent the results 30 days after stroke</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>stent30 <span class="ot">&lt;-</span> openintro<span class="sc">::</span>stent30</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Rows: 451
+#&gt; Columns: 2
+#&gt; $ group   &lt;fct&gt; treatment, treatment, treatment, treatment, treatment, treatme…
+#&gt; $ outcome &lt;fct&gt; stroke, stroke, stroke, stroke, stroke, stroke, stroke, stroke…</code></pre>
+</div>
+</div>
+<p>We are interesting in testing if the probability of having a stroke is different for those in the control and treatment group. The null and alternative hypotheses are given by <span class="math display">\[
+\begin{align*}
+H_0: \pi_1 &amp;= \pi_2 \\[5pt]
+H_a: \pi_1 &amp;\neq \pi_2
+\end{align*}
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>observed_tbl <span class="ot">&lt;-</span> <span class="fu">tally</span>(outcome<span class="sc">~</span>group,<span class="at">data=</span>stent30 ,<span class="at">format=</span><span class="st">'proportion'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The observed statistic is the difference in proportion of individuals who did get a stroke under the treatment and control groups</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>observed_diff <span class="ot">&lt;-</span> observed_tbl[<span class="st">'stroke'</span>,<span class="st">'treatment'</span>] <span class="sc">-</span> observed_tbl[<span class="st">'stroke'</span>,<span class="st">'control'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>observed_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 0.09005271</code></pre>
+</div>
+</div>
+<p>Below is a for loop that will simulate the null distribution for our test statistic we will use to test our hypothesis</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">234</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>iters <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>diff_proportions <span class="ot">&lt;-</span> <span class="fu">numeric</span>(iters)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>iters){</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  group_shuffle_i <span class="ot">&lt;-</span> <span class="fu">sample</span>(stent30<span class="sc">$</span>group)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  cond_props_i <span class="ot">&lt;-</span> <span class="fu">tally</span>(stent30<span class="sc">$</span>outcome<span class="sc">~</span>group_shuffle_i,<span class="at">format =</span> <span class="st">'proportion'</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  diff_proportions[i] <span class="ot">&lt;-</span> cond_props_i[<span class="st">'stroke'</span>,<span class="st">'treatment'</span>] <span class="sc">-</span> cond_props_i[<span class="st">'stroke'</span>,<span class="st">'control'</span>]</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+Show Code
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sampling_dist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(diff_proportions),</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">aes</span>(diff_proportions))<span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">'steelblue'</span>,<span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="st">'black'</span>,<span class="at">bins=</span><span class="dv">25</span>)<span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> observed_diff,<span class="at">linetype =</span> <span class="dv">2</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span><span class="st">'red'</span>)<span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="sc">-</span>observed_diff,<span class="at">linetype =</span> <span class="dv">2</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span><span class="st">'red'</span>)<span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Sampling distribution'</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">''</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">'Sample Difference of Proportions'</span>,<span class="at">y =</span> <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</details>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="13-simulation_test_of_significance_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+<p>Using our null distribution, we can decide on the strength of evidence for or against the null hypothesis. The simulation-based <span class="math inline">\(p\)</span>-value is then computed as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(diff_proportions) <span class="sc">&gt;=</span> observed_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 8e-04</code></pre>
+</div>
+</div>
+<p>Using a significance level of <span class="math inline">\(\alpha=0.05\)</span>, we have enough evidence in favor of the alternative hypothesis. That is, we reject the null hypothesis and suggest there is a difference in proportions of patients getting a stroke under the control and treatment group.</p>
 
 
 </section>
