@@ -1,0 +1,55 @@
+---
+title: "Lab 5: Body Temperature"
+code-fold: false
+sidebar: false
+image: images/body-temp.jpeg
+---
+
+
+### Learning Objectives
+
+- Analyze data consisting of one categorical/binary explanatory and one quantitative response variable 
+- Make and interpret boxplots
+- Simulate the null distribution for the difference in two sample means
+- Analyze data consisting of a quantitative explanatory variable and a quantitative response variable
+- Make and interpret scatterplots
+- Carry out an entire test of significance for correlation using simulations and theory
+
+
+---
+
+### Readings
+
+
+
+To prepare for this lab assignment read the following lecture notes
+
+
+
+For past reference on visualizing and analyzing categorical/numerical variables refer to 
+
+- [Summarizing and Visualizing Numerical Variables](/notes/03-intro_numerical_variables.qmd)
+- [Summarizing and Visualizing Categorical Variables](/notes/04-intro_categorical_variables.qmd)
+
+---
+
+
+### Required Data and Packages
+
+We will use the following data in this lab
+
+1. The file `"bodytemp.csv"` on CCLE has data from a study done by Philip A. Mackowiak, MD et al. in 1992 [(Mackowiak, et. al, JAMA. 1992;268(12):1578-1580)](https://jamanetwork.com/journals/jama/article-abstract/400116)
+
+Throughout the lab we will use the `mosaic` package
+
+```{r,eval=FALSE}
+library(mosaic)
+```
+
+
+---
+
+### Questions
+
+
+
