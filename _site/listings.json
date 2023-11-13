@@ -1,15 +1,5 @@
 [
   {
-    "listing": "/assignments.html",
-    "items": [
-      "/labs/lab1.html",
-      "/labs/lab2.html",
-      "/labs/lab3.html",
-      "/labs/lab4.html",
-      "/labs/lab5.html"
-    ]
-  },
-  {
     "listing": "/notes.html",
     "items": [
       "/notes/01-fundamentals.html",
@@ -24,7 +14,18 @@
       "/notes/10-CLT.html",
       "/notes/11-confidence-interval.html",
       "/notes/12-one_sample_t_test.html",
-      "/notes/13-simulation_test_of_significance.html"
+      "/notes/13-simulation_test_of_significance.html",
+      "/notes/14-simple_linear_regression.html"
+    ]
+  },
+  {
+    "listing": "/assignments.html",
+    "items": [
+      "/labs/lab1.html",
+      "/labs/lab2.html",
+      "/labs/lab3.html",
+      "/labs/lab4.html",
+      "/labs/lab5.html"
     ]
   }
 ]

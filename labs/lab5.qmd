@@ -24,6 +24,7 @@ image: images/body-temp.jpeg
 
 To prepare for this lab assignment read the following lecture notes
 
+1. [Simple Linear Regression](/notes/14-simple_linear_regression.qmd)
 
 
 For past reference on visualizing and analyzing categorical/numerical variables refer to 

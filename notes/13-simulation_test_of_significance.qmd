@@ -1,6 +1,6 @@
 ---
 author: Jose Toledo Luna
-date: November 09, 2023
+date: November 12, 2023
 title: Simulation-Based Test of Significance 
 toc: true
 ---
