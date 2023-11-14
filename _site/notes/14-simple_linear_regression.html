@@ -489,11 +489,97 @@ flipper_length_mm    49.68557   1.518404  32.72223 4.370681e-107</code></pre>
 </section>
 <section id="test-of-significance-for-the-slope" class="level2">
 <h2 class="anchored" data-anchor-id="test-of-significance-for-the-slope">Test of Significance for the Slope</h2>
+<p>The equation of the least squares regression line is given by <span class="math display">\[
+y = \beta_0 + \beta_1x
+\]</span> where <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> minimize the sum of squared residuals</p>
+<p>When the coefficients are estimated from data, we write the linear model as</p>
+<p><span class="math display">\[
+\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x
+\]</span></p>
+<p>Hence, a straightforward linear model encapsulates the linear correlation between two variables through two key summary statistics, namely <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>. Specifically, <span class="math inline">\(\hat{\beta}_0\)</span> serves as an estimate for the intercept, while <span class="math inline">\(\hat{\beta}_1\)</span> provides an estimate for the slope of the linear model. The ‘hat’ symbols are employed when fitting the model to the data, often referred to as the “fitted model,” and <span class="math inline">\(\hat{y}\)</span> represents the “fitted” or “predicted” values of the response variable</p>
+<p>The primary objective in simple linear regression is often to understand the relationship between the independent variable and the dependent variable. The slope of the regression line represents the change in the dependent variable for a one-unit change in the independent variable. Therefore, testing the significance of the slope helps determine if there is a statistically significant linear relationship</p>
+<p><span class="math display">\[
+\begin{align*}
+H_0: \beta_1 = 0 \\
+H_a: \beta_1 \neq 0
+\end{align*}
+\]</span></p>
 <section id="theory-based-approach" class="level3">
 <h3 class="anchored" data-anchor-id="theory-based-approach">Theory-based approach</h3>
+<p>A simple <code>summary(lm())</code> call will perform a theory based approach for testing the statistical significance of the slope coefficient</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>simple_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(simple_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = body_mass_g ~ flipper_length_mm)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1058.80  -259.27   -26.88   247.33  1288.69 
+
+Coefficients:
+                   Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)       -5780.831    305.815  -18.90   &lt;2e-16 ***
+flipper_length_mm    49.686      1.518   32.72   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 394.3 on 340 degrees of freedom
+Multiple R-squared:  0.759, Adjusted R-squared:  0.7583 
+F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Refer to <a href="#slr-in-r">SLR in R</a>, for a more detailed explanation of the above output</p>
 </section>
 <section id="simulation-based-approach" class="level3">
 <h3 class="anchored" data-anchor-id="simulation-based-approach">Simulation-based approach</h3>
+<p>Below is a for loop that will simulate the null distribution for the slope of the regression line</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>iters <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>slopes <span class="ot">&lt;-</span> <span class="fu">numeric</span>(iters)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>iters){</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>flipperlength_shuffle_i <span class="ot">&lt;-</span> <span class="fu">sample</span>(penguins_dat<span class="sc">$</span>flipper_length_mm)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    fit_i <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipperlength_shuffle_i, <span class="at">data =</span> penguins_dat)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    slopes[i] <span class="ot">&lt;-</span> fit_i<span class="sc">$</span>coefficients[<span class="dv">2</span>]</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+Show Code
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>sampling_dist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(slopes),</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">aes</span>(slopes))<span class="sc">+</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">'steelblue'</span>,<span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="st">'black'</span>,<span class="at">bins=</span><span class="dv">30</span>)<span class="sc">+</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Sampling distribution'</span>,</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">''</span>,</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">'Slope Coefficients'</span>,<span class="at">y =</span> <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</details>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="14-simple_linear_regression_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The <span class="math inline">\(p\)</span>-value will be the proportion of times that the absolute value of the permuted statistics is greater than the absolute value of the observed statistic</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>obs_slope <span class="ot">&lt;-</span> simple_lm<span class="sc">$</span>coefficients[<span class="st">'flipper_length_mm'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(slopes) <span class="sc">&gt;=</span> <span class="fu">abs</span>(obs_slope))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<p>The <span class="math inline">\(p\)</span>-value is essentially zero, we have strong evidence to suggest the coefficient of the slope term is non-zero. That is, there is a statistically significant linear association between flipper length and the body mass of the penguins</p>
 
 
 </section>

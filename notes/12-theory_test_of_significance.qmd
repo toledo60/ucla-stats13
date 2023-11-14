@@ -321,6 +321,6 @@ t.test(tip ~ day, data = tips_sample, var.equal = FALSE,
        alternative = 'greater')
 ```
 
-Since the $p$-value is greater than our significance level $\alpha = 0.05$ we do not have sufficient evidence to suggest the average tips on friday are greater than that of Tuesday
+Since the $p$-value is greater than our significance level $\alpha = 0.05$ we do not have sufficient evidence to suggest the average tips on Friday are greater than that of Tuesday
 
 
