@@ -83,7 +83,7 @@ Compute the quantity in Question 1 by first converting the value to a z-score an
 #### Question 3
 
 
-What is the probability of observing a value of 2.3 or more from statistics that follow a t-distribution with 35 degrees of freedom?
+What is the probability of observing a value of 2.3 or more from statistics that follow a $t$-distribution with 35 degrees of freedom?
 
 
 #### Question 4

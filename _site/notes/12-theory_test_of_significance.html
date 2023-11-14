@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jose Toledo Luna">
-<meta name="dcterms.date" content="2023-11-09">
+<meta name="dcterms.date" content="2023-11-14">
 
 <title>STATS 13 - Theory-Based Test of Significance</title>
 <style>
@@ -101,10 +101,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="STATS 13 - Theory-Based Test of Significance">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://ucla-stats13.netlify.app/notes/12-theory_test_of_significance_files/figure-html/unnamed-chunk-15-1.png">
 <meta property="og:site-name" content="STATS 13">
+<meta property="og:image:height" content="768">
+<meta property="og:image:width" content="1152">
 <meta name="twitter:title" content="STATS 13 - Theory-Based Test of Significance">
 <meta name="twitter:description" content="">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ucla-stats13.netlify.app/notes/12-theory_test_of_significance_files/figure-html/unnamed-chunk-15-1.png">
+<meta name="twitter:image-height" content="768">
+<meta name="twitter:image-width" content="1152">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -160,6 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#hypothesis-tests" id="toc-hypothesis-tests" class="nav-link active" data-scroll-target="#hypothesis-tests">Hypothesis tests</a></li>
   <li><a href="#one-sample-t-test" id="toc-one-sample-t-test" class="nav-link" data-scroll-target="#one-sample-t-test">One Sample <span class="math inline">\(t\)</span>-test</a></li>
+  <li><a href="#two-sample-t-test" id="toc-two-sample-t-test" class="nav-link" data-scroll-target="#two-sample-t-test">Two Sample <span class="math inline">\(t\)</span>-test</a></li>
   </ul>
 </nav>
     </div>
@@ -185,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">last updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 9, 2023</p>
+      <p class="date">November 14, 2023</p>
     </div>
   </div>
   
@@ -343,6 +350,138 @@ t = \frac{\bar{x}-\mu_0}{\left(\frac{s}{\sqrt{n}} \right)}
 #&gt;  6.533687</code></pre>
 </div>
 </div>
+</section>
+<section id="two-sample-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="two-sample-t-test">Two Sample <span class="math inline">\(t\)</span>-test</h2>
+<p>To perform a theory-based hypothesis test for the mean of a quantitative variable, following the components of a hypothesis test, but in the context of a two sample <span class="math inline">\(t\)</span>-test</p>
+<ol type="1">
+<li><p>State the null and alternative hypotheses about the difference in mean parameters <span class="math inline">\(\mu_1 - \mu_2\)</span></p></li>
+<li><p>From a sample of data, compute the difference in sample means <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span> and its standardized <span class="math inline">\(t\)</span>-statistic</p></li>
+<li><p>Check the validity conditions to apply the Central Limit Theorem</p></li>
+<li><p>If the validity conditions hold, compute the <span class="math inline">\(p\)</span>-value by comparing the observed <span class="math inline">\(t\)</span>-statistic to a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(df=n_1+n_2-2\)</span> or <span class="math inline">\(df\)</span> obtained by Welch <span class="math inline">\(t\)</span>-statistic if the variances of the two groups are different</p></li>
+</ol>
+<p>Continuing with the <code>tips</code> dataset, we are now interested in determining if the average tips obtained on Friday are greater than those on Tuesday. Our null and alternative hypothesis are <span class="math display">\[
+\begin{align*}
+H_0: \mu_{friday} &amp;= \mu_{tuesday} \\[10pt]
+H_a: \mu_{friday} &amp;&gt; \mu_{friday}
+\end{align*}
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tips_friday <span class="ot">&lt;-</span> tips_bill_at_most80<span class="sc">$</span>tip[tips_bill_at_most80<span class="sc">$</span>day<span class="sc">==</span><span class="st">'Friday'</span>]</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>tips_tuesday <span class="ot">&lt;-</span> tips_bill_at_most80<span class="sc">$</span>tip[tips_bill_at_most80<span class="sc">$</span>day<span class="sc">==</span><span class="st">'Tuesday'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(tips_tuesday,tips_friday,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names =</span> <span class="fu">c</span>(<span class="st">'Tuesday'</span>,<span class="st">'Friday'</span>),</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">'#f5d376'</span>,<span class="st">'#f5767c'</span>),</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">'Tips by Day'</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">'Tips ($)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12-theory_test_of_significance_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+<details>
+<summary>
+Show Derivations
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sample_sizes <span class="ot">&lt;-</span> <span class="fu">table</span>(tips_sample<span class="sc">$</span>day)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sample_sizes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt;  Friday Tuesday 
+#&gt;      16      14</code></pre>
+</div>
+</div>
+<p>Here <span class="math inline">\(n_1 = 16\)</span> and <span class="math inline">\(n_2 = 14\)</span></p>
+<p>The sample means for the respective day based on our sample are given below</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sample_means <span class="ot">&lt;-</span> <span class="fu">tapply</span>(tips_sample<span class="sc">$</span>tip,tips_sample<span class="sc">$</span>day,<span class="st">"mean"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>sample_means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;   Friday  Tuesday 
+#&gt; 6.372025 6.718443</code></pre>
+</div>
+</div>
+<p>where <span class="math inline">\(\bar{x}_1 =\)</span> 6.372 and <span class="math inline">\(\bar{x}_2 =\)</span> 6.718 their difference is then <span class="math inline">\(\bar{x}_1 - \bar{x}_2=\)</span> -0.346. This will be our test statistic.</p>
+<p>The respective standard deviations can be computed in a similar manner</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sample_sd <span class="ot">&lt;-</span> <span class="fu">tapply</span>(tips_sample<span class="sc">$</span>tip,tips_sample<span class="sc">$</span>day,<span class="st">"sd"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sample_sd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;   Friday  Tuesday 
+#&gt; 4.482114 5.341150</code></pre>
+</div>
+</div>
+<p>Therefore, <span class="math inline">\(s_1 =\)</span> 4.482 and <span class="math inline">\(s_2=\)</span> 5.341</p>
+<p>The standardized test statistic is <span class="math display">\[
+t = \frac{(\bar{x}_1 - \bar{x}_2)- (\mu_1 - \mu_2)}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}} }
+\]</span></p>
+<p>Plugging in all the computed values from earlier, we can then compute the standardized <span class="math inline">\(t\)</span>-statistic</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>numerator <span class="ot">&lt;-</span> (sample_means[<span class="dv">1</span>]<span class="sc">-</span>sample_means[<span class="dv">2</span>])</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>denominator <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(sample_sd[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>sample_sizes[<span class="dv">1</span>] <span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                      sample_sd[<span class="dv">2</span>]<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>sample_sizes[<span class="dv">2</span>])</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>t_stat <span class="ot">&lt;-</span> numerator<span class="sc">/</span>denominator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>t_stat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;     Friday 
+#&gt; -0.1908909</code></pre>
+</div>
+</div>
+<p>the degrees of freedom of Welch <span class="math inline">\(t\)</span>-test is estimated as follows <span class="math display">\[
+df = \left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2 \Big/
+\left(\frac{s_1^2}{n_1(n_1-1)} + \frac{s_2^2}{n_2(n_2-1)} \right)
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>v_1 <span class="ot">&lt;-</span> sample_sd[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>sample_sizes[<span class="dv">1</span>]</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>v_2 <span class="ot">&lt;-</span> sample_sd[<span class="dv">2</span>]<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>sample_sizes[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df_numerator <span class="ot">&lt;-</span> (v_1 <span class="sc">+</span> v_2)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>df_denominator <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">/</span>(sample_sizes[<span class="dv">1</span>]<span class="sc">-</span><span class="dv">1</span>))<span class="sc">*</span>(v_1<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">/</span>(sample_sizes[<span class="dv">2</span>]<span class="sc">-</span><span class="dv">1</span>))<span class="sc">*</span>(v_2<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df_numerator<span class="sc">/</span>df_denominator</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;   Friday 
+#&gt; 25.54932</code></pre>
+</div>
+</div>
+<p>Lastly, obtain the <span class="math inline">\(p\)</span>-value</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="fu">pt</span>(t_stat, <span class="at">df =</span> df,</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>p_value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;    Friday 
+#&gt; 0.5749401</code></pre>
+</div>
+</div>
+</details>
+<p>Without all the complicated procedure of carrying a two sample <span class="math inline">\(t\)</span>-test, we can simply use the <code>t.test()</code> function like we did in the one sample <span class="math inline">\(t\)</span>-test scenario</p>
+<p>This time the input will be a formula <code>y ~ x</code> where <span class="math inline">\(y\)</span> is the response of interest and <span class="math inline">\(x\)</span> is the group, in our case we are interested in the average <code>tips</code> by <code>day</code> so our input would be <code>tip ~ day</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(tip <span class="sc">~</span> day, <span class="at">data =</span> tips_sample, <span class="at">var.equal =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">'greater'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt;  Welch Two Sample t-test
+#&gt; 
+#&gt; data:  tip by day
+#&gt; t = -0.19089, df = 25.549, p-value = 0.5749
+#&gt; alternative hypothesis: true difference in means between group Friday and group Tuesday is greater than 0
+#&gt; 95 percent confidence interval:
+#&gt;  -3.443692       Inf
+#&gt; sample estimates:
+#&gt;  mean in group Friday mean in group Tuesday 
+#&gt;              6.372025              6.718443</code></pre>
+</div>
+</div>
+<p>Since the <span class="math inline">\(p\)</span>-value is greater than our significance level <span class="math inline">\(\alpha = 0.05\)</span> we do not have sufficient evidence to suggest the average tips on friday are greater than that of Tuesday</p>
 
 
 </section>
