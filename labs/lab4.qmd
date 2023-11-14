@@ -23,7 +23,7 @@ simulations and theory
 To prepare for this lab assignment read the following lecture notes
 
 1. [Normal Distribution](/notes/09-normal_distribution.qmd)
-2. [One Sample $t$-test](/notes/12-one_sample_t_test.qmd)
+2. [One Sample $t$-test](/notes/12-theory_test_of_significance.qmd)
 3. [Simulation-Based Test of Significance](/notes/13-simulation_test_of_significance.qmd)
 
 
